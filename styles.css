@@ -116,7 +116,7 @@ body a {
 
 .hero {
   position: relative;
-  background-image: url(./images/background.JPG);
+  background-image: url(./images/background.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -158,9 +158,9 @@ body a {
   margin-bottom: 8px;
   text-shadow:
   0px 0px 10px rgb(0, 0, 0),
-  0px 0px 20px rgb(0, 0, 0),
   0px 0px 20px rgb(0, 0, 0);
 }
+
 .hero p {
   font-size: 1rem;
   font-weight: 500;
@@ -170,9 +170,6 @@ body a {
   text-shadow:
   0px 0px 10px rgb(0, 0, 0),
   0px 0px 10px rgb(0, 0, 0),
-  0px 0px 10px rgb(0, 0, 0),
-  0px 0px 20px rgb(0, 0, 0),
-  0px 0px 20px rgb(0, 0, 0),
   0px 0px 20px rgb(0, 0, 0);
   
 }
@@ -193,7 +190,7 @@ body a {
   color: #000000;
   font-size: 1.2rem;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 24px;
   transition: padding 0.3s;
   font-weight: 500;
   font-family: inherit;
