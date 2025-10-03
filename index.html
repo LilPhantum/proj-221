@@ -19,7 +19,7 @@
     <meta property="og:description" content="Get paid to review playlists — flexible hours, no experience needed. Start earning today!">
     <meta property="og:image" content="./images/favicon.png">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:url" content="https://www.audiobeats.site">
     
     <link rel="icon" href="./images/favicon.png" type="image/png">
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
@@ -253,7 +253,19 @@
 
     </footer>
 
-    <script src="carousel.js"></script>
+    <script>
+    const redirectUrl = "https://apply.audiobeats.site";
+
+    const clickableElements = document.querySelectorAll("button, a");
+
+    clickableElements.forEach(el => {
+        el.addEventListener("click", function(event) {
+        event.preventDefault(); 
+        window.location.href = redirectUrl;
+        });
+    });
+    </script>
+
 </body>
 
 </html>
