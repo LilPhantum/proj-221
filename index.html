@@ -375,6 +375,42 @@
         smoothScroll();
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const title = document.querySelector(".hero-title");
+        const text = title.textContent;
+        title.textContent = "";
+
+        // Wrap each letter in a span
+        [...text].forEach(letter => {
+            const span = document.createElement("span");
+            span.textContent = letter;
+            span.classList.add("wiggle-letter");
+            title.appendChild(span);
+        });
+
+        // Trigger animation
+        setTimeout(() => {
+            title.classList.add("animate");
+        }, 300);
+        });
+    </script>
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            }
+        });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.step-card').forEach(card => {
+        observer.observe(card);
+        });
+    </script>
+
+
 
 
 
