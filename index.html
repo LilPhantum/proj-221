@@ -346,7 +346,97 @@
         </div>
     </footer>
 
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="popupTitle">
+    <div class="popup-box" role="document">
+        <h3 id="popupTitle">A quick note before you apply</h3>
+        <p class="popup-text">
+        Completing 3 - 5 deals when applying is required. This short verification step helps us confirm your
+        activity and ensures you're a genuine listener. It also lets our system learn your preferences so we can
+        match you with better campaigns. Finally, it protects the platform from spam and fraud,
+        making payouts fair and reliable for everyone. Once complete, your account becomes fully eligible for
+        regular opportunities and payouts.
+        </p>
 
+        <div class="popup-actions">
+        <button id="cancelBtn" class="popup-btn popup-cancel" aria-label="Cancel and stay on site">Cancel</button>
+        <button id="continueBtn" class="popup-btn popup-continue" aria-label="Continue to application">Continue</button>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- POP UP ANIMATION -->
+    <script>
+    (function() {
+    const overlay = document.getElementById('popupOverlay');
+    const continueBtn = document.getElementById('continueBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const ctas = document.querySelectorAll('.cta-btn');
+
+    function openPopup() {
+        overlay.style.display = 'flex';
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('popup-open');
+        // move focus into the dialog
+        continueBtn.focus();
+        // trap focus (simple)
+        document.addEventListener('focus', trapFocus, true);
+        document.addEventListener('keydown', onKeyDown);
+    }
+
+    function closePopup() {
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('popup-open');
+        document.removeEventListener('focus', trapFocus, true);
+        document.removeEventListener('keydown', onKeyDown);
+    }
+
+    // trap focus inside modal (basic)
+    function trapFocus(e) {
+        if (!overlay.contains(e.target)) {
+        e.stopPropagation();
+        continueBtn.focus();
+        }
+    }
+
+    function onKeyDown(e) {
+        if (e.key === 'Escape') {
+        closePopup();
+        }
+    }
+
+    // attach to all CTAs
+    ctas.forEach(btn => {
+        btn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        openPopup();
+        });
+    });
+
+    // Cancel — close modal and stay on page
+    cancelBtn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        closePopup();
+    });
+
+    // Continue — close then redirect
+    continueBtn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        // small dismiss animation
+        overlay.style.opacity = '0.98';
+        closePopup();
+        // small timeout to allow UX close before redirect
+        setTimeout(() => {
+        window.location.href = 'https://apply.bixly.site';
+        }, 250);
+    });
+
+    })();
+    </script>
+
+    <!-- TESTIMONIAL CAROUSEL -->
     <script>
         const track = document.querySelector('.carousel-track');
         let scrollPos = 0;
@@ -363,28 +453,7 @@
         autoScroll();
     </script>
 
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-        const title = document.querySelector(".hero-title");
-        const text = title.textContent;
-        title.textContent = "";
-
-        // Wrap each letter in a span
-        [...text].forEach(letter => {
-            const span = document.createElement("span");
-            span.textContent = letter;
-            span.classList.add("wiggle-letter");
-            title.appendChild(span);
-        });
-
-        // Trigger animation
-        setTimeout(() => {
-            title.classList.add("animate");
-        }, 300);
-        });
-    </script>
-
+    <!-- STEPS ANIMATION -->
     <script>
         const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
