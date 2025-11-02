@@ -354,26 +354,21 @@
 
 
     <script>
-        const carousel = document.querySelector('.carousel-track');
-        let lastScrollY = window.scrollY;
-        let currentScrollX = 0;
-        let targetScrollX = 0;
+        const track = document.querySelector('.carousel-track');
+        let scrollPos = 0;
 
-        function smoothScroll() {
-            // Smoothly interpolate between current and target positions
-            currentScrollX += (targetScrollX - currentScrollX) * 0.5;
-            carousel.scrollLeft = currentScrollX;
-            requestAnimationFrame(smoothScroll);
+        function autoScroll() {
+            scrollPos += 1;
+            if (scrollPos >= track.scrollWidth - track.clientWidth) {
+            scrollPos = 0; // seamless loop
+            }
+            track.scrollLeft = scrollPos;
+            requestAnimationFrame(autoScroll);
         }
 
-        window.addEventListener('scroll', () => {
-            const deltaY = window.scrollY - lastScrollY;
-            targetScrollX += deltaY * 1.2; // Adjust sensitivity
-            lastScrollY = window.scrollY;
-        });
-
-        smoothScroll();
+        autoScroll();
     </script>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
