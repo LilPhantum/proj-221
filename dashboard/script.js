@@ -35,8 +35,6 @@ const kpiGrid = document.getElementById('kpiGrid');
 const chartRangeLabel = document.getElementById('chartRange');
 const lastUpdatedEl = document.getElementById('lastUpdated');
 const topListEl = document.getElementById('topList');
-const exportCsvBtn = document.getElementById('exportCsv');
-const refreshBtn = document.getElementById('refreshBtn');
 
 // KPI definitions
 const KPI_DEFS = [
@@ -90,7 +88,7 @@ let analyticsChart = new Chart(ctx, {
     plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
     scales: {
       x: {
-        grid: { color: 'rgba(255,255,255,0.03)' },
+        grid: { color: 'rgba(255, 0, 0, 0.03)' },
         ticks: {
           color: '#fff',
           callback: function(value, index, values) {
@@ -251,21 +249,6 @@ pills.forEach(btn=>{
     renderAll(CURRENT_RANGE);
   });
 });
-
-exportCsvBtn.addEventListener('click',()=>{
-  const labels=analyticsChart.data.labels;
-  const data=analyticsChart.data.datasets[0].data;
-  let csv='date,total_reviews\n';
-  labels.forEach((l,i)=>csv+=`${l},${data[i]}\n`);
-  const blob=new Blob([csv],{type:'text/csv'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url; a.download=`bixly-analytics-${Date.now()}.csv`;
-  a.click();
-  URL.revokeObjectURL(url);
-});
-
-refreshBtn.addEventListener('click',()=>renderAll(CURRENT_RANGE));
 
 // Initial render
 renderAll(CURRENT_RANGE);

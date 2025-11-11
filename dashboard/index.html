@@ -5,13 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bixly — Analytics</title>
   <meta name="description" content="Bixly analytics demo — reviews, approvals, estimated rewards." />
-
-  <!-- Fonts (optional) -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="./style.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&        family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -26,10 +21,10 @@
 
       <!-- Range pills -->
       <nav class="range-nav" role="tablist" aria-label="Select range">
-        <button class="range-pill active" data-range="7" aria-pressed="true">7D</button>
-        <button class="range-pill" data-range="28" aria-pressed="false">28D</button>
-        <button class="range-pill" data-range="60" aria-pressed="false">60D</button>
-        <button class="range-pill" data-range="365" aria-pressed="false">365D</button>
+        <button class="range-pill active" data-range="7" aria-pressed="true">7 days</button>
+        <button class="range-pill" data-range="28" aria-pressed="false">28 days</button>
+        <button class="range-pill" data-range="60" aria-pressed="false">60 days</button>
+        <button class="range-pill" data-range="365" aria-pressed="false">365 days</button>
         <button class="range-pill" data-range="lifetime" aria-pressed="false">Lifetime</button>
       </nav>
     </header>
@@ -39,21 +34,16 @@
       <!-- Metric label row -->
       <div class="metric-top">
         <div class="metric-label">Key metrics</div>
-        
+        <div class="chart-range" id="chartRange">—</div>
       </div>
 
       <!-- 2-column grid (mobile: single column stacking visually as two narrow columns) -->
       <div class="kpi-grid" id="kpiGrid">
-        <!-- Six KPI cards populated from JS -->
       </div>
     </section>
 
     <!-- Chart / series -->
     <section class="chart-section" aria-label="Activity chart">
-      <div class="chart-header">
-        <div class="chart-range" id="chartRange">—</div>
-      </div>
-
       <div class="chart-wrap">
         <canvas id="analyticsChart" aria-label="Analytics chart" role="img"></canvas>
       </div>
@@ -67,11 +57,6 @@
       </ul>
     </section>
 
-    <!-- Footer controls -->
-    <section class="footer-controls">
-      <button id="exportCsv" class="control-btn">Export CSV</button>
-      <button id="refreshBtn" class="control-btn">Refresh</button>
-    </section>
   </main>
 
   <!-- Script -->
