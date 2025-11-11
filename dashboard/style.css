@@ -79,6 +79,18 @@ body a {
   color: aliceblue;
 }
 
+.primary-header {
+  background-color: #fff;
+  display: flex;
+
+}
+
+
+.primary-header img {
+  margin: 12px 20px 8px;
+  height: 30px;
+}
+
 /* Base page */
 .page-body {
   margin: 0;
@@ -223,6 +235,8 @@ body a {
 .chart-section {
   margin-top: 6px;
   margin-bottom: 18px;
+    height: 250px;
+
 }
 
 .chart-legend {
@@ -396,4 +410,57 @@ body a {
 .kpi-change {
   font-size: 0.8rem;
   margin-top: 2px;
+}
+
+/* ======================FOOTER==================== */
+.site-footer {
+  margin-top: 30px ;
+  background-color: #242424;
+  color: #ffffff;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-inner .bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+.footer-logo img {
+  height: 45px;
+  display: block;
+  filter: brightness(1.2);
+}
+
+/* right-side controls */
+.footer-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+}
+
+.footer-controls .copyright {
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+.email-link svg {
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  flex-shrink: 0;
 }
