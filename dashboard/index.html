@@ -7,19 +7,19 @@
   <meta name="description" content="Bixly analytics demo — reviews, approvals, estimated rewards." />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&        family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./balance.css">
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="page-body">
 
     <header class="primary-header">
-        <img src="/images/logo-black.png" alt="Bixly logo">
+        <h1 id="dashboardTitle" class="dash-title">Spotify Reviewer Program</h1>
     </header>
 
   <main class="dashboard" id="dashboard" aria-labelledby="dashboardTitle">
     <header class="dash-header">
       <div class="title-row">
-        <h1 id="dashboardTitle" class="dash-title">Analytics</h1>
         <div class="last-updated" id="lastUpdated">Updated: —</div>
       </div>
 
@@ -51,6 +51,11 @@
       <div class="chart-wrap">
         <canvas id="analyticsChart" aria-label="Analytics chart" role="img"></canvas>
       </div>
+
+      <div class="top">
+        <button id="viewBalanceBtn" class="btn-view-balance" aria-haspopup="dialog" aria-controls="balanceOverlay">View Balance</button>
+      </div>
+
     </section>
 
     <!-- Top items list -->
@@ -63,7 +68,73 @@
 
   </main>
 
-      <footer class="site-footer">
+  <!-- put this where you want the "View Balance" button to appear -->
+
+    <!-- Balance overlay (hidden by default) -->
+    <section id="balanceOverlay" class="balance-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="balance-panel" role="document">
+            <!-- top header -->
+            <div class="balance-header">
+                <button id="balanceBackBtn" class="balance-back" aria-label="Close balance overlay">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#e3e3e3">
+                        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
+                    </svg>
+                </button>
+                <div class="balance-title">Reviewer Program Dashboard</div>
+            </div>
+    
+            <div class="balance-inner">
+                <!-- pills with sliding highlighter -->
+                <div class="balance-range">
+                    <div class="balance-pill-track" aria-hidden="true"></div> <!-- sliding highlighter -->
+                    <button class="balance-pill" data-range="30" aria-pressed="false">30 days</button>
+                    <button class="balance-pill" data-range="180" aria-pressed="false">6 months</button>
+                    <button class="balance-pill" data-range="lifetime" aria-pressed="false">All time</button>
+                </div>
+    
+                <!-- large amount -->
+                <div class="balance-amount-wrap">
+                    <div id="balanceAmount" class="balance-amount">—</div>
+                    <div id="balanceYesterday" class="balance-yesterday">Yesterday: —</div>
+                </div>
+    
+                <!-- line graph instead of bars -->
+                <div id="balanceChartContainer" class="balance-chart-container">
+                    <canvas id="balanceChart" aria-label="Earnings analytics graph" role="img"></canvas>
+                </div>
+    
+                <!-- date range row -->
+                <div class="balance-date-row" id="balanceDateRange">— — —</div>
+    
+                <!-- three columns -->
+                <div class="balance-columns">
+                    <div class="balance-col">
+                        <div class="col-label">Estimated Rewards</div>
+                        <div class="col-value" id="colEstimated">—</div>
+                    </div>
+                    <div class="balance-col">
+                        <div class="col-label">Qualified Reviews</div>
+                        <div class="col-value" id="colQualified">—</div>
+                    </div>
+                    <div class="balance-col">
+                        <div class="col-label">Conversion Rate</div>
+                        <div class="col-value" id="colConversion">—</div>
+                    </div>
+                </div>
+    
+                <div class="balance-note" id="balanceNote">
+                    You may notice a difference between your approved reviews and <span class="underline-text">qualified
+                        reviews</span>. Read qualified reviews to understand possible reasons.
+                </div>
+
+                <button class="withdraw-btn">Withdraw</button>
+
+            </div> <!-- .balance-inner -->
+        </div> <!-- .balance-panel -->
+    </section>
+
+    <footer class="site-footer">
         <div class="footer-inner">
 
             <div class="footer-logo">
@@ -87,5 +158,6 @@
 
   <!-- Script -->
   <script src="./script.js" defer></script>
+  <script src="./balance.js"></script>
 </body>
 </html>

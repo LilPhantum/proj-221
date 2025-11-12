@@ -80,14 +80,14 @@ body a {
 }
 
 .primary-header {
-  background-color: #fff;
+  background-color: #242424;
   display: flex;
-
+  justify-content: center;
 }
 
 
-.primary-header img {
-  margin: 12px 20px 8px;
+.primary-header h1 {
+  margin: 20px;
   height: 30px;
 }
 
@@ -119,6 +119,7 @@ body a {
   font-size: 1.5rem;
   font-weight: 500;
   margin: 0;
+  background-color: #242424;
 }
 
 
@@ -235,9 +236,33 @@ body a {
 .chart-section {
   margin-top: 6px;
   margin-bottom: 18px;
-    height: 250px;
-
 }
+
+.chart-section .top{
+  display: flex;
+  justify-content: center;  
+}
+
+.chart-section button {
+  cursor: pointer;
+  margin: 10px 0;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  color: white;
+  background: #0003b6;
+  border: none;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 400;
+  position: relative;
+  overflow: hidden;
+  transition: padding 0.5s ease;
+}
+
+.chart-section .top button:hover {
+  padding: 14px 42px;
+  
+}  
 
 .chart-legend {
   display:flex;
@@ -260,10 +285,10 @@ body a {
 
 /* Chart canvas wrapper */
 .chart-wrap {
-  margin-top: 20px;
+  margin-top: 10px;
   background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
   border:1px solid rgba(255,255,255,0.03);
-  height: 250px;
+  height: 30vh;
 }
 
 /* Top list */
@@ -286,24 +311,24 @@ body a {
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  border:1px solid rgba(255,255,255,0.06);
-  padding:10px;
+  padding: 10px;
+  background: #242424 !important;
   border-radius:10px;
   background:transparent;
 }
 
 .top-item-left {
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   gap:10px;
 }
 
 .top-cover {
-  width:56px;
-  height:56px;
-  border-radius:8px;
+  width:120px !important;
+  height:120px !important;
+  border-radius:3px;
   object-fit:cover;
-  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: transparent;
   flex-shrink:0;
 }
 
@@ -314,12 +339,16 @@ body a {
 }
 
 .top-title {
+  top: 0;
+  display: flex;
+  align-items: flex-start;
   font-weight:600;
   font-size:0.95rem;
 }
 
 .top-sub {
-  font-size:0.78rem;
+  font-size:0.9rem;
+  font-weight: 300;
   opacity:0.8;
   margin-top:3px;
 }
@@ -329,6 +358,7 @@ body a {
   font-weight:700;
   font-size:0.95rem;
   text-align:right;
+  margin-right: 10px;
 }
 
 /* footer controls */

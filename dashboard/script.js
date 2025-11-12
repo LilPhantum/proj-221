@@ -84,10 +84,37 @@ function buildKPICards() {
   });
 }
 
+function enableKPIClicks(range) {
+  document.querySelectorAll('.kpi-card').forEach(card => {
+    card.addEventListener('click', () => {
+      // Set active class
+      document.querySelectorAll('.kpi-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      // Get current data for the selected range
+      const data = generateData(range);
+      const kpiKey = card.getAttribute('data-kpi');
+
+      renderChart(data.labels, data.daily, kpiKey);
+    });
+  });
+}
+
+// ===========================
+// Create Gradient for Chart
+// ===========================
+function createChartGradient(ctx, height) {
+  const gradient = ctx.createLinearGradient(0, 0, 0, height); // vertical gradient
+  gradient.addColorStop(0, 'rgba(0, 3, 182, 0.59)'); // top color
+  gradient.addColorStop(1, 'rgba(0, 3, 182, 0)');   // bottom transparent
+  return gradient;
+}
+
 // ===========================
 // Chart Setup
 // ===========================
 const ctx = document.getElementById('analyticsChart').getContext('2d');
+
 let analyticsChart = new Chart(ctx, {
   type: 'line',
   data: {
@@ -96,7 +123,7 @@ let analyticsChart = new Chart(ctx, {
       label: 'Total Reviews',
       data: [],
       borderColor: ACCENT,
-      backgroundColor: 'rgba(0,3,182,0.12)',
+      backgroundColor: createChartGradient(ctx, ctx.canvas.height), // <-- gradient applied
       fill: true,
       tension: 0.4,
       pointRadius: 0,
@@ -121,19 +148,14 @@ let analyticsChart = new Chart(ctx, {
       y: {
         grid: { color: 'rgba(255,255,255,0.03)' },
         beginAtZero: true,
-        suggestedMin: 0,
-        suggestedMax: null, // dynamic space added automatically
         ticks: {
-          color: '#fff',
-          callback: function(value, index, values) {
-            if (index === 0 || index === values.length - 1) return value.toLocaleString();
-            return '';
-          }
+          color: '#fff'
         }
       }
     }
   }
 });
+
 
 // ===========================
 // Generate Daily Data
@@ -211,11 +233,23 @@ function renderKPIs(totals, changes) {
   KPI_DEFS.forEach(def => {
     const valEl = document.getElementById(`${def.id}-value`);
     const chEl = document.getElementById(`${def.id}-change`);
-    valEl.textContent = def.id === 'estimatedRewards' ? formatCurrency(totals[def.id] ?? 0) : (totals[def.id] ?? 0).toLocaleString();
+
+    // Map totals to KPI IDs explicitly
+    let value;
+    switch(def.id){
+      case 'reviewedSongs': value = totals.songs; break;
+      case 'reviewedAlbums': value = totals.albums; break;
+      case 'approvedReviews': value = totals.approvedReviews; break;
+      case 'rejectedReviews': value = totals.rejectedReviews; break;
+      case 'estimatedRewards': value = totals.reward; break;
+      case 'totalReviews': value = totals.totalReviews; break;
+    }
+
+    valEl.textContent = def.id === 'estimatedRewards' ? formatCurrency(value) : value.toLocaleString();
 
     const ch = changes[def.id];
     if (!ch.pct) {
-      chEl.innerHTML = `<span style="opacity:0.8">${'—'}</span>`;
+      chEl.innerHTML = `<span style="opacity:0.8">—</span>`;
     } else {
       const color = ch.up ? UP_COLOR : DOWN_COLOR;
       const arrow = ch.up ? '▲' : '▼';
@@ -223,6 +257,7 @@ function renderKPIs(totals, changes) {
     }
   });
 }
+
 
 // ===========================
 // Render Top Items List
@@ -243,8 +278,16 @@ function renderTopItems() {
     { title: "GUTS", artist: "Olivia Rodrigo", cover: "/images/guts.JPG", per: [8,15] }
   ];
 
-  TOP_ITEMS.forEach(item => {
-    const amount = Math.round(rnd(item.per[0], item.per[1]));
+  // Assign a random payout to each item
+  const topWithAmounts = TOP_ITEMS.map(item => {
+    return { ...item, amount: Math.round(rnd(item.per[0], item.per[1])) };
+  });
+
+  // Sort descending so highest payment is at top
+  topWithAmounts.sort((a,b) => b.amount - a.amount);
+
+  // Render each item
+  topWithAmounts.forEach(item => {
     const li = document.createElement('li');
     li.className = 'top-item';
     li.innerHTML = `
@@ -255,20 +298,45 @@ function renderTopItems() {
           <div class="top-sub">${item.artist}</div>
         </div>
       </div>
-      <div class="top-amount">${formatCurrency(amount)}</div>
+      <div class="top-amount">${formatCurrency(item.amount)}</div>
     `;
     topListEl.appendChild(li);
   });
 }
 
+
+
 // ===========================
 // Render Chart Data
 // ===========================
-function renderChart(labels, daily) {
+function renderChart(labels, daily, kpiKey='totalReviews') {
+  // Map KPI to daily values
+  const dataMap = {
+    reviewedSongs: daily.map(d => d.songs),
+    reviewedAlbums: daily.map(d => d.albums),
+    approvedReviews: daily.map(d => d.approvedSongs + d.approvedAlbums),
+    rejectedReviews: daily.map(d => (d.songs + d.albums) - (d.approvedSongs + d.approvedAlbums)),
+    estimatedRewards: daily.map(d => d.reward),
+    totalReviews: daily.map(d => d.songs + d.albums)
+  };
+
+  const dataValues = dataMap[kpiKey] || daily.map(d => d.songs + d.albums);
+  const maxValue = Math.max(...dataValues);
+
+  // Update chart
   analyticsChart.data.labels = labels;
-  analyticsChart.data.datasets[0].data = daily.map(d => d.songs + d.albums);
+  analyticsChart.data.datasets[0].data = dataValues;
+  analyticsChart.data.datasets[0].backgroundColor = createChartGradient(ctx, ctx.canvas.height);
+
+  // Y-axis: only 0 and max
+  analyticsChart.options.scales.y.ticks.callback = function(value) {
+    return (value === 0 || value === maxValue) ? value.toLocaleString() : '';
+  };
+  analyticsChart.options.scales.y.suggestedMax = maxValue * 1.1;
+
   analyticsChart.update();
 }
+
 
 // ===========================
 // Render Everything
@@ -277,7 +345,8 @@ function renderAll(range) {
   const data = generateData(range === 'lifetime' ? 'lifetime' : range);
   lastUpdatedEl.textContent = 'Updated: ' + new Date().toLocaleString();
 
-  renderChart(data.labels, data.daily);
+// By default, show totalReviews in chart
+  renderChart(data.labels, data.daily, 'totalReviews');
   const changes = computeChange(data.totals, range);
   renderKPIs(data.totals, changes);
   renderTopItems();
