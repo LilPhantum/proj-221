@@ -183,14 +183,14 @@
       const midY = (y + prevY) / 2;
       ctx.quadraticCurveTo(midX, prevY, x, y);
     }
-    ctx.strokeStyle = '#3700ffff';
+    ctx.strokeStyle = '#00ff37ff';
     ctx.lineWidth = 2;
     ctx.stroke();
 
     // --- Gradient fill
     const grad = ctx.createLinearGradient(0, 0, 0, h);
-    grad.addColorStop(0, 'rgba(55, 0, 255, 0.3)');
-    grad.addColorStop(1, 'rgba(123,91,240,0)');
+    grad.addColorStop(0, 'rgba(0, 87, 22, 0.51)');
+    grad.addColorStop(1, 'rgba(95, 228, 101, 0)');
     ctx.lineTo(w, h);
     ctx.lineTo(paddingLeft, h);
     ctx.closePath();

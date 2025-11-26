@@ -1,7 +1,7 @@
 // ===========================
 // Constants & Utilities
 // ===========================
-const ACCENT = '#0003b6';
+const ACCENT = '#03c212ff';
 const UP_COLOR = '#00ff00';   // Green for up
 const DOWN_COLOR = '#ff0000'; // Red for down
 const NEUTRAL_COLOR = '#ffffff'; // White for neutral
@@ -104,9 +104,9 @@ function enableKPIClicks(range) {
 // Create Gradient for Chart
 // ===========================
 function createChartGradient(ctx, height) {
-  const gradient = ctx.createLinearGradient(0, 0, 0, height); // vertical gradient
-  gradient.addColorStop(0, 'rgba(0, 3, 182, 0.59)'); // top color
-  gradient.addColorStop(1, 'rgba(0, 3, 182, 0)');   // bottom transparent
+  const gradient = ctx.createLinearGradient(0, 0, 0, height); 
+  gradient.addColorStop(0, 'rgba(2, 83, 29, 0.59)'); 
+  gradient.addColorStop(1, 'rgba(0, 182, 39, 0)');   
   return gradient;
 }
 

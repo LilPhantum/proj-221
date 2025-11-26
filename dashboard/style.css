@@ -156,9 +156,9 @@ body a {
 }
 
 .range-pill.active {
-  background: linear-gradient(135deg, #5364ff, #0003b6);
-  color: #ffffff;
-    border: none;
+  background: #ffffff;
+  color: #000000;
+  border: none;
 
 }
 
@@ -248,8 +248,8 @@ body a {
   margin: 10px 0;
   padding: 14px 32px;
   font-size: 1.1rem;
-  color: white;
-  background: #0003b6;
+  color: rgb(0, 0, 0);
+  background: #ffffff;
   border: none;
   border-radius: 40px;
   text-decoration: none;
