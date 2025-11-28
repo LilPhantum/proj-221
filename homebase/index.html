@@ -22,16 +22,18 @@
     <header class="top-bar" role="banner">
       <button class="btn back" type="button" aria-label="Go back">
         <!-- icon injected via CSS or SVG later -->
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
       </button>
 
       <div class="top-title" aria-hidden="false">
-        <div class="track-short">sky</div>
+        <div class="track-short">SKY</div>
       </div>
 
       <div class="top-right">
         <!-- visible payout for this track -->
-        <div class="rate-badge" aria-label="Estimated payout" data-payout="1.5">$1.5</div>
+        <div class="rate-badge" aria-label="Estimated payout" data-payout="1.5">
+          <img src="/images/profile-picture.png" alt="Profile Picture" width="35px">
+        </div>
       </div>
     </header>
 
@@ -40,25 +42,16 @@
       <h1 id="nowplaying-label" class="sr-only"></h1>
 
       <div class="artwork-wrap">
-        <img src="/images/whole-lotta-red.JPG" alt="Album art for 'sky' by Playboi Carti" class="artwork" width="1200">
+        <img src="/images/whole-lotta-red.JPG" alt="Album art for 'sky' by Playboi Carti" class="artwork" >
       </div>
 
       <!-- track meta (title + artist) placed under artwork -->
       <div class="track-meta compact">
-        <div class="track-title">sky</div>
+        <div class="track-title">SKY</div>
         <div class="track-artist">Playboi Carti • 3:14</div>
       </div>
 
-      <!-- star rating: 6 stars (buttons for keyboard/touch) -->
-      <div class="star-rating" role="radiogroup" aria-label="Song rating">
-        <!-- JS will toggle aria-checked and visual fill -->
-        <button class="star" role="radio" aria-checked="false" data-value="1" aria-label="1 star">★</button>
-        <button class="star" role="radio" aria-checked="false" data-value="2" aria-label="2 stars">★</button>
-        <button class="star" role="radio" aria-checked="false" data-value="3" aria-label="3 stars">★</button>
-        <button class="star" role="radio" aria-checked="false" data-value="4" aria-label="4 stars">★</button>
-        <button class="star" role="radio" aria-checked="false" data-value="5" aria-label="5 stars">★</button>
-        <button class="star" role="radio" aria-checked="false" data-value="6" aria-label="6 stars">★</button>
-      </div>
+      
     </section>
 
     <!-- Playback controls -->
@@ -70,7 +63,7 @@
         <div class="progress-fill"></div>
         <div class="time-duration">3:42</div>
       </div>
-            
+
       <div class="controls-row" role="toolbar" aria-label="Transport controls">
         <button class="ctrl shuffle side" type="button" aria-label="Shuffle">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16">
@@ -110,23 +103,29 @@
       <!-- utilities row: timestamp, speed, and moved tags/payout -->
       <div class="player-utilities" role="group" aria-label="Utilities">
         <button class="util timestamp" type="button" aria-label="Add timestamp comment" data-action="timestamp">+ Timestamp</button>
-        <button class="util speed" type="button" aria-label="Playback speed" data-action="speed">1×</button>
+        <button class="util speed" type="button" aria-label="Playback speed" data-action="speed">1x</button>
 
         <!-- moved tags (Indie / Explicit) -->
-        <span class="chip genre" aria-hidden="false">Indie</span>
         <span class="chip explicit" aria-hidden="false">Explicit</span>
 
-        <!-- small payout shown again for context -->
-        <span class="chip payout" aria-hidden="false" data-payout="1.5">$1.5</span>
+        <!-- star rating: 6 stars (buttons for keyboard/touch) -->
+        <div class="star-rating" role="radiogroup" aria-label="Song rating">
+          <!-- JS will toggle aria-checked and visual fill -->
+          <button class="star" role="radio" aria-checked="false" data-value="1" aria-label="1 star">★</button>
+          <button class="star" role="radio" aria-checked="false" data-value="2" aria-label="2 stars">★</button>
+          <button class="star" role="radio" aria-checked="false" data-value="3" aria-label="3 stars">★</button>
+          <button class="star" role="radio" aria-checked="false" data-value="4" aria-label="4 stars">★</button>
+          <button class="star" role="radio" aria-checked="false" data-value="5" aria-label="5 stars">★</button>
+          <button class="star" role="radio" aria-checked="false" data-value="6" aria-label="6 stars">★</button>
+        </div>
+
       </div>
     </section>
 
     <!-- Review input (large textarea) -->
     <section class="review-section" aria-labelledby="review-label">
-      <h2 id="review-label" class="sr-only">Write your review</h2>
 
       <form class="review-form" action="#" method="post" onsubmit="return false;">
-        <label for="review-text" class="sr-only">Your review</label>
         <textarea id="review-text" class="review-text" name="review" rows="6" placeholder="Write your review — be honest and helpful." aria-required="true"></textarea>
 
         <!-- helper row: charcount, star-summary, and quick submit -->
