@@ -231,7 +231,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 12px 16px;
+  margin: 12px 0;
   font-size: 0.75rem;
   color: #e3e3e3;
   position: relative;
