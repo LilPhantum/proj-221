@@ -3,314 +3,172 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Reviewer Dashboard</title>
+  <title>Reviewer — Now Playing</title>
 
-  <!-- Link to separated CSS (create reviewer.css and style to match this structure) -->
+  <!-- separate files (you will add styles.css and app.js) -->
   <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Meta for SEO / preview -->
-  <meta name="description" content=" Reviewer dashboard: sidebar with quota & streak, main player, review area, and five-song list with payout badges.">
+  <meta name="description" content="Mobile-first reviewer player: artwork, star rating (6), playback controls, review field, earnings, progress and streak.">
 </head>
 <body>
-  <!-- App container: two-column layout (left fixed sidebar, right main content) -->
-  <div class="app-container">
 
-    <!-- LEFT SIDEBAR (fixed, full height) -->
-    <aside class="sidebar" role="navigation" aria-label="Reviewer navigation">
-      <div class="sidebar-top">
-        <!-- Brand / Logo -->
-        <div class="brand">
-          <img src="/images/footer-logo.png" alt="Platform logo" class="brand-logo" width="140" height="36">
+  <!-- Mobile-first single-column app -->
+  <div class="app mobile" id="app">
+
+    <!-- Top bar: back + title + rate/badge -->
+    <header class="top-bar" role="banner">
+      <button class="btn back" type="button" aria-label="Go back">
+        <!-- icon injected via CSS or SVG later -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+      </button>
+
+      <div class="top-title" aria-hidden="false">
+        <div class="track-short">sky</div>
+      </div>
+
+      <div class="top-right">
+        <!-- visible payout for this track -->
+        <div class="rate-badge" aria-label="Estimated payout" data-payout="1.5">$1.5</div>
+      </div>
+    </header>
+
+    <!-- Artwork (primary visual) -->
+    <section class="player-hero" aria-labelledby="nowplaying-label">
+      <h1 id="nowplaying-label" class="sr-only"></h1>
+
+      <div class="artwork-wrap">
+        <img src="/images/whole-lotta-red.JPG" alt="Album art for 'sky' by Playboi Carti" class="artwork" width="1200">
+      </div>
+
+      <!-- track meta (title + artist) placed under artwork -->
+      <div class="track-meta compact">
+        <div class="track-title">sky</div>
+        <div class="track-artist">Playboi Carti • 3:14</div>
+      </div>
+
+      <!-- star rating: 6 stars (buttons for keyboard/touch) -->
+      <div class="star-rating" role="radiogroup" aria-label="Song rating">
+        <!-- JS will toggle aria-checked and visual fill -->
+        <button class="star" role="radio" aria-checked="false" data-value="1" aria-label="1 star">★</button>
+        <button class="star" role="radio" aria-checked="false" data-value="2" aria-label="2 stars">★</button>
+        <button class="star" role="radio" aria-checked="false" data-value="3" aria-label="3 stars">★</button>
+        <button class="star" role="radio" aria-checked="false" data-value="4" aria-label="4 stars">★</button>
+        <button class="star" role="radio" aria-checked="false" data-value="5" aria-label="5 stars">★</button>
+        <button class="star" role="radio" aria-checked="false" data-value="6" aria-label="6 stars">★</button>
+      </div>
+    </section>
+
+    <!-- Playback controls -->
+    <section class="player-controls" role="region" aria-label="Playback controls">
+ 
+      <!-- small seek/time display (visual only in mobile-first) -->
+      <div class="seek-compact" aria-hidden="true">
+        <div class="time-current">0:00</div>
+        <div class="progress-fill"></div>
+        <div class="time-duration">3:42</div>
+      </div>
+            
+      <div class="controls-row" role="toolbar" aria-label="Transport controls">
+        <button class="ctrl shuffle side" type="button" aria-label="Shuffle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5"/>
+          <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192"/>
+        </svg>
+        </button>
+        
+        <div class="main">
+          <button class="ctrl prev" type="button" aria-label="Previous track">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-start-fill" viewBox="0 0 16 16">
+            <path d="M4 4a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.232.066 1.232.696v7.384c0 .63-.692 1.01-1.232.697L5 8.753V12a.5.5 0 0 1-1 0z"/>
+          </svg>
+          </button>
+
+          <!-- prominent central play button -->
+          <button class="ctrl play" type="button" aria-label="Play" data-playing="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
+          </svg>
+          </button>
+
+          <button class="ctrl next" type="button" aria-label="Next track">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-end-fill" viewBox="0 0 16 16">
+            <path d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0z"/>
+          </svg>
+          </button>
         </div>
 
-        <!-- User info -->
-        <div class="user-info" aria-hidden="false">
-          <img src="/images/profile-picture.png" alt="Reviewer avatar" class="avatar" width="48" height="48">
-          <div class="user-meta">
-            <div class="user-name">Sophie Safari</div>
-            <div class="user-level">Level 2 • Verified</div>
-          </div>
+        <button class="ctrl loop side" type="button" aria-label="Loop">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-repeat" viewBox="0 0 16 16">
+          <path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z"/>
+        </svg>
+        </button>
+      </div>
+
+      <!-- utilities row: timestamp, speed, and moved tags/payout -->
+      <div class="player-utilities" role="group" aria-label="Utilities">
+        <button class="util timestamp" type="button" aria-label="Add timestamp comment" data-action="timestamp">+ Timestamp</button>
+        <button class="util speed" type="button" aria-label="Playback speed" data-action="speed">1×</button>
+
+        <!-- moved tags (Indie / Explicit) -->
+        <span class="chip genre" aria-hidden="false">Indie</span>
+        <span class="chip explicit" aria-hidden="false">Explicit</span>
+
+        <!-- small payout shown again for context -->
+        <span class="chip payout" aria-hidden="false" data-payout="1.5">$1.5</span>
+      </div>
+    </section>
+
+    <!-- Review input (large textarea) -->
+    <section class="review-section" aria-labelledby="review-label">
+      <h2 id="review-label" class="sr-only">Write your review</h2>
+
+      <form class="review-form" action="#" method="post" onsubmit="return false;">
+        <label for="review-text" class="sr-only">Your review</label>
+        <textarea id="review-text" class="review-text" name="review" rows="6" placeholder="Write your review — be honest and helpful." aria-required="true"></textarea>
+
+        <!-- helper row: charcount, star-summary, and quick submit -->
+        <div class="review-helpers">
+          <div class="char-count" aria-live="polite" aria-atomic="true">0 / 500</div>
+          <div class="rating-summary" aria-hidden="true">Rating: <span id="rating-value">0</span>/6</div>
         </div>
 
-        <!-- Today's Goal (quota) -->
-        <div class="daily-goal" aria-live="polite">
-          <h4 class="goal-title">Today's Goal</h4>
-          <div class="goal-stats">
-            <div class="goal-count"><strong>23</strong> / 30</div>
-            <div class="goal-sub">songs reviewed</div>
-          </div>
-          <!-- visual progress element (styled in CSS) -->
-          <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="30" aria-valuenow="23">
-            <div class="progress-fill" style="width: 76%;"></div>
-          </div>
+        <div class="review-actions">
+          <button class="btn submit" type="button" id="submit-review" aria-label="Submit review">Submit Review</button>
+          <button class="btn save" type="button" id="save-draft" aria-label="Save draft">Save Draft</button>
         </div>
+      </form>
+    </section>
 
-        <!-- Streak box -->
-        <div class="streak-box">
-          <div class="streak-title">🔥 Streak</div>
-          <div class="streak-count">85 <span class="streak-unit">days active</span></div>
+    <!-- Sticky bottom bar: earnings, progress, streak -->
+    <aside class="bottom-bar" role="complementary" aria-label="Reviewer status">
+      <div class="status-left">
+        <div class="earned">
+          <div class="label">Earned</div>
+          <div class="value" id="earned-amount">$14.50</div>
         </div>
       </div>
 
-      <!-- Navigation menu -->
-      <nav class="sidebar-nav" aria-label="Main menu">
-        <ul>
-          <li class="nav-item nav-home"><a href="#" tabindex="0">Home</a></li>
-          <li class="nav-item nav-queue"><a href="#" tabindex="0">Task Queue <span class="badge new">4</span></a></li>
-          <li class="nav-item nav-analytics"><a href="/dashboard/index.html" tabindex="0">Analytics</a></li>
-          <li class="nav-item nav-library"><a href="#" tabindex="0">My Reviews</a></li>
-          <li class="nav-item nav-downloads"><a href="#" tabindex="0">Downloads</a></li>
-          <li class="nav-item nav-notifications"><a href="#" tabindex="0">Notifications</a></li>
-          <li class="nav-item nav-guidelines"><a href="#" tabindex="0">Guidelines</a></li>
-          <li class="nav-item nav-support"><a href="#" tabindex="0">Support</a></li>
-          <li class="nav-item nav-settings"><a href="#" tabindex="0">Settings</a></li>
-        </ul>
-      </nav>
-
-      <!-- Bottom sticky widget: earnings snapshot -->
-      <div class="sidebar-bottom" aria-hidden="false">
-        <div class="earnings">
-          <div class="earnings-label">Today</div>
-          <div class="earnings-amount">$14.50</div>
+      <div class="status-middle">
+        <div class="progress">
+          <div class="label">Today</div>
+          <div class="value"><span id="progress-done">23</span>/<span id="progress-goal">30</span></div>
         </div>
-        <div class="pending">
-          <div class="pending-label">Pending</div>
-          <div class="pending-amount">$7.00</div>
+      </div>
+
+      <div class="status-right">
+        <div class="streak">
+          <div class="label">Streak</div>
+          <div class="value" id="streak-value">85d</div>
         </div>
       </div>
     </aside>
 
-    <!-- MAIN CONTENT: Player, Review Workspace, and 5-item Song List -->
-    <main class="main" role="main" aria-label="Reviewer workspace">
-
-      <div class="toplayer">
-        <!-- NOW PLAYING / PLAYER CARD -->
-        <section class="now-playing" aria-labelledby="now-playing-title">
-            <header class="now-playing-header">
-                <h2 id="now-playing-title" class="sr-only">Now Playing</h2>
-            </header>
-        
-            <div class="player-card">
-                <!-- Large artwork -->
-                <div class="artwork">
-                    <img src="/images/whole-lotta-red.JPG" alt="Album art — Tit for Tat" width="360" height="360">
-
-                    <div class="track-info">
-                        <h3 class="track-title">sky</h3>
-                        <div class="track-sub">Playboi Carti • 3:14</div>
-                    </div>
-                </div>
-        
-                <!-- Song meta and payout badge -->
-                <div class="track-meta">
-        
-                    
-                </div>
-        
-                <!-- Player controls (visual only, non-functional in this HTML-only ) -->
-                <div class="player-controls" role="group" aria-label="Playback controls">
-        
-                    <div class="stamps">
-        
-                        <button class="ctrl side" aria-label="Next track" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-shuffle" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5" />
-                                <path
-                                    d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192" />
-                            </svg>
-                        </button>
-        
-                        <button class="ctrl prev" aria-label="Previous track" type="button" disabled>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-skip-start-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M4 4a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.232.066 1.232.696v7.384c0 .63-.692 1.01-1.232.697L5 8.753V12a.5.5 0 0 1-1 0z" />
-                            </svg>
-                        </button>
-                        <button class="ctrl play" aria-label="Play" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-play-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
-                            </svg>
-                        </button>
-                        <button class="ctrl next" aria-label="Next track" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-skip-end-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0z" />
-                            </svg>
-                        </button>
-        
-                        <button class="ctrl side" aria-label="Next track" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-repeat" viewBox="0 0 16 16">
-                                <path
-                                    d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z" />
-                            </svg>
-                        </button>
-        
-        
-                    </div>
-        
-                    <!-- static seek bar -->
-                    <div class="seek">
-                        <div class="seek-line">
-                            <div class="seek-fill" style="width: 12%;"></div>
-                        </div>
-                        <div class="time">
-                            <span class="current">0:26</span>
-                            <span class="duration">3:42</span>
-                        </div>
-                    </div>
-        
-                    <!-- utility buttons (visual only) -->
-                    <div class="player-utilities">
-                        <button class="util" type="button" aria-label="Add timestamp comment">+ Timestamp</button>
-                        <button class="util" type="button" aria-label="Playback speed">1×</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- REVIEW WORKSPACE -->
-        <section class="review-workspace" aria-labelledby="review-heading">
-            <h3 id="review-heading" class="workspace-title">Write Your Review</h3>
-
-            <!-- Quick rating strips (visual only) -->
-            <div class="ratings">
-            <div class="rating-row">
-                <label class="rating-label">Melody</label>
-                <div class="rating-dots" aria-hidden="true">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-
-            <div class="rating-row">
-                <label class="rating-label">Production</label>
-                <div class="rating-dots" aria-hidden="true">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-
-            <div class="rating-row">
-                <label class="rating-label">Vocals</label>
-                <div class="rating-dots" aria-hidden="true">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-
-            <div class="rating-row">
-                <label class="rating-label">Replay Value</label>
-                <div class="rating-dots" aria-hidden="true">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            </div>
-
-            <!-- Main review textarea (visual only) -->
-            <div class="review-input">
-            <label for="review-text" class="sr-only">Your review</label>
-            <textarea id="review-text" name="review" rows="6" placeholder="Write your review here — keep it helpful and honest."></textarea>
-
-            <!-- timestamp button (visual only) -->
-            <div class="input-actions">
-                <button class="btn timestamp" type="button" aria-label="Add timestamp comment">Add Timestamp Comment</button>
-                <div class="payout-note">Estimated payout: <strong>$1.5</strong></div>
-            </div>
-
-            <!-- Submit (visual only) -->
-            <div class="submit-row">
-                <button class="btn submit" type="button" aria-label="Submit review">Submit Review</button>
-                <button class="btn save" type="button" aria-label="Save draft">Save Draft</button>
-                <button class="btn reject" type="button" aria-label="Reject task">Reject Task</button>
-            </div>
-            </div>
-        </section>
-      </div>
-
-      <!-- FIVE-VISIBLE SONG LIST (bottom of main area) -->
-      <section class="song-list" aria-labelledby="song-list-heading">
-        <h4 id="song-list-heading" class="sr-only">Available Songs</h4>
-
-        <ul class="tracks" aria-live="polite">
-          <!-- item 1 -->
-          <li class="track-item" tabindex="0" role="article" aria-label="Tit for Tat, $1.5">
-            <img src="/images/whole-lotta-red.JPG" alt="Tit for Tat cover" class="track-art" width="64" height="64">
-            <div class="track-body">
-              <div class="track-title">Whole Lotta Red</div>
-              <div class="track-artist">Playboi Carti • 3:42</div>
-            </div>
-            <div class="track-meta">
-              <span class="payout-badge small" data-payout="1.5">$1.5</span>
-            </div>
-          </li>
-
-          <!-- item 2 -->
-          <li class="track-item" tabindex="0" role="article" aria-label="Gorgeous, $1.0">
-            <img src="/images/guts.JPG" alt="Gorgeous cover" class="track-art" width="64" height="64">
-            <div class="track-body">
-              <div class="track-title">GUTS</div>
-              <div class="track-artist">Olivia Rodrigo • 2:58</div>
-            </div>
-            <div class="track-meta">
-              <span class="payout-badge small" data-payout="1.0">$1.0</span>
-            </div>
-          </li>
-
-          <!-- item 3 -->
-          <li class="track-item" tabindex="0" role="article" aria-label="So Easy, $0.5">
-            <img src="/images/paint-the-town-red.JPG" alt="So Easy cover" class="track-art" width="64" height="64">
-            <div class="track-body">
-              <div class="track-title">Paint the Town Red</div>
-              <div class="track-artist">Taylor Swift • 3:05</div>
-            </div>
-            <div class="track-meta">
-              <span class="payout-badge small" data-payout="0.5">$0.5</span>
-            </div>
-          </li>
-
-          <!-- item 4 -->
-          <li class="track-item" tabindex="0" role="article" aria-label="Ninja, $2.0 (premium)">
-            <img src="/images/feather.JPG" alt="Ninja cover" class="track-art" width="64" height="64">
-            <div class="track-body">
-              <div class="track-title">Feather</div>
-              <div class="track-artist">Sabrina Carpenter • 4:12</div>
-            </div>
-            <div class="track-meta">
-              <span class="payout-badge small premium" data-payout="2.0">$2.0</span>
-            </div>
-          </li>
-
-          <!-- item 5 -->
-          <li class="track-item" tabindex="0" role="article" aria-label="Dracula, $1.5">
-            <img src="/images/vampire.JPG" alt="Dracula cover" class="track-art" width="64" height="64">
-            <div class="track-body">
-              <div class="track-title">Vampire</div>
-              <div class="track-artist">Olivia Rodrigo • 3:30</div>
-            </div>
-            <div class="track-meta">
-              <span class="payout-badge small" data-payout="1.5">$1.5</span>
-            </div>
-          </li>
-        </ul>
-
-        <!-- small legend / note -->
-        <div class="list-note">
-        </div>
-      </section>
-
-    </main>
   </div>
 
-  <!-- Footer (optional, minimal) -->
-  <footer class="site-footer" role="contentinfo" aria-hidden="true">
-    <div class="footer-inner">
-    </div>
-  </footer>
+  <!-- accessibility helper: polite live region for actions -->
+  <div id="aria-announcer" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 </body>
 </html>
