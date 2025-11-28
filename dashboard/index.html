@@ -13,11 +13,57 @@
 </head>
 <body class="page-body">
 
-    <header class="primary-header">
-        <h1 id="dashboardTitle" class="dash-title">Spotify Reviewer Program</h1>
-    </header>
+  <header class="primary-header">
+    <div class="top">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+    </div>
+  </header>
 
   <main class="dashboard" id="dashboard" aria-labelledby="dashboardTitle">
+
+      <section class="profile-header">
+        <!-- First row: profile info (left) + streak/online status (right) -->
+        <div class="profile-top-row">
+          <!-- Left column: image + name/info -->
+          <div class="profile-left">
+            <div class="profile-avatar">
+              <img src="/images/profile-picture.png" alt="Profile picture">
+            </div>
+            <div class="profile-details">
+              <div class="profile-label">Profile</div>
+              <div class="profile-name">Sophie Safari</div>
+              <div class="profile-role">Reviewer</div>
+            </div>
+          </div>
+      
+          <!-- Right column: streak + online -->
+          <div class="profile-right">
+            <div class="streak">
+              <span class="streak-days">85 day</span> Streak
+            </div>
+            <div class="online-status">Online</div>
+          </div>
+        </div>
+      
+        <!-- Second row: progress / level -->
+        <div class="profile-bottom-row">
+          <div class="level-progress">
+            <div class="level-labels">
+              Level 5
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+      
+        </div>
+
+        <div class="balance-status">
+          <div class="progress-text">80% to next level</div>
+          <div>$8,500 / $10,000</div>
+        </div>
+      </section>
+
     <header class="dash-header">
       <div class="title-row">
         <div class="last-updated" id="lastUpdated">Updated: —</div>

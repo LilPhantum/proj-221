@@ -79,19 +79,164 @@ body a {
   color: aliceblue;
 }
 
+/* =======================HEADER======================= */
 .primary-header {
   background-color: #242424;
+  padding: 5px 10px ;
+  margin-bottom: 30px;
+}
+
+.primary-header .top svg {
+  width: 35px;
+  height: auto;
+}
+
+/* --------------------------------------
+   Profile Header Section
+-------------------------------------- */
+.profile-header {
   display: flex;
+  flex-direction: column;
+  background: linear-gradient(#121212, #0e0e0e2f);
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  gap: 16px;
+}
+
+/* --- Top row: avatar + streak --- */
+.profile-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Left: avatar + profile info */
+.profile-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1db954; /* subtle highlight */
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  line-height: 1.2;
+}
+
+.profile-label {
+  font-size: 0.7rem;
+  color: #b3b3b3;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.profile-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.profile-role {
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  margin-top: 2px;
+}
+
+/* Right: streak + online status */
+.profile-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  font-size: 0.75rem;
+}
+
+.streak {
+  font-weight: 600;
+  background: linear-gradient(90deg, rgba(29,185,84,0.4), rgba(29,185,84,0.2));
+  padding: 10px;
+  border-radius: 8px;
+  color: #1db954;
+
+}
+
+.online-status {
+  background: linear-gradient(90deg, rgba(29,185,84,0.4), rgba(29,185,84,0.2));
+  color: #1db954;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* --- Bottom row: level progress + balance --- */
+.profile-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* Level + progress */
+.level-progress {
+  flex: 1;
+}
+
+.level-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
 }
 
 
-.primary-header h1 {
-  margin: 20px;
-  height: 30px;
+/* Progress bar under nodes */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 4px;
 }
 
-/* Base page */
+.progress-bar .progress-fill {
+  height: 100%;
+  background: linear-gradient(#1db954, #128339);
+  border-radius: 4px 0 0 4px;
+  transition: width 0.3s ease;
+}
+
+/* Progress text */
+.progress-text {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+}
+
+/* Balance / earnings */
+.balance-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+
+
+
+/*=================================== Base page ======================================================== */
 .page-body {
   margin: 0;
   font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -112,7 +257,7 @@ body a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px;
+  margin: 10px;
 }
 
 .dash-title {
