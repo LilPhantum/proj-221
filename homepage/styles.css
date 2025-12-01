@@ -132,6 +132,11 @@ body {
 
   width: 20px; }
 
+.nav-review svg {
+  width: 20px;
+  height: auto;
+}
+
 /* Active nav item (Home by default) */
 .bottom-nav .nav-item[aria-current="page"],
 .bottom-nav .nav-item.active {
