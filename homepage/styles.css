@@ -130,10 +130,10 @@ body {
   display: block; 
   color: currentColor;
 
-  width: 20px; }
+  width: 24px; }
 
 .nav-review svg {
-  width: 20px;
+  width: 24px;
   height: auto;
 }
 
@@ -286,10 +286,9 @@ body {
   height: 100%;
   background: #1f1f1f;
   color: #fff;
-  z-index: 150;
-  transition: left 0.5s ease;
-  box-shadow: 4px 0 20px rgba(0,0,0,0.4);
-  overflow-y: auto;
+  transition: left 0.65s ease;
+  box-shadow: 4px 0 40px rgba(0, 0, 0, 0.651);
+  overflow-y: none;
 }
 
 .profile-content .add {
@@ -342,7 +341,7 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 12px 20px;
+  padding: 16px 20px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: background 0.2s ease;
@@ -363,8 +362,8 @@ body {
 /* Icons */
 .row-icon img,
 .row-icon svg {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   flex-shrink: 0;
 }
 
@@ -408,7 +407,7 @@ body {
 }
 
 /* Hide scrollbar on all browsers */
-html, body {
+html, body, .balance-overlay, .balance-panel {
   scrollbar-width: none;        /* Firefox */
   -ms-overflow-style: none;     /* Internet Explorer/Edge */
 }
