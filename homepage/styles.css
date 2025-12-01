@@ -1,0 +1,408 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #121212;
+  color: #fff;
+}
+
+
+/* ----------------------- */
+/* Fixed Top Pills */
+/* ----------------------- */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 0;
+  background: #121212;
+  display: flex;
+  z-index: 90;
+}
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  width: 40px;             
+  height: 40px;              
+  border-radius: 50%;        
+  background: url("/images/generic-profile.JPG") center/cover no-repeat;
+  margin: 10px;
+  flex-shrink: 0;          
+}
+
+
+/* Pills - top scroll row */
+.top-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 14px;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.top-scroll::-webkit-scrollbar { display: none; }
+
+/* Basic pill look */
+.pill {
+  display: flex;
+  align-items: center;
+  background: #333333;
+  color: rgba(255, 255, 255, 0.705);
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 0;
+  font-size: 0.92rem;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: background-color 0.5s ease, color 0.5s ease, transform 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
+/* Hover/press micro-feedback */
+.pill:active { transform: translateY(1px); }
+
+/* FIRST PILL: always green (special) */
+.pill-all {
+  background: linear-gradient(180deg, #1ed760, #1db954);
+  color: #04120a; /* dark text on green */
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* Selected pill (the one you touched) - white with black text */
+.pill.selected {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Ensure 'all' never becomes white via script: we do not add .selected to .pill-all */
+
+/* Small screens: slightly larger pills for touch */
+@media (max-width: 420px) {
+  .pill { padding: 10px 18px; font-size: 0.95rem; }
+}
+
+/* -------------------------------
+   Bottom nav styling (uses SVGs)
+   ------------------------------- */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 88px;
+  background: linear-gradient(#000000d3, #0b0b0b 30%);
+  border-top: 1px solid rgba(255,255,255,0.03);
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  z-index: 1000;
+  padding: 6px 10px;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+
+}
+
+.bottom-nav .nav-item {
+  display: flex;
+  margin-top: 8px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgb(255, 255, 255);
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 11px;
+  transition: color 0.25s ease;
+}
+.bottom-nav .nav-item span {
+  font-size: 13px;
+  color: #fff;
+}
+
+.bottom-nav .nav-item img { 
+  display: block; 
+  color: currentColor;
+
+  width: 23px; }
+
+/* Active nav item (Home by default) */
+.bottom-nav .nav-item[aria-current="page"],
+.bottom-nav .nav-item.active {
+  color: #ffffff;
+}
+
+/* Transparent effect for inactive */
+.bottom-nav .nav-item { color: rgba(255, 255, 255, 0.55); }
+
+/* touch target polish */
+.bottom-nav .nav-item { padding: 6px 6px; border-radius: 8px; }
+
+/* reduce opacity when not active */
+.bottom-nav .nav-item:not([aria-current="page"]) { opacity: 0.70; }
+
+/* a tiny focus outline for accessibility */
+.bottom-nav .nav-item:focus { outline: 3px solid rgba(29,185,84,0.12); outline-offset: 4px; }
+
+
+/* ----------------------- */
+/* MAIN CONTENT */
+/* ----------------------- */
+.main-content {
+  padding: 90px 14px 90px; /* space for header + bottom nav */
+}
+
+/* LIST SECTION */
+.list-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.list-item {
+  display: flex;
+  background: #292929;
+  padding: 0px;
+  border-radius: 7px;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.list-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 7px;
+  object-fit: cover;
+}
+
+.item-info h4 {
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* HERO SECTION */
+.hero-card {
+  margin-top: 30px;
+  background: #292929;
+  padding: 18px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.hero-card img {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+
+.hero-card h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.hero-card p {
+  font-size: 0.85rem;
+  margin-top: 6px;
+  color: #aaa;
+}
+
+/* -------------------------------
+          REVIWED SECTION 
+------------------------------- */
+.unreviewed-songs {
+  margin-top: 30px;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.song-scroll {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.song-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.song-item {
+  flex: 0 0 auto;
+  width: 200px; /* fixed image width like Spotify */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.song-item img {
+  width: 100%;
+  height: 200px; /* keep it square */
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.song-item h3 {
+  width: 100%;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  text-align: left;
+  white-space: nowrap;
+}
+
+
+
+/* -------------------------------
+          PROFILE OVERLAY
+------------------------------- */
+
+/* Slide panel container */
+.profile-panel {
+  position: fixed;
+  top: 0;
+  left: -100%;           /* start hidden offscreen */
+  width: 85vw;
+  height: 100%;
+  background: #1f1f1f;
+  color: #fff;
+  z-index: 150;
+  transition: left 0.5s ease;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.4);
+  overflow-y: auto;
+}
+
+.profile-content .add {
+  border-top: 1px solid rgb(49, 49, 49);
+}
+
+/* When panel is active */
+.profile-panel.active {
+  left: 0;
+}
+
+/* Large circular avatar */
+.profile-avatar.large {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: url("/images/generic-profile.JPG") center/cover no-repeat;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 20px 0 10px;
+}
+
+
+/* Name and View Profile button */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+
+.btn-view-profile {
+  margin: 0;
+  color: #ffffffbb;
+  font-size: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Profile rows (now buttons) */
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+}
+
+.profile-row svg {
+  fill: #ffffff;
+}
+
+.profile-row:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* Icons */
+.row-icon img,
+.row-icon svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.row-icon {
+  display: flex;
+  align-items: center;
+}
+
+/* Text */
+.row-text {
+  flex-grow: 1;
+  color: #ffffff;
+}
+
+.row-text span {
+  color: #3e5ada;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+/* === stacking finalizers (place at end of style.css) === */
+
+.profile-panel {
+  position: fixed;     
+  z-index: 10050 !important;
+}
+
+.bottom-nav {
+  position: fixed;     
+  z-index: 10040 !important;
+}
+
+/* balance overlay should be under bottom-nav */
+.balance-overlay {
+  position: fixed;
+  z-index: 10030 !important;
+}
+
+.balance-panel {
+  z-index: 10031; /* > overlay container but still < bottom-nav */
+}
+
+

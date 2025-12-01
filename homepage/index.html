@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./balance.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sticky Bottom Navigation -->
+<nav class="bottom-nav" role="navigation" aria-label="Primary">
+  <button class="nav-item nav-home" href="#" aria-current="page" title="Home">
+    <!-- Home SVG -->
+    <img src="/icons/home-icon.svg" alt="Home Icon">
+    <span>Home</span>
+  </button>
+
+  <button class="nav-item nav-search" href="#" title="Search">
+    <!-- Search SVG -->
+    <img src="/icons/search-icon.svg" alt="">
+    <span>Search</span>
+  </button>
+
+  <button class="nav-item nav-library" href="#" title="Library">
+    <!-- Library SVG -->
+    <img src="/icons/library-icon.svg" alt=" Library Icon">
+    <span>Your Library</span>
+  </button>
+
+  <button class="nav-item nav-create" href="#" title="Create">
+    <!-- Library SVG -->
+    <img src="/icons/create-icon.svg" alt="Create Icon">
+    <span>Create</span>
+  </button>
+</nav>
+
+  <!-- Fixed Top Bar -->
+<header class="top-bar">
+
+  <!-- Profile avatar -->
+  <div class="profile-avatar" aria-label="Profile"></div>
+
+  <!-- Scrollable pill row -->
+  <div class="top-scroll" role="tablist" aria-label="Sections">
+    <button class="pill pill-all active" data-key="all" aria-pressed="true">All</button>
+    <button class="pill" data-key="analytics" aria-pressed="false">Musics</button>
+    <button class="pill" data-key="wrapped" aria-pressed="false">Wrapped</button>
+    <button class="pill" data-key="music" aria-pressed="false">Albums</button>
+    <button class="pill" data-key="podcasts" aria-pressed="false">Podcasts</button>
+    <button class="pill" data-key="reviews" aria-pressed="false">Artists</button>
+  </div>
+
+</header>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- New Section (2 columns x 4 rows = 8 items) -->
+    <section class="list-section">
+
+      <!-- Single Item -->
+      <div class="list-item">
+        <img src="/images/liked.JPG" alt="">
+        <div class="item-info">
+          <h4>Liked Songs</h4>
+        </div>
+      </div>
+
+      <!-- Duplicate for 8 total items -->
+      <div class="list-item">
+        <img src="/images/vampire.JPG" alt="">
+        <div class="item-info">
+          <h4>Vampire</h4>
+        </div>
+      </div>
+
+      <div class="list-item">
+        <img src="/images/4x4.JPG" alt="">
+        <div class="item-info">
+          <h4>4x4</h4>
+        </div>
+      </div>
+
+      <div class="list-item">
+        <img src="/images/relevant.JPG" alt="">
+        <div class="item-info">
+          <h4>Relevant</h4>
+        </div>
+      </div>
+
+      <div class="list-item">
+        <img src="/images/checklist.JPG" alt="">
+        <div class="item-info">
+          <h4>Checklist</h4>
+        </div>
+      </div>
+
+      <div class="list-item">
+        <img src="/images/i-am-music.JPG" alt="">
+        <div class="item-info">
+          <h4>Crank</h4>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- HERO IMAGE + MESSAGE -->
+    <section class="hero-card">
+      <h2>2025 Wrapped is here!</h2>
+        <img src="/images/wrapped-banner.JPG" alt="2025 Wrapped banner">
+        <p>Your reviewer stats all wrapped up reviews, this is your 2025 Reviewer Wrapped.</p>
+    </section>
+
+    <section class="unreviewed-songs">
+      <h3 class="section-title">Best performing of the month</h3>
+    
+      <div class="song-scroll">
+        <div class="song-item">
+          <img src="/images/highest-in-the-room.JPG" alt="Highest in the Room">
+          <h3 class="song-name">Highest in the Room</h3>
+        </div>
+        <div class="song-item">
+          <img src="/images/feather.JPG" alt="Feather">
+          <h3 class="song-name">Feather</h3>
+        </div>
+        <div class="song-item">
+          <img src="/images/Dumbo.JPG" alt="Dumbo">
+          <h3 class="song-name">Dumbo</h3>
+        </div>
+        <div class="song-item">
+          <img src="/images/chanel-boy.JPG" alt="Channel Boy">
+          <h3 class="song-name">Channel Boy</h3>
+        </div>
+        <div class="song-item">
+          <img src="/images/xo-tour-llif3.JPG" alt="Miss the Rage">
+          <h3 class="song-name">Miss the Rage</h3>
+        </div>
+        <div class="song-item">
+          <img src="/images/miss-the-rage.JPG" alt="Miss the Rage">
+          <h3 class="song-name">Miss the Rage</h3>
+        </div>
+        <div class="song-item">
+          <img src="/images/checklist.JPG" alt="Checklist">
+          <h3 class="song-name">Checklist</h3>
+        </div>
+        <div class="song-item">
+          <img src="/images/i-am-music.JPG" alt="I See You Baby Boy">
+          <h3 class="song-name">I See You Baby Boy</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero-card">
+      <img src="banner.jpg" alt="">
+      <h2>Welcome back, Sophie 👋</h2>
+      <p>You have 5 more songs to review to keep your streak alive.</p>
+    </section>
+
+  </main>
+
+      <!-- ====================
+       ========================
+       ========================
+       Profile Slide Panel -->
+  <div class="profile-panel" id="profilePanel" aria-hidden="true">
+    <div class="profile-content">
+  
+      <!-- Row 1: Profile picture + name + View Profile -->
+      <div class="profile-row profile-header">
+        <div class="profile-avatar large"></div>
+        <div class="profile-info">
+          <div class="profile-name">Sophie Safari</div>
+          <p class="btn-view-profile">View profile</p>
+        </div>
+      </div>
+  
+      <!-- Add account -->
+      <button class="profile-row add" data-action="addAccount">
+        <div class="row-icon">
+          <img src="/icons/add-icon.svg" alt="Add account icon">
+        </div>
+        <div class="row-text">Add account</div>
+      </button>
+  
+      <!-- What's New -->
+      <button class="profile-row" data-action="whatsNew">
+        <div class="row-icon">
+          <img src="/icons/bolt-icon.svg" alt="What's New icon">
+        </div>
+        <div class="row-text">What's New</div>
+      </button>
+  
+      <!-- Reviewer Program -->
+      <button class="profile-row" data-action="reviewerProgram" id="reviewerProgram" >
+        <div class="row-icon">
+          <img src="/icons/analytics-icon.svg" alt="Reviewer Program icon">
+        </div>
+        <div class="row-text">Reviewer Program <span>New</span></div>
+      </button>
+  
+      <!-- Recents -->
+      <button class="profile-row" data-action="recents">
+        <div class="row-icon">
+          <img src="/icons/clock-icon.svg" alt="Recents icon">
+        </div>
+        <div class="row-text">Recents</div>
+      </button>
+  
+      <!-- Your Reviews -->
+      <button class="profile-row" data-action="yourReviews">
+        <div class="row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-half"
+            viewBox="0 0 16 16">
+            <path
+              d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
+          </svg>
+        </div>
+        <div class="row-text">Your Reviews <span>New</span></div>
+      </button>
+  
+      <!-- Settings -->
+      <button class="profile-row" data-action="settings">
+        <div class="row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+            <path
+              d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
+          </svg>
+        </div>
+        <div class="row-text">Settings & Privacy</div>
+      </button>
+  
+    </div>
+  </div>
+
+  <!-- ===========================================
+   ===============================================
+   ===============================================
+   Balance overlay (hidden by default) -->
+  <!-- Balance Overlay -->
+  <section id="balanceOverlay" class="balance-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="balance-panel" role="document">
+      <!-- Header -->
+      <div class="balance-header">
+        <div class="top">
+          <button id="balanceBackBtn" class="balance-back" aria-label="Close balance overlay">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+              <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
+            </svg>
+          </button>
+        </div>
+  
+        <div class="balance-title bottom">Reviewer Program</div>
+      </div>
+
+      <!-- Date range -->
+      <div class="balance-date-row" id="balanceDateRange">— — —</div>
+  
+      <div class="balance-two-col">
+  
+        <!-- COLUMN 1 -->
+        <div class="balance-col-item">
+  
+          <!-- Top Row -->
+          <div class="album-top-row">
+
+            <div class="album-labels">
+              <span class="album-top">Best Album</span>
+            </div>
+            <h3 class="album-title">Album Title</h3>
+            
+          </div>
+  
+          <!-- Bottom Row -->
+          <div class="album-bottom-row">
+            <img src="/images/Dumbo.JPG" alt="Album cover" class="album-img">
+            <div class="album-tag">$15</div>
+          </div>
+  
+        </div>
+  
+        <!-- COLUMN 2 -->
+        <div class="balance-col-item">
+  
+          <!-- Top Row -->
+          <div class="album-top-row">
+            <div class="album-labels">
+              <span class="album-top">Best Song</span>
+            </div>
+            <h3 class="album-title">Crank</h3>
+          </div>
+  
+          <!-- Bottom Row -->
+          <div class="album-bottom-row">
+            <img src="/images/i-am-music.JPG" alt="Album cover" class="album-img">
+            <div class="album-tag">$2</div>
+          </div>
+  
+        </div>
+  
+      </div>
+  
+  
+      <div class="balance-inner">
+        <!-- Pill Row with sliding highlighter -->
+        <div class="balance-range">
+          <div class="balance-pill-track" aria-hidden="true"></div>
+          <button class="balance-pill" data-range="30" aria-pressed="false">30 days</button>
+          <button class="balance-pill" data-range="180" aria-pressed="false">6 months</button>
+          <button class="balance-pill" data-range="lifetime" aria-pressed="false">All time</button>
+        </div>
+  
+        <!-- Large amount -->
+        <div class="balance-amount-wrap">
+          <div id="balanceAmount" class="balance-amount">—</div>
+          <div id="balanceYesterday" class="balance-yesterday">Yesterday: —</div>
+        </div>
+  
+        <!-- Line chart -->
+        <div id="balanceChartContainer" class="balance-chart-container">
+          <canvas id="balanceChart" aria-label="Earnings analytics graph" role="img"></canvas>
+        </div>
+  
+        <!-- Stats columns -->
+        <div class="balance-columns">
+          <div class="balance-col">
+            <div class="col-label">Estimated Rewards</div>
+            <div class="col-value" id="colEstimated">—</div>
+          </div>
+          <div class="balance-col">
+            <div class="col-label">Qualified Reviews</div>
+            <div class="col-value" id="colQualified">—</div>
+          </div>
+          <div class="balance-col">
+            <div class="col-label">Conversion Rate</div>
+            <div class="col-value" id="colConversion">—</div>
+          </div>
+        </div>
+  
+        <!-- Note -->
+        <div class="balance-note" id="balanceNote">
+          You may notice a difference between your approved reviews and <span class="underline-text">qualified
+            reviews</span>. Read qualified reviews to understand possible reasons.
+        </div>
+  
+        <button class="withdraw-btn">Withdraw</button>
+      </div>
+    </div>
+  </section>
+
+
+<script src="./script.js"></script>
+<script src="./balance.js"></script>
+</body>
+
+</html>

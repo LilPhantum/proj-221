@@ -1,0 +1,312 @@
+/* -----------------------------------------
+      BALANCE OVERLAY (FINAL VERSION)
+   ----------------------------------------- */
+
+.balance-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: none;
+  background: rgb(18, 18, 18);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 320ms ease;
+  margin-bottom: 80px;
+}
+
+.balance-overlay.open {
+  display: block;
+  opacity: 1;
+}
+
+/* Sliding panel */
+.balance-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(18, 18, 18);
+  transform: translateX(-100%);
+  transition: transform 320ms cubic-bezier(.2,.9,.2,1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.balance-overlay.open .balance-panel {
+  transform: translateX(0);
+}
+
+/* Header */
+.balance-header {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+}
+
+.balance-header .top {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.balance-back {
+  text-align: left;
+  width: 100%;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.balance-back svg {
+  width: 30px;
+  height: auto;
+}
+
+.balance-title {
+  color: #fff;
+  font-size: 29px;
+  line-height: 1.2;
+  font-weight: 500;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+/* ================================
+=========SECTION TWO============
+================================ */
+.balance-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 0 16px;
+}
+
+.balance-col-item {
+  display: flex;
+  flex-direction: column;
+  background: #1f1f1f;
+  padding: 10px;
+  border-radius: 8px;
+  gap: 30px;
+}
+
+/* top row */
+.album-top-row {
+  margin-top: 6px;
+}
+
+.album-labels {
+  display: flex;
+  margin-bottom: 3px;
+}
+
+.album-top,
+.album-best {
+  font-size: 10px;
+  border-radius: 6px;
+  font-weight: 200;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.album-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* bottom row */
+.album-bottom-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.album-img {
+  width: 95px;
+  height: 95px;
+  border-radius: 3px;
+  object-fit: cover;
+}
+
+.album-tag {
+  line-height: 0.9;
+  font-size: 11px;
+  font-weight: 200;
+  background: #353535;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 18px;
+}
+
+
+
+/* Content wrapper */
+.balance-inner {
+  padding: 20px;
+  padding-bottom: 48px;
+  color: #fff;
+}
+
+/* Sequential fade & lift animation */
+.balance-inner > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 320ms ease, opacity 320ms ease;
+}
+
+.balance-overlay.open .balance-inner > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.balance-inner > *:nth-child(1) { transition-delay: 0ms; }
+.balance-inner > *:nth-child(2) { transition-delay: 60ms; }
+.balance-inner > *:nth-child(3) { transition-delay: 120ms; }
+.balance-inner > *:nth-child(4) { transition-delay: 180ms; }
+.balance-inner > *:nth-child(5) { transition-delay: 240ms; }
+.balance-inner > *:nth-child(6) { transition-delay: 300ms; }
+.balance-inner > *:nth-child(7) { transition-delay: 360ms; }
+.balance-inner > *:nth-child(8) { transition-delay: 420ms; }
+
+/* Pills */
+.balance-range {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background: #222;
+  border-radius: 24px;
+  height: 36px;
+  margin-bottom: 18px;
+}
+
+.balance-pill {
+  border: none;
+  background: transparent;
+  color: #cfcfcf;
+  padding: 8px 28px;
+  border-radius: 999px;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.balance-pill[aria-pressed="true"] {
+  color: #000;
+}
+
+/* White sliding highlight */
+.balance-pill-track {
+  position: absolute;
+  height: 36px;
+  width: 0;
+  left: 0;
+  top: 0;
+  border-radius: 999px;
+  background: #fff;
+  transform: translateX(0);
+  transition: transform .5s cubic-bezier(.2,.9,.2,1), width .5s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Amount */
+.balance-amount-wrap {
+  margin: 28px 0;
+  text-align: center;
+}
+
+.balance-amount {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.balance-yesterday {
+  font-size: 12px;
+  opacity: .7;
+  margin-top: 6px;
+}
+
+/* Chart */
+.balance-chart-container {
+  width: 100% !important;
+  margin: 0 auto;
+  border-radius: 14px;
+}
+
+canvas#balanceChart {
+  width: 100%;
+  height: 260px;
+  display: block;
+}
+
+/* Dates under graph */
+.balance-date-row {
+  display: flex;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+/* Stats columns */
+.balance-columns {
+  display: flex;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.balance-col {
+  flex: 1;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.balance-col:last-child {
+  border-right: none;
+}
+
+.col-label {
+  font-size: 13px;
+  opacity: .75;
+}
+
+.col-value {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Note */
+.balance-note {
+  font-size: 14px;
+  opacity: .9;
+  margin-top: 12px;
+}
+
+.underline-text {
+  text-decoration: underline;
+}
+
+/* Button */
+.withdraw-btn {
+  width: 100%;
+  padding: 18px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-top: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}
