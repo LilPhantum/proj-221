@@ -5,17 +5,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap"
+        rel="stylesheet">
 
     <title>Earn Money Listening to Playlists | Bixly</title>
-    <meta name="description" content="Get paid to listen and review Spotify playlists. Join Bixly to earn money for your feedback — flexible hours, instant payouts, no experience needed.">
+    <meta name="description"
+        content="Get paid to listen and review Spotify playlists. Join Bixly to earn money for your feedback — flexible hours, instant payouts, no experience needed.">
 
     <meta name="keywords"
         content="get paid to listen to music, review playlists, earn money online, music jobs, work from home, spotify">
 
     <!-- Social Sharing (Open Graph) -->
     <meta property="og:title" content="Earn Money Reviewing Playlists | Bixly">
-    <meta property="og:description" content="Review Spotify playlists and earn money for your feedback. Simple, flexible, and secure payouts — start today with Bixly.">
+    <meta property="og:description"
+        content="Review Spotify playlists and earn money for your feedback. Simple, flexible, and secure payouts — start today with Bixly.">
     <meta property="og:image" content="https://bixly.site/images/og-image.PNG">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
@@ -27,6 +30,9 @@
 
     <link rel="icon" href="./images/favicon.png" type="image/png">
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#000000">
+
 
 </head>
 
@@ -382,6 +388,15 @@
     </div>
 
 
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+                .register("/sw.js")
+                .then(() => console.log("Service Worker Registered"))
+                .catch(err => console.error("SW registration failed:", err));
+        }
+    </script>
+
     <!-- POP UP ANIMATION -->
     <script>
     (function() {
@@ -483,11 +498,6 @@
         observer.observe(card);
         });
     </script>
-
-
-
-
-
 
 </body>
 
