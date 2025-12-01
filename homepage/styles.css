@@ -402,4 +402,13 @@ body {
   z-index: 10031; /* > overlay container but still < bottom-nav */
 }
 
+/* Hide scrollbar on all browsers */
+html, body {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* Internet Explorer/Edge */
+}
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Edge */
+}

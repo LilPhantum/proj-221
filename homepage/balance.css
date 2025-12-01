@@ -48,16 +48,15 @@
 .balance-header .top {
   width: 100%;
   margin-top: 20px;
+  padding: 0 20px;
 }
 
 .balance-back {
   text-align: left;
-  width: 100%;
   background: transparent;
   border: none;
   padding: 8px;
   cursor: pointer;
-  margin: 10px;
 }
 
 .balance-back svg {
@@ -129,8 +128,8 @@
 }
 
 .album-img {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 3px;
   object-fit: cover;
 }
