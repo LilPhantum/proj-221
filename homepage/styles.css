@@ -105,52 +105,70 @@ body {
   padding: 6px 10px;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-
 }
 
+/* --------------------------------
+   Base item styling
+----------------------------------- */
 .bottom-nav .nav-item {
   display: flex;
   margin-top: 8px;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: rgb(255, 255, 255);
+  background: transparent;
   border: none;
-  background-color: transparent;
-  text-decoration: none;
   font-size: 11px;
-  transition: color 0.25s ease;
+  cursor: pointer;
+  color: rgba(255,255,255,0.55);
+  opacity: 0.7;
+  transition: opacity 0.25s ease, color 0.25s ease;
 }
+
 .bottom-nav .nav-item span {
   font-size: 13px;
   color: #fff;
 }
 
-.bottom-nav .nav-item img { 
-  display: block; 
-  color: currentColor;
-
-  width: 24px; }
-
-.nav-review svg {
+/* --------------------------------
+   Icon handling
+----------------------------------- */
+.bottom-nav .nav-item img,
+.bottom-nav .nav-item svg {
   width: 24px;
-  height: auto;
+  height: 24px;
 }
 
-/* Active nav item (Home by default) */
-.bottom-nav .nav-item[aria-current="page"],
+.bottom-nav .nav-item .active {
+  display: none;
+}
+.bottom-nav .nav-item .inactive {
+  display: block;
+}
+
+/* --------------------------------
+   Active State
+----------------------------------- */
 .bottom-nav .nav-item.active {
   color: #ffffff;
+  opacity: 1;
 }
 
-/* Transparent effect for inactive */
-.bottom-nav .nav-item { color: rgba(255, 255, 255, 0.55); }
+.bottom-nav .nav-item.active .inactive {
+  display: none;
+}
 
-/* reduce opacity when not active */
-.bottom-nav .nav-item:not([aria-current="page"]) { opacity: 0.70; }
+.bottom-nav .nav-item.active .active {
+  display: block;
+}
 
-/* a tiny focus outline for accessibility */
-.bottom-nav .nav-item:focus { outline: 3px solid rgba(29,185,84,0.12); outline-offset: 4px; }
+/* --------------------------------
+   Accessibility focus
+----------------------------------- */
+.bottom-nav .nav-item:focus {
+  outline: 3px solid rgba(29,185,84,0.12);
+  outline-offset: 4px;
+}
 
 
 /* ----------------------- */

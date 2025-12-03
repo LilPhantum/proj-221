@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     profilePanel.classList.toggle('active');
   });
 
-  // Close profile panel when clicking outside
   document.addEventListener('click', (e) => {
     if (!profilePanel.contains(e.target) && !profileAvatar.contains(e.target)) {
       profilePanel.classList.remove('active');
@@ -52,33 +51,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ----------------------------------------
-     BALANCE OVERLAY  
-     - Close profile panel first
-     - Then open overlay
+     BALANCE OVERLAY 
   ----------------------------------------- */
   const reviewerBtn = document.querySelector('[data-action="reviewerProgram"]');
   const balanceOverlay = document.getElementById('balanceOverlay');
   const balanceBackBtn = document.getElementById('balanceBackBtn');
 
   reviewerBtn.addEventListener('click', () => {
-
-    // Step 1 — force close profile panel
     profilePanel.classList.remove('active');
-
-    // Step 2 — open overlay AFTER it closes (smooth)
     setTimeout(() => {
       balanceOverlay.classList.add('open');
       balanceOverlay.setAttribute('aria-hidden', 'false');
     }, 150);
   });
 
-  // Close overlay
   balanceBackBtn.addEventListener('click', () => {
     balanceOverlay.classList.remove('open');
     balanceOverlay.setAttribute('aria-hidden', 'true');
   });
 
-  // Click outside overlay panel to close
   balanceOverlay.addEventListener('click', (e) => {
     if (e.target === balanceOverlay) {
       balanceOverlay.classList.remove('open');
@@ -87,6 +78,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+
+/* ----------------------------------------
+   REVIEW PANEL
+----------------------------------------- */
 
 const reviewBtn = document.querySelector('[data-action="review"]');
 const reviewPanel = document.getElementById('reviewPanel');
@@ -103,25 +99,76 @@ reviewBtn.addEventListener('click', () => {
   }
 });
 
-// close when clicking outside (like iOS app feel)
+// close when clicking outside
 reviewPanel.addEventListener('click', (e) => {
   if (e.target === reviewPanel) {
     reviewPanel.classList.remove('open');
   }
 });
 
-// close when user swipes back
+// swipe close
 let startX = 0;
-
 reviewPanel.addEventListener('touchstart', e => {
   startX = e.touches[0].clientX;
 });
-
 reviewPanel.addEventListener('touchend', e => {
   let endX = e.changedTouches[0].clientX;
-
-  // swipe from left → right to close panel
   if (endX > startX + 60) {
     reviewPanel.classList.remove('open');
   }
 });
+
+
+/* ----------------------------------------
+   BOTTOM NAV — ACTIVE SWITCH + ICON SWAP
+----------------------------------------- */
+
+const navItems = document.querySelectorAll(".bottom-nav .nav-item");
+
+navItems.forEach(item => {
+  item.addEventListener("click", () => {
+
+    // remove active from all
+    navItems.forEach(i => i.classList.remove("active"));
+
+    // add active to clicked
+    item.classList.add("active");
+
+    // swap icons inside clicked item
+    document.querySelectorAll(".bottom-nav .nav-item").forEach(nav => {
+      nav.querySelectorAll(".active").forEach(el => el.style.display = "none");
+      nav.querySelectorAll(".inactive").forEach(el => el.style.display = "block");
+    });
+
+    item.querySelectorAll(".active").forEach(el => el.style.display = "block");
+    item.querySelectorAll(".inactive").forEach(el => el.style.display = "none");
+
+    // If HOME clicked → close review panel
+    if (item.classList.contains("nav-home")) {
+      reviewPanel.classList.remove("open");
+    }
+  });
+});
+
+// initialize the correct icons on load
+navItems.forEach(item => {
+  if (item.classList.contains("active") || item.getAttribute("aria-current") === "page") {
+    item.querySelectorAll(".active").forEach(el => el.style.display = "block");
+    item.querySelectorAll(".inactive").forEach(el => el.style.display = "none");
+  }
+});
+
+
+const dashboardBtn = document.querySelector('.quick-item[data-action="dashboard"]');
+
+if (dashboardBtn) {
+  dashboardBtn.addEventListener('click', () => {
+    // Close Profile Panel if open
+    profilePanel.classList.remove('active');
+
+    if (window.balanceOverlayAPI) {
+      // Use the exposed function
+      window.balanceOverlayAPI.openOverlay();
+    }
+  });
+}

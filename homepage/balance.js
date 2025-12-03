@@ -14,15 +14,11 @@
   const canvas = document.getElementById('balanceChart');
   const ctx = canvas?.getContext('2d');
 
-  // Safety: if required DOM isn't present, bail gracefully
   if (!overlay || !panel || !openBtn || !canvas) {
     console.warn('Balance overlay init aborted: missing DOM elements.');
     return;
   }
 
-  // =========================
-  // Utilities & config
-  // =========================
   const external = {
     formatCurrency: n => '$' + Number(n).toLocaleString(),
     rnd: (min, max) => Math.random() * (max - min) + min,
@@ -41,9 +37,6 @@
     return d;
   }
 
-  // =========================
-  // Generate daily rewards
-  // =========================
   function generateData(rangeDays) {
     const today = new Date();
     let days = rangeDays === 'lifetime' ? 365 : rangeDays;
@@ -55,7 +48,6 @@
     const daily = [];
     for (let i = days - 1; i >= 0; i--) {
       const date = daysBefore(today, i);
-
       const songs = Math.max(0, Math.round(external.rnd(dailySongs * 0.75, dailySongs * 1.25)));
       const albums = Math.max(0, Math.round(external.rnd(dailyAlbums * 0.75, dailyAlbums * 1.25)));
       const approvedSongs = Math.round(songs * external.rnd(AVERAGES.song_approval_rate * 0.95, AVERAGES.song_approval_rate * 1.05));
@@ -78,9 +70,6 @@
     return { daily, totals };
   }
 
-  // =========================
-  // Render balance overlay
-  // =========================
   function renderBalance(range) {
     const data = generateData(range);
     const dailyRewards = data.daily.map(d => d.reward);
@@ -98,17 +87,13 @@
     drawGraph(dailyRewards);
   }
 
-  // =========================
-  // Draw graph (5 horizontal lines)
-  // =========================
   function drawGraph(values) {
     if (!ctx || !canvas || !values?.length) return;
-    const h = 300, w = Math.max(300, canvas.clientWidth); // ensure a minimum width
+    const h = 300, w = Math.max(300, canvas.clientWidth);
     canvas.width = w;
     canvas.height = h + 40;
     ctx.clearRect(0, 0, w, h + 40);
 
-    // Grid lines
     ctx.strokeStyle = 'rgba(255,255,255,0.1)';
     ctx.fillStyle = '#fff';
     ctx.font = '12px sans-serif';
@@ -126,7 +111,6 @@
       ctx.fillText(val, -6, y);
     }
 
-    // Smooth line
     ctx.beginPath();
     ctx.moveTo(0, h - (values[0] / maxVal) * h);
     for (let i = 1; i < values.length; i++) {
@@ -140,7 +124,6 @@
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    // Gradient fill
     ctx.lineTo(w, h);
     ctx.lineTo(0, h);
     ctx.closePath();
@@ -151,12 +134,8 @@
     ctx.fill();
   }
 
-  // =========================
-  // Overlay open/close
-  // =========================
   function openOverlay() {
     overlay.style.display = 'block';
-    // small delay so CSS transition can apply
     setTimeout(() => overlay.classList.add('open'), 20);
     setActivePillByRange(currentRange);
     renderBalance(currentRange);
@@ -173,9 +152,6 @@
   backBtn.addEventListener('click', closeOverlay);
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeOverlay(); });
 
-  // =========================
-  // Pill slider
-  // =========================
   function moveTrackToPill(pill) {
     if (!pillTrack || !pill) return;
     const rect = pill.getBoundingClientRect();
@@ -200,12 +176,19 @@
     });
   });
 
-  // small init for pill track (if needed)
   function init() {
     setTimeout(() => setActivePillByRange(currentRange), 60);
-    // If overlay is already open in HTML, render immediately
     if (overlay.classList.contains('open')) renderBalance(currentRange);
   }
   init();
+
+  // Expose global API
+  window.balanceOverlayAPI = {
+    openOverlay,
+    closeOverlay,
+    renderBalance,
+    setActivePillByRange,
+    getCurrentRange: () => currentRange
+  };
 
 })();
