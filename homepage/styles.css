@@ -287,7 +287,7 @@ body {
   height: 100%;
   background: #1f1f1f;
   color: #fff;
-  transition: left 0.65s ease;
+  transition: left 0.35s ease;
   box-shadow: 4px 0 40px rgba(0, 0, 0, 0.651);
   overflow-y: none;
 }
@@ -385,6 +385,169 @@ body {
   margin-left: 10px;
 }
 
+/* ----------------------- */
+/* === REVIEW SECTION === */
+/* ----------------------- */
+
+/* REVIEW PANEL WRAPPER */
+.review-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  background: #121212;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  z-index: 200; 
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.review-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.review-panel.open {
+  transform: translateX(0);
+}
+
+/* HEADER */
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+}
+
+.review-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.profile-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+/* PROGRESS BLOCK */
+.review-progress-block {
+  padding: 13px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #292929;
+  margin: 0 20px;
+  border-radius: 16px;
+}
+
+.progress-row.top,
+.progress-row.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.level-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 4px;
+}
+
+.level-info .label {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.level-info .level-number {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.level-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* PROGRESS BAR */
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #3e3e3e;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #22d361;
+  border-radius: 10px;
+}
+
+/* QUICK ACTIONS */
+.quick-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 10px;
+  gap: 12px; /* optional for spacing */
+}
+
+.quick-item {
+  all: unset;
+  cursor: pointer;
+  background: #292929;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  gap: 6px;
+  font-size: 14px;
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  max-width: 120px;
+  text-align: center;
+}
+
+
+.quick-item svg {
+  width: 40px;
+  height: 40px;
+}
+
+.quick-number {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.review-panel .unreviewed-songs {
+  margin-left: 20px;
+}
+
+.review-panel .unreviewed-songs .bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.review-panel .unreviewed-songs .bottom p {
+  font-size: 13px;
+  background: #353535;
+  padding: 5px 10px;
+  border-radius: 13px;
+}
+
+.review-panel .unreviewed-songs .song-item img {
+  margin: 0;
+}
+
 /* === stacking finalizers (place at end of style.css) === */
 
 .profile-panel {
@@ -417,3 +580,4 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;                /* Chrome, Safari, Edge */
 }
+

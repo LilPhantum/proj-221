@@ -87,3 +87,41 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+const reviewBtn = document.querySelector('[data-action="review"]');
+const reviewPanel = document.getElementById('reviewPanel');
+
+// open panel
+reviewBtn.addEventListener('click', () => {
+  reviewPanel.classList.add('open');
+
+  // CLOSE balance overlay if open
+  const balanceOverlay = document.getElementById('balanceOverlay');
+  if (balanceOverlay) {
+    balanceOverlay.classList.remove('open');
+    balanceOverlay.setAttribute('aria-hidden', 'true');
+  }
+});
+
+// close when clicking outside (like iOS app feel)
+reviewPanel.addEventListener('click', (e) => {
+  if (e.target === reviewPanel) {
+    reviewPanel.classList.remove('open');
+  }
+});
+
+// close when user swipes back
+let startX = 0;
+
+reviewPanel.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+});
+
+reviewPanel.addEventListener('touchend', e => {
+  let endX = e.changedTouches[0].clientX;
+
+  // swipe from left → right to close panel
+  if (endX > startX + 60) {
+    reviewPanel.classList.remove('open');
+  }
+});
