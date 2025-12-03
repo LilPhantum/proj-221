@@ -529,6 +529,11 @@ body {
   aspect-ratio: 1 / 1;
   max-width: 120px;
   text-align: center;
+  transition: background 0.3s ease;
+}
+
+.quick-item:hover {
+  background: #535353;
 }
 
 
