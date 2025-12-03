@@ -265,7 +265,6 @@ body a {
   padding: 15px;
   border-radius: 8px;
   font-size: 3px;
-  border: 1px solid #ffffff48;
 }
 
 .about h2 {
@@ -276,6 +275,7 @@ body a {
 }
 
 .about p {
+  background: #2d2d2d;
   line-height: 1.7;
   font-size: 1.15rem;
   font-weight: 200;
@@ -300,6 +300,7 @@ body a {
     text-align: center;
     padding: 40px 0px;
     color: #eaeaea;
+    padding-top: 60px;
 }
 
 .steps-title {
