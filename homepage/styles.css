@@ -212,17 +212,16 @@ body {
 
 /* HERO SECTION */
 .hero-card {
+  display: flex;
   margin-top: 30px;
   background: #292929;
-  padding: 18px;
   border-radius: 16px;
-  text-align: center;
+  align-items: center;
 }
 
 .hero-card img {
   width: 100%;
   border-radius: 16px;
-  margin-bottom: 14px;
 }
 
 .hero-card h2 {
@@ -570,6 +569,46 @@ body {
 .review-panel .unreviewed-songs .song-item img {
   margin: 0;
 }
+
+
+/* ----------------------- */
+/* === wrapped overlay === */
+/* ----------------------- */
+
+.overlay-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;           /* start offscreen */
+  width: 100%;
+  max-width: 480px;       /* optional */
+  height: 100vh;
+  background: #121212;
+  color: #fff;
+  transition: right 0.35s ease;
+  z-index: 10050;
+  overflow-y: auto;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+}
+
+.overlay-panel.active {
+  right: 0; /* slide in */
+}
+
+.overlay-content {
+  padding: 20px;
+}
+
+#overlayClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
 
 /* === stacking finalizers (place at end of style.css) === */
 
