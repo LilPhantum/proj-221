@@ -197,14 +197,14 @@ body {
 }
 
 .list-item img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 7px;
   object-fit: cover;
 }
 
 .item-info h4 {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   margin: 0;
   font-weight: 600;
   text-align: left;
@@ -235,6 +235,67 @@ body {
   font-size: 0.85rem;
   margin-top: 6px;
   color: #aaa;
+}
+
+/* -------------------------------
+          ROTATION SECTION 
+------------------------------- */ 
+.rotation-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.rotation-section .list-item {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rotation-section .top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+}
+
+.rotation-section .top img {
+  display: flex;
+  height: 60px;
+  width: 60px;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotation-section .top .item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  padding:  10px 0;
+}
+
+.rotation-section .top .item-info p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.rotation-section .top .item-info h4 {
+  width: 100%;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.rotation-section .bottom {
+  margin: 0;
+}
+
+.rotation-section .bottom svg {
+  margin-right: 10px ;
 }
 
 /* -------------------------------
