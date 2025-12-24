@@ -96,15 +96,13 @@ body {
   left: 0;
   right: 0;
   height: 92px;
-  background: linear-gradient(#000000d3, #0b0b0b 30%);
-  border-top: 1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(#00000000, #0b0b0b 27%);
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
   z-index: 1000;
   padding: 6px 10px;
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+
 }
 
 /* --------------------------------
@@ -415,11 +413,11 @@ body {
   max-width: 480px;
   height: 100vh;
   background: #121212;
-  transform: translateX(100%);
-  transition: transform 0.35s ease;
   z-index: 200; 
   overflow-y: auto;
   scrollbar-width: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .review-panel::-webkit-scrollbar {
@@ -427,8 +425,10 @@ body {
 }
 
 .review-panel.open {
-  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
 }
+
 
 /* HEADER */
 .review-header {
