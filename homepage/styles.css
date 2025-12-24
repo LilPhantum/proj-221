@@ -96,7 +96,7 @@ body {
   left: 0;
   right: 0;
   height: 92px;
-  background: linear-gradient(#00000000, #121212 50%);
+  background: linear-gradient(#00000000, #121212 40%);
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -136,7 +136,8 @@ body {
   width: 24px;
   height: 24px;
   opacity: 0.8;
-  fill: rgba(255,255,255,0.55);
+  fill: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 .bottom-nav .nav-item .active {
