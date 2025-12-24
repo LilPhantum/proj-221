@@ -96,7 +96,7 @@ body {
   left: 0;
   right: 0;
   height: 92px;
-  background: linear-gradient(#00000000, #0b0b0b 27%);
+  background: linear-gradient(#00000000, #121212 50%);
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -135,6 +135,8 @@ body {
 .bottom-nav .nav-item svg {
   width: 24px;
   height: 24px;
+  opacity: 0.8;
+  fill: rgba(255,255,255,0.55);
 }
 
 .bottom-nav .nav-item .active {
@@ -163,10 +165,7 @@ body {
 /* --------------------------------
    Accessibility focus
 ----------------------------------- */
-.bottom-nav .nav-item:focus {
-  outline: 3px solid rgba(29,185,84,0.12);
-  outline-offset: 4px;
-}
+
 
 
 /* ----------------------- */
