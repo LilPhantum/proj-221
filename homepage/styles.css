@@ -150,18 +150,20 @@ body {
 /* --------------------------------
    Active State
 ----------------------------------- */
+
+
 .bottom-nav .nav-item.active {
-  color: #ffffff;
-  opacity: 1;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+.bottom-nav .nav-item.active svg,
+.bottom-nav .nav-item.active img,
+.bottom-nav .nav-item.active span {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  opacity: 1 !important;
 }
 
-.bottom-nav .nav-item.active .inactive {
-  display: none;
-}
-
-.bottom-nav .nav-item.active .active {
-  display: block;
-}
 
 /* --------------------------------
    Accessibility focus
