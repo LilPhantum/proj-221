@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Activity</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <!-- APP WRAPPER -->
+    <div class="app">
+
+        <!-- TOP MODE SWITCH (PILLS) -->
+        <header class="top-pills">
+            <button class="pill">Wallet</button>
+            <button class="pill">Rewards</button>
+            <button class="pill pill-active">Activity</button>
+        </header>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="content">
+
+            <!-- SEARCH + FILTER -->
+            <section class="search-filter">
+                <div class="search-input">
+                    <img src="/icons/search.svg" alt="search icon">
+                    <input 
+                        type="search" 
+                        placeholder="Search by name or email"
+                        aria-label="Search by name or email"
+                    >
+                </div>
+
+                
+            </section>
+
+            <!-- ACTIVITY LIST (SCROLLABLE CORE) -->
+            <section class="activity-stream">
+
+                <!-- DATE GROUP -->
+                <div class="activity-group">
+                    <h2 class="title">Completed</h2>
+                    <h2 class="group-title">This Week</h2>
+
+                    <!-- ACTIVITY ITEM -->
+                    <article class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="/images/profile-picture.png" alt="John Doe">
+                        </div>
+
+                        <div class="activity-details">
+                            <p class="activity-name">John Doe</p>
+                            <p class="activity-meta">Nov 22</p>
+                            <p class="activity-status">Payment received · Completed</p>
+                        </div>
+
+                        <div class="activity-amount positive">
+                            +$120.00
+                        </div>
+                    </article>
+
+                    <article class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="/images/profile-picture.png" alt="Spotify">
+                        </div>
+
+                        <div class="activity-details">
+                            <p class="activity-name">Spotify</p>
+                            <p class="activity-meta">Nov 21</p>
+                            <p class="activity-status">Invoice sent · Failed</p>
+                        </div>
+
+                        <div class="activity-amount negative">
+                            -$9.99
+                        </div>
+                    </article>
+                </div>
+
+                <!-- DATE GROUP -->
+                <div class="activity-group">
+
+                    <article class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="/images/profile-picture.png" alt="Jane Smith">
+                        </div>
+
+                        <div class="activity-details">
+                            <p class="activity-name">Jane Smith</p>
+                            <p class="activity-meta">Nov 19</p>
+                            <p class="activity-status">Payment received · Completed</p>
+                        </div>
+
+                        <div class="activity-amount positive">
+                            +$45.00
+                        </div>
+                    </article>
+                </div>
+
+                <!-- DATE GROUP -->
+                <div class="activity-group">
+                    <h2 class="group-title">Nov 2025</h2>
+
+                    <article class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="/images/profile-picture.png" alt="Amazon">
+                        </div>
+
+                        <div class="activity-details">
+                            <p class="activity-name">Amazon</p>
+                            <p class="activity-meta">Nov 03</p>
+                            <p class="activity-status">Payment sent · Completed</p>
+                        </div>
+
+                        <div class="activity-amount negative">
+                            -$89.50
+                        </div>
+                    </article>
+                </div>
+
+                <!-- BOTTOM SPACER FOR STICKY NAV -->
+                <div class="bottom-spacer" aria-hidden="true"></div>
+
+            </section>
+        </main>
+
+        <!-- STICKY BOTTOM NAV -->
+        <nav class="bottom-nav" aria-label="Primary navigation">
+            <button class="nav-item">
+                <img src="/icons/home.svg" alt="Home">
+                <span>Home</span>
+            </button>
+
+            <button class="nav-item">
+                <img src="/icons/finances.svg" alt="Finances">
+                <span>Finances</span>
+            </button>
+
+            <button class="nav-item">
+                <img src="/icons/payments.svg" alt="Payments">
+                <span>Payments</span>
+            </button>
+
+            <button class="nav-item">
+                <img src="/icons/wallet.svg" alt="Wallet">
+                <span class="active" >Wallet</span>
+            </button>
+        </nav>
+
+    </div>
+
+</body>
+</html>
