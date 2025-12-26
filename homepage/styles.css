@@ -27,7 +27,7 @@ body {
   width: 40px;             
   height: 40px;              
   border-radius: 50%;        
-  background: url("/images/generic-profile.JPG") center/cover no-repeat;
+  background: url("/images/generic-pfp.JPG") center/cover no-repeat;
   margin: 10px;
   flex-shrink: 0;          
 }
@@ -386,7 +386,7 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: url("/images/generic-profile.JPG") center/cover no-repeat;
+  background: url("/images/generic-pfp.JPG") center/cover no-repeat;
   flex-shrink: 0;
   display: flex;
   align-items: center;
