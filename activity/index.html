@@ -32,7 +32,7 @@
                         <img src="/icons/qr.svg" alt="">
                     </button>
 
-                    <div class="profile-avatar">
+                    <div class="profile-avatar" id="open-profile">
                         <img src="/images/generic-pfp.JPG" alt="Profile picture">
                     </div>
                 </div>
@@ -321,6 +321,101 @@
         </nav>
 
     </div>
+
+    <section class="profile" id="glass-profile" aria-hidden="true">
+    
+        <!-- LOADING STATE -->
+        <div class="profile-loading">
+            <div class="spinner"></div>
+        </div>
+    
+        <!-- PROFILE CONTENT -->
+        <div class="profile-container">
+    
+            <!-- TOP BAR -->
+            <header class="profile-header">
+                <button type="button" class="profile-back-btn" aria-label="Go back">
+                    <img src="/icons/back.svg" alt="">
+                </button>
+    
+                <h1 class="profile-title">Profile</h1>
+            </header>
+    
+            <!-- DIVIDER -->
+            <div class="profile-divider"></div>
+    
+            <!-- BANNER PLACEHOLDER -->
+            <div class="profile-banner">
+                <img src="/images/profile.png" alt="">
+            </div>
+    
+            <!-- PROFILE ACTIONS -->
+            <section class="profile-actions">
+                <button type="button" class="profile-action">
+                    <img src="/icons/help.svg" alt="">
+                    Help
+                </button>
+                
+                <button type="button" class="profile-action">
+                    <img src="/icons/messege.svg" alt="">
+                    Message Center
+                </button>
+            </section>
+    
+            <!-- ACCOUNT -->
+            <section class="profile-account">
+                <button type="button" class="profile-logout">
+                    <img src="/icons/log-out.svg" alt="">
+                    Log out
+                </button>
+            </section>
+    
+            <!-- LEGAL -->
+            <section class="profile-legal">
+                <button type="button" class="profile-legal-link">Legal agreements</button>
+            </section>
+    
+            <!-- VERSION -->
+            <footer class="profile-version">
+                <p>Version 8.97.1</p>
+            </footer>
+    
+        </div>
+    </section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const openProfileBtn = document.getElementById("open-profile");
+    const profilePanel = document.getElementById("glass-profile");
+    const backBtn = profilePanel.querySelector(".profile-back-btn");
+
+    let loadingTimer;
+
+    function openProfile() {
+        // reset state
+        profilePanel.classList.remove("loaded");
+
+        // slide in from left
+        profilePanel.classList.add("active");
+
+        // fake loading delay
+        loadingTimer = setTimeout(() => {
+            profilePanel.classList.add("loaded");
+        }, 1600);
+    }
+
+    function closeProfile() {
+        clearTimeout(loadingTimer);
+
+        profilePanel.classList.remove("loaded");
+        profilePanel.classList.remove("active");
+    }
+
+    openProfileBtn.addEventListener("click", openProfile);
+    backBtn.addEventListener("click", closeProfile);
+});
+</script>
 
 <script>
     if ('serviceWorker' in navigator) {

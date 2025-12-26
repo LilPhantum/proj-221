@@ -387,3 +387,210 @@ button {
 * {
     -ms-overflow-style: none;
 }
+
+
+/* =========================
+   GLASS PROFILE OVERLAY
+========================= */
+
+.profile {
+    position: fixed;
+    inset: 0;
+    background: #F0F2F9;
+    z-index: 9999; /* higher than nav */
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    overflow-y: auto;
+}
+
+/* opened state */
+.profile.active {
+    transform: translateX(0);
+}
+
+/* hide scrollbar */
+.profile::-webkit-scrollbar {
+    display: none;
+}
+.profile {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* =========================
+   LOADING STATE (CENTER SPINNER)
+========================= */
+
+/* =========================
+   LOADING STATE (CENTER SPINNER)
+========================= */
+
+.profile-loading {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f7fa;
+    z-index: 5;
+}
+
+/* circular spinning line */
+.spinner {
+    width: 44px;    /* circle size */
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #000;          /* make all sides black */
+    border-right-color: transparent; /* create the gap */
+    border-bottom-color: transparent; /* optional for longer line */
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* hide loader after fake load */
+.profile.loaded .profile-loading {
+    display: none;
+}
+
+/* =========================
+   PROFILE CONTENT WRAPPER
+========================= */
+
+.profile-container {
+    padding: 16px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+/* reveal content */
+.profile.loaded .profile-container {
+    opacity: 1;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 8px 0 12px;
+    margin-bottom: 10px 
+}
+
+.profile-back-btn {
+    position: absolute;
+    left: 0;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.profile-back-btn img {
+    width: 18px;
+    height: 18px;
+}
+
+.profile-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    color: #0f172a;
+    ;
+}
+
+
+
+/* =========================
+   BANNER PLACEHOLDER
+========================= */
+
+.profile-banner {
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   ACTION SECTIONS
+========================= */
+
+.profile-actions,
+.profile-account {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 0;
+    margin-bottom: 14px;
+}
+
+.profile-action,
+.profile-logout,
+.profile-legal-link {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000000;
+    cursor: pointer;
+}
+
+.profile-action + .profile-action {
+    border-top: 1px solid #f1f5f9;
+}
+
+.profile-logout {
+    color: #000000;
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-logout,
+.profile-actions button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-actions img {
+    width: 18px;
+    height: 18px;
+}
+
+.profile-logout img {
+    width: 18px;
+    height: 18px;
+}
+
+.profile-legal button {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: #0066F2;
+}
+
+
+/* =========================
+   VERSION FOOTER
+========================= */
+
+.profile-version {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: #000000;
+    padding: 0;
+}
