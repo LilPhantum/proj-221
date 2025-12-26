@@ -5,8 +5,8 @@
   "scope": "/activity/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#0070e0",
+  "background_color": "#F2F2F2",
+  "theme_color": "#F2F2F2",
   "description": "Bixly — view your activity and payments seamlessly.",
   "icons": [
     {
