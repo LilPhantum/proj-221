@@ -33,28 +33,27 @@
     <link rel="apple-touch-icon" href="/icons/icon-1024.PNG">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#000000">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
 
 
 </head>
 
 <body>
 
-    
-
     <!-- NEW HERO SECTION -->
     <section class="hero-card">
         <div class="hero-image">
-
+    
             <!-- Logo (top-left inside image) -->
             <img src="./images/bixly-logo.png" alt="Bixly logo" class="hero-logo">
-
+    
             <!-- Bottom text -->
             <div class="hero-text">
-                <h1>Join the Family</h1>
-                <p>
-                    We collabed with Spotify to give creators opportunities to join the Spotify community.
-                </p>
+                <h1 class="ml2">Join The Family </h1>
+                   We collaborated with Spotify to give creators opportunities to join the Spotify community.</p>
             </div>
+
 
         </div>
     </section>
@@ -302,25 +301,6 @@
         </div>
     </footer>
 
-    <!-- Popup Modal -->
-    <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-hidden="true"
-        aria-labelledby="popupTitle">
-        <div class="popup-box" role="document">
-            <h3 id="popupTitle">Before you continue</h3>
-            <p class="popup-text">
-                To finalize your setup, you'll need to complete 3-5 short introductory activities (Deals).
-                These tasks help verify your human, and avoid bot spammings. Once done, you'll gain full access to the Spotify Reviewer Program.
-            </p>
-    
-            <div class="popup-actions">
-                <button id="cancelBtn" class="popup-btn popup-cancel" aria-label="Cancel and stay on site">Cancel</button>
-                <button id="continueBtn" class="popup-btn popup-continue"
-                    aria-label="Continue to application">Continue</button>
-            </div>
-        </div>
-    </div>
-
-
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
@@ -329,75 +309,31 @@
         }
     </script>
 
-
-    <!-- POP UP ANIMATION -->
     <script>
-    (function() {
-    const overlay = document.getElementById('popupOverlay');
-    const continueBtn = document.getElementById('continueBtn');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const ctas = document.querySelectorAll('.cta-btn');
+        // Wrap every letter in a span
+        var textWrapper = document.querySelector('.ml2');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-    function openPopup() {
-        overlay.style.display = 'flex';
-        overlay.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('popup-open');
-        // move focus into the dialog
-        continueBtn.focus();
-        // trap focus (simple)
-        document.addEventListener('focus', trapFocus, true);
-        document.addEventListener('keydown', onKeyDown);
-    }
+        anime.timeline({ loop: false }) // no loop if you want it to stay
+            .add({
+                targets: '.ml2 .letter',
+                scale: [4, 1],
+                opacity: [0, 1],
+                translateZ: 0,
+                easing: "easeOutExpo",
+                duration: 950,
+                delay: (el, i) => 70 * i
+            });
+        // Wait for the page to fully load
+        window.addEventListener('load', () => {
+            const heroImage = document.querySelector('.hero-image');
 
-    function closePopup() {
-        overlay.style.display = 'none';
-        overlay.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('popup-open');
-        document.removeEventListener('focus', trapFocus, true);
-        document.removeEventListener('keydown', onKeyDown);
-    }
-
-    // trap focus inside modal (basic)
-    function trapFocus(e) {
-        if (!overlay.contains(e.target)) {
-        e.stopPropagation();
-        continueBtn.focus();
-        }
-    }
-
-    function onKeyDown(e) {
-        if (e.key === 'Escape') {
-        closePopup();
-        }
-    }
-
-    // attach to all CTAs
-    ctas.forEach(btn => {
-        btn.addEventListener('click', (ev) => {
-        ev.preventDefault();
-        openPopup();
+            // Small delay to make it look natural
+            setTimeout(() => {
+                heroImage.classList.add('zoomed');
+            }, 100); // 100ms delay for smoother effect
         });
-    });
 
-    // Cancel — close modal and stay on page
-    cancelBtn.addEventListener('click', (ev) => {
-        ev.preventDefault();
-        closePopup();
-    });
-
-    // Continue — close then redirect
-    continueBtn.addEventListener('click', (ev) => {
-        ev.preventDefault();
-        // small dismiss animation
-        overlay.style.opacity = '0.98';
-        closePopup();
-        // small timeout to allow UX close before redirect
-        setTimeout(() => {
-        window.location.href = 'https://apply.bixly.site';
-        }, 250);
-    });
-
-    })();
     </script>
 
     <!-- TESTIMONIAL CAROUSEL -->
