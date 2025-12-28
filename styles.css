@@ -85,15 +85,15 @@ body a {
 
 .hero-card {
   width: 100%;
-  padding: 5px;
-  padding-bottom: 0;
+  padding: 0 5px;
+  
 }
 
 .hero-image {
   position: relative;
   width: 100%;
-  height: 50vh;
-  border-radius: 25px;
+  height: 52vh;
+  border-radius: 16px;
   overflow: hidden;
   background: url("./images/hero-img.JPG") center / cover no-repeat;
 
@@ -115,8 +115,8 @@ body a {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.85) 20%,
-    rgba(0,0,0,0.3) 55%,
+    rgba(0, 0, 0, 0.719) 20%,
+    rgba(0, 0, 0, 0) 55%,
     rgba(0,0,0,0.1) 100%
   );
 }
@@ -184,8 +184,8 @@ body a {
 /* =================== STEPS SECTION =================== */
 
 .steps-section {
-  margin: 20px 0;
-  margin-top: 0;
+  margin: 30px 0;
+  margin-top: 5px;
   overflow-x: hidden;
   padding-left: 5px;
 }
@@ -194,7 +194,6 @@ body a {
   display: flex;
   gap: 5px;
   overflow-x: auto;
-  padding: 10px 5px 20px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
@@ -253,7 +252,7 @@ body a {
 /* =================== REASONS SECTION =================== */
 .reasons-container {
   margin: 30px auto;
-  margin-top: 0;
+  margin-top: 20px;
   text-align: center;
   font-family: inherit;
 }
