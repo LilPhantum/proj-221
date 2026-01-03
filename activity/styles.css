@@ -594,3 +594,23 @@ button {
     color: #000000;
     padding: 0;
 }
+
+
+
+/* Firefox */
+html,
+main {
+    scrollbar-width: none;
+}
+
+/* IE / old Edge */
+html,
+main {
+    -ms-overflow-style: none;
+}
+
+/* Chrome, Safari, Edge */
+html::-webkit-scrollbar,
+main::-webkit-scrollbar {
+    display: none;
+}
