@@ -594,3 +594,43 @@ button {
     color: #000000;
     padding: 0;
 }
+
+
+/* Disable page scrollbars */
+html,
+body {
+    overflow: hidden;
+}
+
+/* Allow scrolling inside app/content areas */
+.app,
+main {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+}
+
+/* Hide scrollbar — Chrome, Safari, Edge */
+.app::-webkit-scrollbar,
+main::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar — Firefox */
+.app,
+main {
+    scrollbar-width: none;
+}
+
+/* Hide scrollbar — IE & old Edge */
+.app,
+main {
+    -ms-overflow-style: none;
+}
+
+* {
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
