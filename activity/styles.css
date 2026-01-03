@@ -596,11 +596,6 @@ button {
 }
 
 
-/* Disable page scrollbars */
-html,
-body {
-    overflow: hidden;
-}
 
 /* Allow scrolling inside app/content areas */
 .app,
