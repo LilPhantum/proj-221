@@ -597,35 +597,20 @@ button {
 
 
 
-/* Allow scrolling inside app/content areas */
-.app,
-main {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
-}
-
-/* Hide scrollbar — Chrome, Safari, Edge */
-.app::-webkit-scrollbar,
-main::-webkit-scrollbar {
-    display: none;
-}
-
-/* Hide scrollbar — Firefox */
-.app,
+/* Firefox */
+html,
 main {
     scrollbar-width: none;
 }
 
-/* Hide scrollbar — IE & old Edge */
-.app,
+/* IE / old Edge */
+html,
 main {
     -ms-overflow-style: none;
 }
 
-* {
-    scrollbar-width: none;
-}
-
-*::-webkit-scrollbar {
+/* Chrome, Safari, Edge */
+html::-webkit-scrollbar,
+main::-webkit-scrollbar {
     display: none;
 }
