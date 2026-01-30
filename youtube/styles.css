@@ -85,7 +85,10 @@ body {
 }
 
 .filter-item {
-    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 12px;
     background-color: #272727;
     border-radius: 8px;
     white-space: nowrap;
