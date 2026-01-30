@@ -443,6 +443,7 @@ body {
     color: #ffffff;
     cursor: pointer;
     font-size: 10px;
+    min-width: 70px;
     padding: 0 8px 12px;
 }
 
