@@ -411,8 +411,10 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #0f0f0f;
-    padding: 8px 0;
+    background-color: #0f0f0fc0;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding-bottom: 8px;
     border-top: 1px solid #272727;
     height: 80px;
     z-index: 50;
@@ -432,8 +434,8 @@ body {
 }
 
 .nav-icon {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
 }
 
 .add-btn .nav-icon {
