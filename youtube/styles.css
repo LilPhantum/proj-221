@@ -348,9 +348,9 @@ body {
 .more-menu {
     position: fixed;
     bottom: -100%;
-    left: 0;
-    right: 0;
-    background-color: #282828;
+    left: 10px;
+    right: 10px;
+    background-color: #212121;
     border-radius: 12px 12px 0 0;
     padding: 8px 0;
     z-index: 100;
@@ -387,6 +387,11 @@ body {
     width: 24px;
     height: 24px;
 }
+
+.big .menu-icon {
+    width: 30px;
+    height: 30px;
+} 
 
 .menu-item span {
     font-size: 15px;
@@ -430,7 +435,7 @@ body {
     color: #ffffff;
     cursor: pointer;
     font-size: 10px;
-    padding: 8px 12px;
+    padding: 0 8px 12px;
 }
 
 .nav-icon {
@@ -439,8 +444,12 @@ body {
 }
 
 .add-btn .nav-icon {
-    width: 32px;
-    height: 32px;
+    width: 35px;
+    height: 35px;
+    background-color: #2E2E2E;
+    padding: 7px;
+    border-radius: 50%;
+
 }
 
 .nav-btn .active-icon {
@@ -478,3 +487,4 @@ body {
 .backdrop.show {
     display: block;
 }
+
