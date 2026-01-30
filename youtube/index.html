@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- HOME PANEL -->
+    <div id="home-panel" class="panel active">
+        <!-- Header -->
+        <header class="home-header">
+            <div class="header-left">
+                <img src="" alt="YouTube Logo" class="youtube-logo">
+            </div>
+            <div class="header-right">
+                <img src="icons/Cast.svg" alt="Cast" class="icon">
+                <img src="icons/Notification_Off.svg" alt="Notifications" class="icon">
+                <img src="icons/Search.svg" alt="Search" class="icon">
+            </div>
+        </header>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <div class="filter-icon">
+                <img src="icons/Explore.svg" alt="Explore">
+            </div>
+            <div class="filter-item">All</div>
+            <div class="filter-item">New to you</div>
+            <div class="filter-item">Gaming</div>
+            <div class="filter-item">Music</div>
+            <div class="filter-item">Formula 1</div>
+            <div class="filter-item">Live</div>
+            <div class="filter-item">Mixes</div>
+        </div>
+
+        <!-- Shorts Section -->
+        <div class="shorts-section">
+            <div class="shorts-header">
+                <div class="shorts-left">
+                    <img src="" alt="Shorts Icon" class="shorts-icon">
+                    <span>Shorts</span>
+                </div>
+                <div class="shorts-right">
+                    <img src="icons/More.svg" alt="More" class="more-icon">
+                </div>
+            </div>
+            <div class="shorts-grid">
+                <div class="short-item">
+                    <img src="images/IMG_9961.PNG" alt="Short thumbnail" class="short-thumbnail">
+                    <img src="icons/More.svg" alt="More" class="short-more-icon">
+                    <p class="short-description">What is changing for F1 in 2026 #f1 #f1shorts #2026...</p>
+                </div>
+                <div class="short-item">
+                    <img src="./images/IMG_9961.PNG" alt="Short thumbnail" class="short-thumbnail">
+                    <img src="icons/More.svg" alt="More" class="short-more-icon">
+                    <p class="short-description">The Aircraft That Fooled Everyone</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Video Feed -->
+        <div class="video-feed">
+            <div class="video-item">
+                <div class="video-thumbnail-container">
+                    <img src="images/videos.JPG" alt="Video thumbnail" class="video-thumbnail">
+                    <span class="video-duration">3:51</span>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Is Apple's Thinnest Repairable...?</h3>
+                    <p class="video-meta">Phone Repair Guru</p>
+                    <p class="video-meta">1m views • 4 months ago</p>
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="video-thumbnail-container">
+                    <img src="images/videos.JPG" alt="Video thumbnail" class="video-thumbnail">
+                    <span class="video-duration">12:34</span>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Sample Video Title</h3>
+                    <p class="video-meta">Channel Name</p>
+                    <p class="video-meta">500k views • 2 weeks ago</p>
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="video-thumbnail-container">
+                    <img src="" alt="Video thumbnail" class="video-thumbnail">
+                    <span class="video-duration">8:22</span>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Another Video Title</h3>
+                    <p class="video-meta">Channel Name</p>
+                    <p class="video-meta">2m views • 1 month ago</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHORTS PANEL -->
+    <div id="shorts-panel" class="panel">
+        <div class="shorts-video-container">
+            <video class="shorts-video" loop muted>
+                <source src="" type="video/mp4">
+            </video>
+            
+            <!-- Play Button Overlay -->
+            <div class="play-overlay">
+                <img src="" alt="Play" class="play-button">
+            </div>
+
+            <!-- Top Icons -->
+            <div class="shorts-top-icons">
+                <img src="icons/Search.svg" alt="Search" class="shorts-icon-btn">
+                <img src="icons/More.svg" alt="More" class="shorts-icon-btn more-btn">
+            </div>
+
+            <!-- Bottom Left Info -->
+            <div class="shorts-bottom-info">
+                <div class="shorts-channel-info">
+                    <img src="" alt="Profile" class="shorts-pfp">
+                    <span class="shorts-channel-name">@DiscoveryDose_</span>
+                    <button class="shorts-subscribe-btn">Subscribe</button>
+                </div>
+                <p class="shorts-caption">How Explosives Were Invented 1000 Years Ago 🤯</p>
+            </div>
+
+            <!-- Right Side Actions -->
+            <div class="shorts-actions">
+                <div class="shorts-action">
+                    <img src="icons/Like.svg" alt="Like" class="action-icon like-icon">
+                    <span class="action-text">32k</span>
+                </div>
+                <div class="shorts-action">
+                    <img src="icons/Dislike.svg" alt="Dislike" class="action-icon">
+                    <span class="action-text">Dislike</span>
+                </div>
+                <div class="shorts-action">
+                    <img src="" alt="Comment" class="action-icon">
+                    <span class="action-text">204</span>
+                </div>
+                <div class="shorts-action">
+                    <img src="" alt="Share" class="action-icon">
+                    <span class="action-text">Share</span>
+                </div>
+                <div class="shorts-action">
+                    <img src="" alt="Remix" class="action-icon">
+                    <span class="action-text">Remix</span>
+                </div>
+                <div class="shorts-action">
+                    <img src="" alt="Channel" class="action-icon">
+                </div>
+            </div>
+        </div>
+
+        <!-- More Options Menu -->
+        <div class="more-menu">
+            <div class="menu-handle"></div>
+            <div class="menu-item">
+                <img src="" alt="Description" class="menu-icon">
+                <span>Description</span>
+            </div>
+            <div class="menu-item">
+                <img src="" alt="Save" class="menu-icon">
+                <span>Save to playlist</span>
+            </div>
+            <div class="menu-item">
+                <img src="" alt="Captions" class="menu-icon">
+                <span>Captions • Off</span>
+            </div>
+            <div class="menu-item">
+                <img src="" alt="Quality" class="menu-icon">
+                <span>Quality • Data saver (360p)</span>
+            </div>
+            <div class="menu-item">
+                <img src="" alt="Not interested" class="menu-icon">
+                <span>Not interested</span>
+            </div>
+            <div class="menu-item">
+                <img src="" alt="Don't recommend" class="menu-icon">
+                <span>Don't recommend this channel</span>
+            </div>
+            <div class="menu-item">
+                <img src="" alt="Report" class="menu-icon">
+                <span>Report</span>
+            </div>
+            <div class="menu-item">
+                <img src="" alt="Feedback" class="menu-icon">
+                <span>Send feedback</span>
+            </div>
+            <div class="menu-item">
+                <img src="" alt="Terms" class="menu-icon">
+                <span>Terms of Service</span>
+            </div>
+            <div class="menu-item">
+                <img src="" alt="Privacy" class="menu-icon">
+                <span>Privacy Policy</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBSCRIPTIONS PANEL -->
+    <div id="subscriptions-panel" class="panel">
+        <div class="dummy-panel">
+            <p>Subscriptions Panel</p>
+        </div>
+    </div>
+
+    <!-- YOU PANEL -->
+    <div id="you-panel" class="panel">
+        <div class="dummy-panel">
+            <p>You Panel</p>
+        </div>
+    </div>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+        <button class="nav-btn" data-panel="home">
+            <img src="icons/Home_Fill.svg" alt="Home Active" class="nav-icon active-icon">
+            <img src="icons/Home.svg" alt="Home Inactive" class="nav-icon inactive-icon">
+            <span>Home</span>
+        </button>
+        <button class="nav-btn" data-panel="shorts">
+            <img src="icons/Short_Fill.svg" alt="Shorts Active" class="nav-icon active-icon">
+            <img src="icons/Short.svg" alt="Shorts Inactive" class="nav-icon inactive-icon">
+            <span>Shorts</span>
+        </button>
+        <button class="nav-btn add-btn">
+            <img src="icons/create.svg" alt="Add" class="nav-icon add-icon">
+        </button>
+        <button class="nav-btn" data-panel="subscriptions">
+            <img src="icons/Subscriptions.svg" alt="Subscriptions Active" class="nav-icon active-icon">
+            <img src="icons/Subscriptions.svg" alt="Subscriptions Inactive" class="nav-icon inactive-icon">
+            <span>Subscriptions</span>
+        </button>
+        <button class="nav-btn" data-panel="you">
+            <img src="" alt="You Active" class="nav-icon active-icon">
+            <img src="" alt="You Inactive" class="nav-icon inactive-icon">
+            <span>You</span>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
