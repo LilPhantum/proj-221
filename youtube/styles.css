@@ -68,12 +68,20 @@ body {
     display: none;
 }
 
+.filter-icon  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .filter-icon img {
-    width: 37px;
-    height: 37px;
+    display: flex;
+    align-items: center;
+    width: 32px;
+    height: 32px;
     border-radius: 8px;
     background-color: #272727;
-    padding: 6px;
+    padding: 4px;
 }
 
 .filter-item {
