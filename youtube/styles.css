@@ -226,7 +226,7 @@ body {
 /* SHORTS PANEL */
 #shorts-panel {
     position: relative;
-    height: calc(100vh - 80px);
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -395,8 +395,8 @@ body {
 }
 
 .menu-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
 }
 
 .big .menu-icon {
@@ -427,11 +427,11 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #0f0f0fc0;
+    background-color: #0f0f0fa8;
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    padding-bottom: 8px;
-    border-top: 1px solid #272727;
+    padding-bottom: 12px;
+    border-top: 1px solid #3F3F3F;
     height: 80px;
     z-index: 50;
 }
@@ -456,8 +456,8 @@ body {
 }
 
 .add-btn .nav-icon {
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
     background-color: #2E2E2E;
     padding: 7px;
     border-radius: 50%;
