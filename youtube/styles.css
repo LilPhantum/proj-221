@@ -13,6 +13,10 @@ body {
     overflow-x: hidden;
 }
 
+body svg {
+    fill: #ffffff;
+}
+
 /* PANELS */
 .panel {
     display: none;
@@ -96,7 +100,7 @@ body {
     cursor: pointer;
 }
 
-.filter-item:first-of-type {
+.filter-bar .active {
     background-color: #ffffff;
     color: #0f0f0f;
 }
@@ -120,8 +124,7 @@ body {
 }
 
 .shorts-icon {
-    width: 24px;
-    height: 24px;
+    height: 30px;
 }
 
 .shorts-left span {
@@ -173,11 +176,8 @@ body {
     text-shadow: 0 1px 3px rgba(0,0,0,0.8);
 }
 
-/* Video Feed */
-.video-feed {
-    padding: 16px;
-}
 
+/* VIDEO FEED */
 .video-item {
     margin-bottom: 20px;
 }
@@ -185,7 +185,6 @@ body {
 .video-thumbnail-container {
     position: relative;
     width: 100%;
-    border-radius: 12px;
     overflow: hidden;
 }
 
@@ -199,7 +198,7 @@ body {
     position: absolute;
     bottom: 8px;
     right: 8px;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.568);
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 12px;
@@ -208,6 +207,7 @@ body {
 
 .video-info {
     margin-top: 8px;
+    padding: 0 16px;
 }
 
 .video-title {
@@ -440,7 +440,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 0;
     background: none;
     border: none;
     color: #ffffff;
@@ -451,8 +451,17 @@ body {
 }
 
 .nav-icon {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    padding-bottom: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-icon svg {
+    width: 18px;
+    height: 18px;
 }
 
 .add-btn .nav-icon {
@@ -461,23 +470,22 @@ body {
     background-color: #2E2E2E;
     padding: 7px;
     border-radius: 50%;
-
 }
 
 .nav-btn .active-icon {
-    display: none;
+    display: none !important;
 }
 
 .nav-btn .inactive-icon {
-    display: block;
+    display: block !important;
 }
 
 .nav-btn.active .active-icon {
-    display: block;
+    display: block !important;
 }
 
 .nav-btn.active .inactive-icon {
-    display: none;
+    display: none !important;
 }
 
 .add-btn {
@@ -499,4 +507,3 @@ body {
 .backdrop.show {
     display: block;
 }
-
