@@ -362,7 +362,7 @@ body {
     left: 10px;
     right: 10px;
     background-color: #212121;
-    border-radius: 12px 12px 0 0;
+    border-radius: 12px;
     padding: 8px 0;
     z-index: 100;
     transition: bottom 0.3s ease;
@@ -371,7 +371,7 @@ body {
 }
 
 .more-menu.show {
-    bottom: 80px;
+    bottom: 20px;
 }
 
 .menu-handle {
@@ -379,7 +379,7 @@ body {
     height: 4px;
     background-color: #606060;
     border-radius: 2px;
-    margin: 8px auto 16px;
+    margin: 8px auto 5px;
 }
 
 .menu-item {
@@ -400,8 +400,8 @@ body {
 }
 
 .big .menu-icon {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
 } 
 
 .menu-item span {
@@ -491,7 +491,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.548);
     z-index: 99;
     display: none;
 }
