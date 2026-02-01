@@ -501,7 +501,7 @@ body svg {
     -webkit-backdrop-filter: blur(30px);
     padding-bottom: 12px;
     border-top: 1px solid #3F3F3F;
-    height: 80px;
+    height: 85px;
     z-index: 50;
 }
 
@@ -538,10 +538,12 @@ body svg {
 }
 
 .add-btn .nav-icon {
-    width: 32px;
-    height: 32px;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
     background-color: #2E2E2E;
-    padding: 7px;
+    padding: 10px;
     border-radius: 50%;
 }
 
@@ -562,7 +564,7 @@ body svg {
 }
 
 .add-btn {
-    margin-top: -10px;
+    margin-top: -7px;
 }
 
 /* Backdrop for menu */
