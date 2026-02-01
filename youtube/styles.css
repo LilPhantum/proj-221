@@ -540,10 +540,10 @@ body svg {
 .add-btn .nav-icon {
     display: flex;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 46px;
+    height: 46px;
     background-color: #2E2E2E;
-    padding: 10px;
+    padding: 12px;
     border-radius: 50%;
 }
 
