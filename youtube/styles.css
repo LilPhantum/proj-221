@@ -496,7 +496,7 @@ body svg {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #0f0f0fa8;
+    background-color: #0f0f0fd8;
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     padding-bottom: 12px;
