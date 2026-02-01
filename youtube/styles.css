@@ -360,6 +360,15 @@ body svg {
     border-radius: 50%;
 }
 
+.shorts-sound {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    padding: 2px;
+    background-color: #ffffff;
+    object-fit: cover;
+}
+
 .shorts-channel-name {
     font-size: 14px;
     font-weight: 600;
@@ -389,7 +398,7 @@ body svg {
     right: 16px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 15px;
     z-index: 5;
 }
 
@@ -402,8 +411,8 @@ body svg {
 }
 
 .action-icon {
-    width: 32px;
-    height: 32px;
+    width: 27px;
+    height: 27px;
 }
 
 .action-text {
