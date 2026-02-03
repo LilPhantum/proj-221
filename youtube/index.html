@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Application</title>
     <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="balance.css?v=2">
 
   <link rel="apple-touch-icon" href="./images/icon-1024.PNG">
   <link rel="manifest" href="/youtube/manifest.json">
@@ -54,9 +55,9 @@
             </div>
             <div class="shorts-grid">
                 <div class="short-item">
-                    <img src="images/mac-thumb.jpeg" alt="Short thumbnail" class="short-thumbnail">
+                    <img src="images/dock-thumb.jpeg" alt="Short thumbnail" class="short-thumbnail">
                     <img src="icons/More.svg" alt="More" class="short-more-icon">
-                    <p class="short-description">He Used A Hole In A Stomach To Study Dige...</p>
+                    <p class="short-description">Best Mac App for Custom Docks! 🤯</p>
                 </div>
                 <div class="short-item">
                     <img src="./images/nathan-thumb.jpeg" alt="Short thumbnail" class="short-thumbnail">
@@ -228,9 +229,9 @@
                 <img src="icons/Subtitle.svg" alt="Captions" class="menu-icon">
                 <span>Captions • Off</span>
             </div>
-            <div class="menu-item big">
-                <img src="icons/reviewer.svg" alt="Quality" class="menu-icon">
-                <span>Shorts Reviewer</span>
+            <div class="menu-item big" id="youtubeRewardsBtn">
+                <img src="icons/Reward.svg" alt="Quality" class="menu-icon">
+                <span>YouTube Rewards</span>
             </div>
             <div class="menu-item">
                 <img src="icons/Cancel.svg" alt="Not interested" class="menu-icon">
@@ -264,6 +265,286 @@
             <p>You Panel</p>
         </div>
     </div>
+
+    <!-- YOUTUBE REWARDS PANEL -->
+    <div id="rewards-panel" class="panel">
+        <!-- Header -->
+        <header class="rewards-header">
+            <button id="rewardsBackBtn" class="rewards-back-btn" aria-label="Back to home">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                    <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/>
+                </svg>
+            </button>
+            <div class="rewards-logo-container">
+                <img src="images/rewards-logo.png" alt="YouTube Logo" class="rewards-youtube-logo">
+            </div>
+            <div class="rewards-header-icons">
+                <img src="icons/Notification_Off.svg" alt="Notifications" class="rewards-icon">
+                <img src="images/organic-pfp.JPG" alt="Profile" class="rewards-profile-icon">
+            </div>
+        </header>
+
+        <!-- Profile Section -->
+        <div class="rewards-profile-section">
+            <div class="rewards-profile-left">
+                <img src="images/organic-pfp.JPG" alt="Channel Profile" class="rewards-large-pfp">
+            </div>
+            <div class="rewards-profile-right">
+                <h2 class="rewards-channel-name">Smantha Kiles</h2>
+                <p class="rewards-number">75</p>
+                <p class="rewards-tasks">Total tasks</p>
+            </div>
+        </div>
+
+        <!-- Current Level Progress Block -->
+        <div class="review-progress-block" id="rewardsProgressBlock">
+            <!-- ROW 1 -->
+            <div class="progress-row top">
+                <!-- LEFT -->
+                <div class="level-info">
+                    <span class="label">Current Level</span>
+                    <span class="level-number">Level 2</span>
+                </div>
+                <!-- RIGHT ICON -->
+                <svg class="level-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                    <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+                </svg>
+            </div>
+            <!-- ROW 2 (PROGRESS BAR) -->
+            <div class="progress-row bar">
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" style="width: 63%;"></div>
+                </div>
+            </div>
+            <!-- ROW 3 -->
+            <div class="progress-row bottom">
+                <span class="next-level">61% to next level</span>
+                <span class="earnings">$1,260 / $2,000</span>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div class="rewards-dashboard">
+            <div class="dashboard-header">
+                <h3 class="dashboard-title">Dashboard</h3>
+                <span class="dashboard-date"></span>
+            </div>
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <p class="card-label">Shorts</p>
+                    <p class="card-value">35/50</p>
+                </div>
+                <div class="dashboard-card">
+                    <p class="card-label">Videos</p>
+                    <p class="card-value">8/15</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shorts Section -->
+        <div class="rewards-shorts-section">
+            <div class="shorts-header">
+                <div class="shorts-left">
+                    <img src="images/shorts-logo.PNG" alt="Shorts Icon" class="shorts-icon">
+                    <span>Shorts</span>
+                </div>
+                <div class="shorts-right">
+                    <img src="icons/More_bold.svg" alt="More" class="more-icon">
+                </div>
+            </div>
+            <div class="shorts-grid">
+                <div class="short-item">
+                    <span class="new-badge">$1.3</span>
+                    <img src="images/guru-thumb.jpeg" alt="Short thumbnail" class="short-thumbnail">
+                    <p class="short-description">This Turns Any Apple Watch into The Ultra...?</p>
+                </div>
+                <div class="short-item">
+                    <span class="new-badge">$2.8</span>
+                    <img src="./images/mac-thumb.jpeg" alt="Short thumbnail" class="short-thumbnail">
+                    <img src="icons/More.svg" alt="More" class="short-more-icon">
+                    <p class="short-description">>He Used A Hole In A Stomach To Study Dige...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Feed Section -->
+        <div class="rewards-video-feed">
+            <div class="video-item">
+                <div class="video-thumbnail-container">
+                    <span class="new-badge">$12.3</span>
+                    <img src="images/whosthebus-thumbnail.jpeg" alt="Video thumbnail" class="video-thumbnail">
+                    <span class="video-duration">27:56</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-info-left">
+                        <div class="video-profile">
+                            <img src="./images/whosthebus-pfp.JPG" alt="Channel Profile" class="channel-pfp">
+                        </div>
+                        <div class="video-details">
+                            <h3 class="video-title">I Tested the Rarest Tech on the internet!</h3>
+                            <div class="video-meta-container">
+                                <p class="video-meta">Mrwhosetheboss • 1.4m views • 2 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info-right">
+                        <img src="icons/More_bold.svg" alt="More" class="video-more-icon">
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-thumbnail-container">
+                    <span class="new-badge">$8.0</span>
+                    <img src="images/mrbeats-thumbnail.jpeg" alt="Video thumbnail" class="video-thumbnail">
+                    <span class="video-duration">41:58</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-info-left">
+                        <div class="video-profile">
+                            <img src="./images/mrbeast-pfp.JPG" alt="Channel Profile" class="channel-pfp">
+                        </div>
+                        <div class="video-details">
+                            <h3 class="video-title">30 Celebrities Fight for $1,000,000!</h3>
+                            <div class="video-meta-container">
+                                <p class="video-meta">MrBeast • 97m views • 4 weeks ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info-right">
+                        <img src="icons/More_bold.svg" alt="More" class="video-more-icon">
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-thumbnail-container">
+                    <span class="new-badge">$13.6</span>
+                    <img src="images/fern-thumbnail.jpeg" alt="Video thumbnail" class="video-thumbnail">
+                    <span class="video-duration">16:46</span>
+                </div>
+                <div class="video-info">
+                    <div class="video-info-left">
+                        <div class="video-profile">
+                            <img src="./images/fern-pfp.JPG" alt="Channel Profile" class="channel-pfp">
+                        </div>
+                        <div class="video-details">
+                            <h3 class="video-title">The $1 Billion Coca-Cola Machine</h3>
+                            <div class="video-meta-container">
+                                <p class="video-meta">fern • 2.6m views • 13 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info-right">
+                        <img src="icons/More_bold.svg" alt="More" class="video-more-icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOADING SPINNER -->
+    <div id="rewardsLoadingSpinner" class="rewards-loading-spinner">
+        <div class="spinner-circle"></div>
+    </div>
+
+    <!-- BALANCE OVERLAY (ANALYTICS PANEL) -->
+    <section id="balanceOverlay" class="balance-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="balance-panel" role="document">
+            <!-- Header -->
+            <div class="balance-header">
+                <div class="top">
+                    <button id="balanceBackBtn" class="balance-back" aria-label="Close balance overlay">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                            <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="balance-title bottom">Estimated Revenue</div>
+            </div>
+
+            <!-- Date range -->
+            <div class="balance-date-row" id="balanceDateRange">— — —</div>
+
+            <div class="balance-two-col">
+                <!-- COLUMN 1 -->
+                <div class="balance-col-item">
+                    <!-- Top Row -->
+                    <div class="album-top-row">
+                        <div class="album-labels">
+                            <span class="album-top">Best performing shorts</span>
+                        </div>
+                        <h3 class="album-title">Mind Facts</h3>
+                    </div>
+                    <!-- Bottom Row -->
+                    <div class="album-bottom-row">
+                        <img src="images/nathan-thumb.jpeg" alt="Short thumbnail" class="album-img">
+                        <div class="album-tag">$15</div>
+                    </div>
+                </div>
+
+                <!-- COLUMN 2 -->
+                <div class="balance-col-item">
+                    <!-- Top Row -->
+                    <div class="album-top-row">
+                        <div class="album-labels">
+                            <span class="album-top">Best performing video</span>
+                        </div>
+                        <h3 class="album-title">MrBeast</h3>
+                    </div>
+                    <!-- Bottom Row -->
+                    <div class="album-bottom-row">
+                        <img src="images/mrbeats-thumbnail.jpeg" alt="Video thumbnail" class="album-img">
+                        <div class="album-tag">$2</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="balance-inner">
+                <!-- Pill Row with sliding highlighter -->
+                <div class="balance-range">
+                    <div class="balance-pill-track" aria-hidden="true"></div>
+                    <button class="balance-pill" data-range="30" aria-pressed="false">30 days</button>
+                    <button class="balance-pill" data-range="180" aria-pressed="false">6 months</button>
+                    <button class="balance-pill" data-range="lifetime" aria-pressed="false">All time</button>
+                </div>
+
+                <!-- Large amount -->
+                <div class="balance-amount-wrap">
+                    <div id="balanceAmount" class="balance-amount">—</div>
+                    <div id="balanceYesterday" class="balance-yesterday">Yesterday: —</div>
+                </div>
+
+                <!-- Line chart -->
+                <div id="balanceChartContainer" class="balance-chart-container">
+                    <canvas id="balanceChart" aria-label="Earnings analytics graph" role="img"></canvas>
+                </div>
+
+                <!-- Stats columns -->
+                <div class="balance-columns">
+                    <div class="balance-col">
+                        <div class="col-label">Estimated Revenue</div>
+                        <div class="col-value" id="colEstimated">—</div>
+                    </div>
+                    <div class="balance-col">
+                        <div class="col-label">Qualified Reviews</div>
+                        <div class="col-value" id="colQualified">—</div>
+                    </div>
+                    <div class="balance-col">
+                        <div class="col-label">Conversion Rate</div>
+                        <div class="col-value" id="colConversion">—</div>
+                    </div>
+                </div>
+
+                <!-- Note -->
+                <div class="balance-note" id="balanceNote">
+                    You may notice a difference between your approved reviews and <span class="underline-text">qualified reviews</span>. Read qualified reviews to understand possible reasons.
+                </div>
+
+                <button class="withdraw-btn">Withdraw</button>
+            </div>
+        </div>
+    </section>
 
     <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav">
@@ -310,6 +591,7 @@
         </button>
     </nav>
 
-    <script src="script.js?v=2"></script>
+    <script src="./script.js?v=2"></script>
+    <script src="./rewards.js?v=2"></script>
 </body>
 </html>
