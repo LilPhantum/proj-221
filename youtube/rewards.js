@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
         canvas.height = h + 40;
         ctx.clearRect(0, 0, w, h + 40);
 
-        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
         ctx.fillStyle = '#fff';
         ctx.font = '12px sans-serif';
         ctx.textAlign = 'right';
@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const midX = x - (w / (values.length - 1)) / 2;
             ctx.quadraticCurveTo(midX, prevY, x, y);
         }
-        ctx.strokeStyle = '#00ff37ff';
+        ctx.strokeStyle = '#0070d1';
         ctx.lineWidth = 2;
         ctx.stroke();
 
@@ -266,8 +266,8 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.lineTo(0, h);
         ctx.closePath();
         const grad = ctx.createLinearGradient(0, 0, 0, h);
-        grad.addColorStop(0, 'rgba(0,87,22,0.51)');
-        grad.addColorStop(1, 'rgba(95,228,101,0)');
+        grad.addColorStop(0, 'rgba(62, 165, 255, 0.56)');
+        grad.addColorStop(1, 'rgba(62, 166, 255, 0)');
         ctx.fillStyle = grad;
         ctx.fill();
     }
