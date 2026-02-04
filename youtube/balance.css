@@ -42,7 +42,7 @@
 
 .rewards-header-icons {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .rewards-channel-name {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 700;
     margin: 0;
     color: #ffffff;
@@ -110,7 +110,7 @@
     background-color: #272727;
     border-radius: 12px;
     padding: 16px;
-    margin: 0 16px 20px;
+    margin: 0 13px 0;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
@@ -238,7 +238,7 @@
 
 /* Shorts Section in Rewards */
 .rewards-shorts-section {
-    padding: 30px 15px;
+    padding: 20px 15px;
 }
 
 
