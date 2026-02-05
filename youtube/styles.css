@@ -107,7 +107,8 @@ body svg {
 
 /* Shorts Section */
 .shorts-section {
-    padding: 16px;
+    padding: 10px;
+    padding-bottom: 25px;
 }
 
 .shorts-header {
@@ -141,25 +142,27 @@ body svg {
 .shorts-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 8px;
 }
 
 .short-item {
     position: relative;
-    border-radius: 12px;
+    border-radius: 7px;
     overflow: hidden;
 }
 
 .short-thumbnail {
+    display: flex;
+    align-items: center;
     width: 100%;
-    height: 280px;
+    height: 290px;
     object-fit: cover;
 }
 
 .short-more-icon {
     position: absolute;
     top: 8px;
-    right: 8px;
+    right: 2px;
     width: 24px;
     height: 24px;
     cursor: pointer;
