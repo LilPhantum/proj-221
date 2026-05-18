@@ -109,6 +109,21 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         e.stopPropagation();
 
+        // Pause all Shorts videos before opening rewards
+        const shortsVideos = document.querySelectorAll('.shorts-video');
+
+        shortsVideos.forEach(video => {
+            video.pause();
+
+            const overlay = video
+                .closest('.shorts-video-container')
+                ?.querySelector('.play-overlay');
+
+            if (overlay) {
+                overlay.classList.add('show');
+            }
+        });
+
         if (rewardsLoadingSpinner) {
             rewardsLoadingSpinner.classList.add('show');
         }

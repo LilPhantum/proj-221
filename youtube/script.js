@@ -80,14 +80,14 @@ function goToShort(index) {
     isChangingShort = true;
 
     shortsFeed.scrollTo({
-    top: shortsContainers[currentShortIndex].offsetTop,
-    behavior: 'smooth'
-});
+        top: shortsContainers[currentShortIndex].offsetTop,
+        behavior: 'smooth'
+    });
 
-setTimeout(() => {
-    playCurrentShort();
-    isChangingShort = false;
-}, 280);
+    setTimeout(() => {
+        playCurrentShort();
+        isChangingShort = false;
+    }, 280);
 }
 
 if (shortsFeed && shortsContainers.length > 0) {
@@ -99,6 +99,10 @@ if (shortsFeed && shortsContainers.length > 0) {
         clearTimeout(longPressTimer);
 
         const isBottomArea = touchStartY > window.innerHeight * 0.65;
+
+        if (isBottomArea) {
+            e.preventDefault();
+        }
 
         if (
             isBottomArea &&
@@ -117,7 +121,7 @@ if (shortsFeed && shortsContainers.length > 0) {
                 }
             }, 650);
         }
-    }, { passive: true });
+    }, { passive: false });
 
     shortsFeed.addEventListener('touchmove', e => {
         clearTimeout(longPressTimer);
@@ -147,6 +151,12 @@ if (shortsFeed && shortsContainers.length > 0) {
             goToShort(currentShortIndex + 1);
         } else {
             goToShort(currentShortIndex - 1);
+        }
+
+        if (shortsFeed) {
+            shortsFeed.addEventListener('contextmenu', e => {
+                e.preventDefault();
+            });
         }
     });
 

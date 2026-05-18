@@ -428,6 +428,14 @@ body svg {
     object-fit: cover;
 }
 
+#shorts-panel,
+#shorts-panel * {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
 /* More Options Menu */
 .more-menu {
     position: fixed;
