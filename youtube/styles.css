@@ -281,10 +281,14 @@ body svg {
 
 .shorts-feed {
     height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
     scrollbar-width: none;
     background-color: #000000;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: auto;
+    scrollbar-width: none;
 }
 
 .shorts-feed::-webkit-scrollbar {
@@ -299,6 +303,8 @@ body svg {
     scroll-snap-align: start;
     scroll-snap-stop: always;
     overflow: hidden;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .shorts-video {
