@@ -45,31 +45,73 @@ let longPressTimer = null;
 let longPressOpened = false;
 
 function pauseAllShorts() {
+
     shortsVideos.forEach(video => {
+
         video.pause();
 
         const overlay = video
             .closest('.shorts-video-container')
             ?.querySelector('.play-overlay');
 
-        if (overlay) overlay.classList.add('show');
+        if (overlay) {
+            overlay.classList.add('show');
+        }
+
     });
+
 }
 
 function playCurrentShort() {
+
     pauseAllShorts();
 
-    const currentContainer = shortsContainers[currentShortIndex];
+    const currentContainer =
+        shortsContainers[currentShortIndex];
+
     if (!currentContainer) return;
 
-    const video = currentContainer.querySelector('.shorts-video');
-    const overlay = currentContainer.querySelector('.play-overlay');
+    const video =
+        currentContainer.querySelector('.shorts-video');
 
-    if (video) video.play();
-    if (overlay) overlay.classList.remove('show');
+    const overlay =
+        currentContainer.querySelector('.play-overlay');
+
+    // LAZY LOAD VIDEO
+    if (video && !video.getAttribute('data-loaded')) {
+
+        const src = video.getAttribute('data-src');
+
+        if (src) {
+
+            const source = document.createElement('source');
+
+            source.src = src;
+
+            source.type = 'video/mp4';
+
+            video.appendChild(source);
+
+            video.load();
+
+            video.setAttribute('data-loaded', 'true');
+
+        }
+
+    }
+
+    if (video) {
+        video.play();
+    }
+
+    if (overlay) {
+        overlay.classList.remove('show');
+    }
+
 }
 
 function goToShort(index) {
+
     if (!shortsFeed || shortsContainers.length === 0) return;
 
     currentShortIndex = Math.max(
@@ -85,25 +127,40 @@ function goToShort(index) {
     });
 
     setTimeout(() => {
+
         playCurrentShort();
+
         isChangingShort = false;
+
     }, 280);
+
 }
 
+
+
+// ======================================
+// TOUCH / SWIPE SYSTEM
+// ======================================
 if (shortsFeed && shortsContainers.length > 0) {
+
     shortsFeed.addEventListener('touchstart', e => {
+
         touchStartY = e.touches[0].clientY;
         touchStartX = e.touches[0].clientX;
+
         longPressOpened = false;
 
         clearTimeout(longPressTimer);
 
-        const isBottomArea = touchStartY > window.innerHeight * 0.65;
+        const isBottomArea =
+            touchStartY > window.innerHeight * 0.65;
 
+        // STOP TEXT SELECTION
         if (isBottomArea) {
             e.preventDefault();
         }
 
+        // LONG PRESS MENU
         if (
             isBottomArea &&
             !e.target.closest('.shorts-actions') &&
@@ -111,60 +168,100 @@ if (shortsFeed && shortsContainers.length > 0) {
             !e.target.closest('.shorts-bottom-info') &&
             !e.target.closest('.more-menu')
         ) {
+
             longPressTimer = setTimeout(() => {
-                const currentContainer = shortsContainers[currentShortIndex];
-                const moreBtn = currentContainer?.querySelector('.more-btn');
+
+                const currentContainer =
+                    shortsContainers[currentShortIndex];
+
+                const moreBtn =
+                    currentContainer?.querySelector('.more-btn');
 
                 if (moreBtn) {
+
                     longPressOpened = true;
+
                     moreBtn.click();
+
                 }
+
             }, 650);
+
         }
+
     }, { passive: false });
+
+
 
     shortsFeed.addEventListener('touchmove', e => {
+
         clearTimeout(longPressTimer);
 
-        // Stop browser momentum scrolling
+        // STOP NATIVE MOMENTUM SCROLL
         e.preventDefault();
+
     }, { passive: false });
 
+
+
     shortsFeed.addEventListener('touchend', e => {
+
         clearTimeout(longPressTimer);
 
         if (isChangingShort || longPressOpened) return;
 
-        const touchEndY = e.changedTouches[0].clientY;
-        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY =
+            e.changedTouches[0].clientY;
+
+        const touchEndX =
+            e.changedTouches[0].clientX;
 
         const swipeY = touchStartY - touchEndY;
+
         const swipeX = touchStartX - touchEndX;
 
-        // Ignore small movement
+        // IGNORE SMALL SWIPES
         if (Math.abs(swipeY) < 60) return;
 
-        // Ignore mostly horizontal swipes
+        // IGNORE HORIZONTAL SWIPES
         if (Math.abs(swipeX) > Math.abs(swipeY)) return;
 
         if (swipeY > 0) {
+
             goToShort(currentShortIndex + 1);
+
         } else {
+
             goToShort(currentShortIndex - 1);
+
         }
 
-        if (shortsFeed) {
-            shortsFeed.addEventListener('contextmenu', e => {
-                e.preventDefault();
-            });
-        }
     });
+
+
 
     shortsFeed.addEventListener('touchcancel', () => {
+
         clearTimeout(longPressTimer);
+
     });
+
 }
 
+
+
+// ======================================
+// DISABLE LONG PRESS TEXT MENU
+// ======================================
+if (shortsFeed) {
+
+    shortsFeed.addEventListener('contextmenu', e => {
+
+        e.preventDefault();
+
+    });
+
+}
 
 // ===============================
 // TAP SHORT TO PLAY / PAUSE
