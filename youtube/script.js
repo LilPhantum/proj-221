@@ -10,24 +10,16 @@ navButtons.forEach(button => {
     button.addEventListener('click', () => {
         const panelName = button.getAttribute('data-panel');
 
-        panels.forEach(panel => {
-            panel.classList.remove('active');
-        });
+        panels.forEach(panel => panel.classList.remove('active'));
 
         const selectedPanel = document.getElementById(`${panelName}-panel`);
+        if (selectedPanel) selectedPanel.classList.add('active');
 
-        if (selectedPanel) {
-            selectedPanel.classList.add('active');
-        }
-
-        navButtons.forEach(btn => {
-            btn.classList.remove('active');
-        });
-
+        navButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
 
         if (panelName === 'shorts') {
-            playCurrentShort();
+            goToShort(currentShortIndex);
         } else {
             pauseAllShorts();
         }
@@ -35,17 +27,11 @@ navButtons.forEach(button => {
 });
 
 const homeBtn = document.querySelector('.nav-btn[data-panel="home"]');
-
-if (homeBtn) {
-    homeBtn.classList.add('active');
-}
-
-
-
+if (homeBtn) homeBtn.classList.add('active');
 
 
 // ===============================
-// SHORTS FYP SCROLL SYSTEM
+// SHORTS FYP SYSTEM
 // ===============================
 const shortsFeed = document.querySelector('.shorts-feed');
 const shortsContainers = document.querySelectorAll('.shorts-video-container');
@@ -53,8 +39,10 @@ const shortsVideos = document.querySelectorAll('.shorts-video');
 
 let currentShortIndex = 0;
 let touchStartY = 0;
+let touchStartX = 0;
 let isChangingShort = false;
 let longPressTimer = null;
+let longPressOpened = false;
 
 function pauseAllShorts() {
     shortsVideos.forEach(video => {
@@ -64,9 +52,7 @@ function pauseAllShorts() {
             .closest('.shorts-video-container')
             ?.querySelector('.play-overlay');
 
-        if (overlay) {
-            overlay.classList.add('show');
-        }
+        if (overlay) overlay.classList.add('show');
     });
 }
 
@@ -74,23 +60,17 @@ function playCurrentShort() {
     pauseAllShorts();
 
     const currentContainer = shortsContainers[currentShortIndex];
-
     if (!currentContainer) return;
 
     const video = currentContainer.querySelector('.shorts-video');
     const overlay = currentContainer.querySelector('.play-overlay');
 
-    if (video) {
-        video.play();
-    }
-
-    if (overlay) {
-        overlay.classList.remove('show');
-    }
+    if (video) video.play();
+    if (overlay) overlay.classList.remove('show');
 }
 
 function goToShort(index) {
-    if (!shortsFeed) return;
+    if (!shortsFeed || shortsContainers.length === 0) return;
 
     currentShortIndex = Math.max(
         0,
@@ -100,23 +80,25 @@ function goToShort(index) {
     isChangingShort = true;
 
     shortsFeed.scrollTo({
-        top: shortsContainers[currentShortIndex].offsetTop,
-        behavior: 'auto'
-    });
+    top: shortsContainers[currentShortIndex].offsetTop,
+    behavior: 'smooth'
+});
 
-    setTimeout(() => {
-        isChangingShort = false;
-        playCurrentShort();
-    }, 80);
+setTimeout(() => {
+    playCurrentShort();
+    isChangingShort = false;
+}, 280);
 }
 
 if (shortsFeed && shortsContainers.length > 0) {
     shortsFeed.addEventListener('touchstart', e => {
         touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
+        longPressOpened = false;
 
-        const touchY = e.touches[0].clientY;
-        const screenHeight = window.innerHeight;
-        const isBottomArea = touchY > screenHeight * 0.65;
+        clearTimeout(longPressTimer);
+
+        const isBottomArea = touchStartY > window.innerHeight * 0.65;
 
         if (
             isBottomArea &&
@@ -130,53 +112,48 @@ if (shortsFeed && shortsContainers.length > 0) {
                 const moreBtn = currentContainer?.querySelector('.more-btn');
 
                 if (moreBtn) {
+                    longPressOpened = true;
                     moreBtn.click();
                 }
             }, 650);
         }
     }, { passive: true });
 
+    shortsFeed.addEventListener('touchmove', e => {
+        clearTimeout(longPressTimer);
+
+        // Stop browser momentum scrolling
+        e.preventDefault();
+    }, { passive: false });
+
     shortsFeed.addEventListener('touchend', e => {
         clearTimeout(longPressTimer);
 
-        if (isChangingShort) return;
+        if (isChangingShort || longPressOpened) return;
 
         const touchEndY = e.changedTouches[0].clientY;
-        const swipeDistance = touchStartY - touchEndY;
+        const touchEndX = e.changedTouches[0].clientX;
 
-        if (Math.abs(swipeDistance) < 45) {
-            return;
-        }
+        const swipeY = touchStartY - touchEndY;
+        const swipeX = touchStartX - touchEndX;
 
-        if (swipeDistance > 0) {
+        // Ignore small movement
+        if (Math.abs(swipeY) < 60) return;
+
+        // Ignore mostly horizontal swipes
+        if (Math.abs(swipeX) > Math.abs(swipeY)) return;
+
+        if (swipeY > 0) {
             goToShort(currentShortIndex + 1);
         } else {
             goToShort(currentShortIndex - 1);
         }
     });
 
-    shortsFeed.addEventListener('touchmove', () => {
-        clearTimeout(longPressTimer);
-    }, { passive: true });
-
     shortsFeed.addEventListener('touchcancel', () => {
         clearTimeout(longPressTimer);
     });
-
-    shortsFeed.addEventListener('scroll', () => {
-        if (isChangingShort) return;
-
-        const index = Math.round(shortsFeed.scrollTop / window.innerHeight);
-
-        currentShortIndex = Math.max(
-            0,
-            Math.min(index, shortsContainers.length - 1)
-        );
-    });
 }
-
-
-
 
 
 // ===============================
@@ -202,22 +179,13 @@ shortsContainers.forEach((container, index) => {
 
         if (video.paused) {
             video.play();
-
-            if (overlay) {
-                overlay.classList.remove('show');
-            }
+            if (overlay) overlay.classList.remove('show');
         } else {
             video.pause();
-
-            if (overlay) {
-                overlay.classList.add('show');
-            }
+            if (overlay) overlay.classList.add('show');
         }
     });
 });
-
-
-
 
 
 // ===============================
@@ -234,24 +202,17 @@ moreButtons.forEach(button => {
     button.addEventListener('click', e => {
         e.stopPropagation();
 
-        if (moreMenu) {
-            moreMenu.classList.add('show');
-        }
+        if (moreMenu) moreMenu.classList.add('show');
 
         backdrop.classList.add('show');
     });
 });
 
 backdrop.addEventListener('click', () => {
-    if (moreMenu) {
-        moreMenu.classList.remove('show');
-    }
+    if (moreMenu) moreMenu.classList.remove('show');
 
     backdrop.classList.remove('show');
 });
-
-
-
 
 
 // ===============================
