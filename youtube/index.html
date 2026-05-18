@@ -151,7 +151,7 @@
         <!-- SHORT 1 -->
         <div class="shorts-video-container">
 
-            <video class="shorts-video" loop playsinline>
+            <video class="shorts-video" loop  playsinline>
                 <source src="videos/short-vid-1.mp4" type="video/mp4">
             </video>
 
@@ -181,15 +181,20 @@
             </div>
 
             <!-- Right Side Actions -->
-
+            
             <div class="shorts-actions">
-
+            
                 <div class="shorts-action">
-
-                    <svg class="action-icon" width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M9.221 1.795a1 1 0 011.109-.656l1.04.173a4 4 0 013.252 4.784L14 9h4.061a3.664 3.664 0 013.576 2.868A3.68 3.68 0 0121 14.85l.02.087A3.815 3.815 0 0120 18.5v.043l-.01.227a2.82 2.82 0 01-.135.663l-.106.282A3.754 3.754 0 0116.295 22h-3.606l-.392-.007a12.002 12.002 0 01-5.223-1.388l-.343-.189-.27-.154a2.005 2.005 0 00-.863-.26l-.13-.004H3.5a1.5 1.5 0 01-1.5-1.5V12.5A1.5 1.5 0 013.5 11h1.79l.157-.013a1 1 0 00.724-.512l.063-.145 2.987-8.535Zm-1.1 9.196A3 3 0 015.29 13H4v4.998h1.468a4 4 0 011.986.528l.27.155.285.157A10 10 0 0012.69 20h3.606c.754 0 1.424-.483 1.663-1.2l.03-.126a.819.819 0 00.012-.131v-.872l.587-.586c.388-.388.577-.927.523-1.465l-.038-.23-.02-.087-.21-.9.55-.744A1.663 1.663 0 0018.061 11H14a2.002 2.002 0 01-1.956-2.418l.623-2.904a2 2 0 00-1.626-2.392l-.21-.035-2.71 7.741Z"></path></svg>
-
+            
+                    <svg class="action-icon" width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        focusable="false" aria-hidden="true">
+                        <path
+                            d="M9.221 1.795a1 1 0 011.109-.656l1.04.173a4 4 0 013.252 4.784L14 9h4.061a3.664 3.664 0 013.576 2.868A3.68 3.68 0 0121 14.85l.02.087A3.815 3.815 0 0120 18.5v.043l-.01.227a2.82 2.82 0 01-.135.663l-.106.282A3.754 3.754 0 0116.295 22h-3.606l-.392-.007a12.002 12.002 0 01-5.223-1.388l-.343-.189-.27-.154a2.005 2.005 0 00-.863-.26l-.13-.004H3.5a1.5 1.5 0 01-1.5-1.5V12.5A1.5 1.5 0 013.5 11h1.79l.157-.013a1 1 0 00.724-.512l.063-.145 2.987-8.535Zm-1.1 9.196A3 3 0 015.29 13H4v4.998h1.468a4 4 0 011.986.528l.27.155.285.157A10 10 0 0012.69 20h3.606c.754 0 1.424-.483 1.663-1.2l.03-.126a.819.819 0 00.012-.131v-.872l.587-.586c.388-.388.577-.927.523-1.465l-.038-.23-.02-.087-.21-.9.55-.744A1.663 1.663 0 0018.061 11H14a2.002 2.002 0 01-1.956-2.418l.623-2.904a2 2 0 00-1.626-2.392l-.21-.035-2.71 7.741Z">
+                        </path>
+                    </svg>
+            
                     <span class="action-text">651k</span>
-
+            
                 </div>
 
                 <div class="shorts-action">
@@ -545,68 +550,214 @@
     </div>
 
     <!-- BALANCE OVERLAY (ANALYTICS PANEL) -->
-    <section id="balanceOverlay" class="balance-overlay" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="balance-panel" role="document">
-            <!-- Header -->
-            <div class="balance-header">
-                <div class="top">
-                    <button id="balanceBackBtn" class="balance-back" aria-label="Close balance overlay">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                            <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="balance-title bottom">Estimated Revenue</div>
+    <!-- BALANCE OVERLAY / YOUTUBE REWARDS WALLET -->
+<section id="balanceOverlay" class="balance-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+
+    <div class="balance-panel" role="document">
+
+        <!-- HEADER -->
+        <div class="balance-header">
+
+            <div class="top balance-header-top">
+                <img src="images/rewards-logo.png" alt="YouTube Rewards Logo" class="balance-youtube-logo">
+
+                <button id="balanceBackBtn" class="balance-back" aria-label="Close balance overlay">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/>
+                    </svg>
+                </button>
             </div>
 
-            <!-- Date range -->
-            <div class="balance-date-row" id="balanceDateRange">— — —</div>
+            <div class="balance-title bottom">YouTube Rewards</div>
 
-            <div class="balance-inner">
-                <!-- Pill Row with sliding highlighter -->
-                <div class="balance-range">
-                    <div class="balance-pill-track" aria-hidden="true"></div>
-                    <button class="balance-pill" data-range="30" aria-pressed="false">30 days</button>
-                    <button class="balance-pill" data-range="180" aria-pressed="false">6 months</button>
-                    <button class="balance-pill" data-range="lifetime" aria-pressed="false">All time</button>
-                </div>
+            <p class="balance-subtitle">
+                Earn rewards from eligible Shorts watch activity.
+            </p>
 
-                <!-- Large amount -->
-                <div class="balance-amount-wrap">
-                    <div id="balanceAmount" class="balance-amount">—</div>
-                    <div id="balanceYesterday" class="balance-yesterday">Yesterday: —</div>
-                </div>
-
-                <!-- Line chart -->
-                <div id="balanceChartContainer" class="balance-chart-container">
-                    <canvas id="balanceChart" aria-label="Earnings analytics graph" role="img"></canvas>
-                </div>
-
-                <!-- Stats columns -->
-                <div class="balance-columns">
-                    <div class="balance-col">
-                        <div class="col-label">Estimated Revenue</div>
-                        <div class="col-value" id="colEstimated">—</div>
-                    </div>
-                    <div class="balance-col">
-                        <div class="col-label">Qualified Reviews</div>
-                        <div class="col-value" id="colQualified">—</div>
-                    </div>
-                    <div class="balance-col">
-                        <div class="col-label">Conversion Rate</div>
-                        <div class="col-value" id="colConversion">—</div>
-                    </div>
-                </div>
-
-                <!-- Note -->
-                <div class="balance-note" id="balanceNote">
-                    You may notice a difference between your approved reviews and <span class="underline-text">qualified reviews</span>. Read qualified reviews to understand possible reasons.
-                </div>
-
-                <button class="withdraw-btn">Withdraw</button>
-            </div>
         </div>
-    </section>
+
+
+
+        <!-- MAIN WALLET CARD -->
+        <div class="rewards-wallet-card">
+
+            <div class="wallet-label">Available Balance</div>
+
+            <div id="balanceAmount" class="balance-amount">—</div>
+
+            <div id="balanceYesterday" class="balance-yesterday">
+                Earned yesterday: —
+            </div>
+
+            <button class="withdraw-btn">Withdraw</button>
+
+        </div>
+
+
+
+        <!-- SMALL SUMMARY CARDS -->
+        <div class="reward-summary-grid">
+
+            <div class="reward-summary-card">
+                <span class="summary-label">Pending</span>
+                <strong>$12.40</strong>
+                <small>Under review</small>
+            </div>
+
+            <div class="reward-summary-card">
+                <span class="summary-label">Today</span>
+                <strong>$3.25</strong>
+                <small>From Shorts</small>
+            </div>
+
+            <div class="reward-summary-card">
+                <span class="summary-label">Streak</span>
+                <strong>7 days</strong>
+                <small>Keep watching</small>
+            </div>
+
+        </div>
+
+
+
+        <!-- DATE RANGE -->
+        <div class="balance-date-row" id="balanceDateRange">— — —</div>
+
+
+
+        <div class="balance-inner">
+
+            <!-- RANGE PILLS -->
+            <div class="balance-range">
+                <div class="balance-pill-track" aria-hidden="true"></div>
+
+                <button class="balance-pill" data-range="30" aria-pressed="false">
+                    30 days
+                </button>
+
+                <button class="balance-pill" data-range="180" aria-pressed="false">
+                    6 months
+                </button>
+
+                <button class="balance-pill" data-range="lifetime" aria-pressed="false">
+                    All time
+                </button>
+            </div>
+
+
+
+            <!-- CHART TITLE -->
+            <div class="reward-chart-header">
+                <div>
+                    <h3>Reward Activity</h3>
+                    <p>Your estimated rewards over time</p>
+                </div>
+            </div>
+
+
+
+            <!-- LINE CHART -->
+            <div id="balanceChartContainer" class="balance-chart-container">
+                <canvas id="balanceChart" aria-label="YouTube Rewards earnings graph" role="img"></canvas>
+            </div>
+
+
+
+            <!-- STATS COLUMNS -->
+            <div class="balance-columns">
+
+                <div class="balance-col">
+                    <div class="col-label">Total Rewards</div>
+                    <div class="col-value" id="colEstimated">—</div>
+                </div>
+
+                <div class="balance-col">
+                    <div class="col-label">Shorts Watched</div>
+                    <div class="col-value" id="colQualified">—</div>
+                </div>
+
+                <div class="balance-col">
+                    <div class="col-label">Eligibility Rate</div>
+                    <div class="col-value" id="colConversion">—</div>
+                </div>
+
+            </div>
+
+
+
+            <!-- LEVEL / PROGRESS CARD -->
+            <div class="reward-level-card">
+
+                <div class="reward-level-top">
+                    <div>
+                        <span>Current Level</span>
+                        <strong>Level 2</strong>
+                    </div>
+
+                    <div class="reward-level-badge">
+                        61%
+                    </div>
+                </div>
+
+                <div class="reward-level-bar">
+                    <div class="reward-level-fill" style="width: 61%;"></div>
+                </div>
+
+                <div class="reward-level-bottom">
+                    <span>$1,260 earned</span>
+                    <span>$2,000 goal</span>
+                </div>
+
+            </div>
+
+
+
+            <!-- RECENT ACTIVITY -->
+            <div class="reward-activity">
+
+                <h3>Recent Activity</h3>
+
+                <div class="activity-item">
+                    <div>
+                        <strong>Watched eligible Shorts</strong>
+                        <span>Today</span>
+                    </div>
+
+                    <b>+$2.80</b>
+                </div>
+
+                <div class="activity-item">
+                    <div>
+                        <strong>Daily watch bonus</strong>
+                        <span>Yesterday</span>
+                    </div>
+
+                    <b>+$1.50</b>
+                </div>
+
+                <div class="activity-item">
+                    <div>
+                        <strong>Shorts streak reward</strong>
+                        <span>2 days ago</span>
+                    </div>
+
+                    <b>+$3.25</b>
+                </div>
+
+            </div>
+
+
+
+            <!-- NOTE -->
+            <div class="balance-note" id="balanceNote">
+                Rewards are calculated from eligible Shorts watch activity. Some rewards may remain pending while your activity is being verified.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
     <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav">

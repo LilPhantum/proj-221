@@ -80,16 +80,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Open Balance Overlay (Analytics)
     function openBalanceOverlay() {
-        if (!balanceOverlay) return;
-        
-        balanceOverlay.style.display = 'block';
-        setTimeout(() => balanceOverlay.classList.add('open'), 20);
-        
-        // Initialize balance overlay if the API exists
+    if (!balanceOverlay) return;
+
+    balanceOverlay.style.display = 'block';
+
+    setTimeout(() => {
+        balanceOverlay.classList.add('open');
+
         if (window.balanceOverlayAPI) {
-            window.balanceOverlayAPI.renderBalance(window.balanceOverlayAPI.getCurrentRange());
+            const range = window.balanceOverlayAPI.getCurrentRange();
+            window.balanceOverlayAPI.setActivePillByRange(range);
+            window.balanceOverlayAPI.renderBalance(range);
         }
-    }
+    }, 40);
+}
 
     // Close Balance Overlay
     function closeBalanceOverlay() {
@@ -101,11 +105,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event Listeners
     if (rewardsMenuBtn) {
-        rewardsMenuBtn.addEventListener('click', openRewardsPanel);
-        console.log('Event listener added to YouTube Rewards button');
-    } else {
-        console.error('YouTube Rewards button not found!');
-    }
+    rewardsMenuBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (rewardsLoadingSpinner) {
+            rewardsLoadingSpinner.classList.add('show');
+        }
+
+        setTimeout(() => {
+
+            if (rewardsLoadingSpinner) {
+                rewardsLoadingSpinner.classList.remove('show');
+            }
+
+            openBalanceOverlay();
+
+        }, 2000);
+    });
+
+    console.log('Event listener added to open Balance directly');
+} else {
+    console.error('YouTube Rewards button not found!');
+}
 
     if (rewardsBackBtn) {
         rewardsBackBtn.addEventListener('click', closeRewardsPanel);

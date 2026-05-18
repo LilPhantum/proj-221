@@ -255,14 +255,13 @@
     z-index: 2;
 }
 
-/* Loading Spinner */
+/* ===============================
+   LOADING SPINNER
+================================ */
 .rewards-loading-spinner {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.9);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
     display: none;
     justify-content: center;
     align-items: center;
@@ -276,236 +275,285 @@
 .spinner-circle {
     width: 50px;
     height: 50px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-top: 3px solid #ffffff;
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    border-top-color: #ffffff;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 0.9s linear infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-/* Balance Overlay Updates */
+
+
+
+
+/* ===============================
+   YOUTUBE REWARDS BALANCE OVERLAY
+================================ */
 .balance-overlay {
     position: fixed;
     inset: 0;
     z-index: 1100;
     display: none;
-    background: rgb(18, 18, 18);
+    background: #0f0f0f;
     overflow: hidden;
-    opacity: 0;
-    transition: opacity 320ms ease;
+    opacity: 1;
+    transition: none;
 }
 
 .balance-overlay.open {
     display: block;
-    opacity: 1;
 }
 
 .balance-panel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
     width: 100%;
     height: 100%;
-    background: rgb(18, 18, 18);
-    transform: translateX(-100%);
-    transition: transform 320ms cubic-bezier(.2,.9,.2,1);
+    background: #0f0f0f;
+    color: #ffffff;
     overflow-y: auto;
+    transform: none;
+    transition: none;
     -webkit-overflow-scrolling: touch;
 }
 
-.balance-overlay.open .balance-panel {
-    transform: translateX(0);
-}
 
+
+
+
+/* ===============================
+   HEADER
+================================ */
 .balance-header {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    text-align: left;
+    padding: 18px 18px 8px;
 }
 
-.balance-header .top {
-    margin-top: 20px;
-    padding: 0 20px;
+.balance-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.balance-youtube-logo {
+    height: 34px;
+    object-fit: contain;
 }
 
 .balance-back {
-    text-align: left;
-    background: transparent;
+    width: 40px;
+    height: 40px;
+    background: #242424;
     border: none;
-    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
 .balance-back svg {
-    width: 23px;
-    height: auto;
+    width: 22px;
+    height: 22px;
 }
 
 .balance-title {
-    color: #ffffff;
-    font-size: 29px;
-    line-height: 1.2;
-    font-weight: 700;
-    margin-top: 20px;
-    padding: 0 20px;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-top: 28px;
 }
 
-.balance-two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 0 auto;
-    gap: 10px;
-    margin-top: 15px;
-    padding: 0 16px;
+.balance-subtitle {
+    font-size: 14px;
+    color: #aaaaaa;
+    margin-top: 8px;
 }
 
-.balance-col-item {
-    display: flex;
-    flex-direction: column;
-    background: #1f1f1f;
-    padding: 10px;
-    border-radius: 8px;
-    gap: 30px;
+
+
+
+
+/* ===============================
+   WALLET CARD
+================================ */
+.rewards-wallet-card {
+    margin: 18px;
+    padding: 22px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #242424, #161616);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.album-top-row {
+.wallet-label {
+    font-size: 13px;
+    color: #aaaaaa;
+    margin-bottom: 8px;
+}
+
+.balance-amount {
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.balance-yesterday {
+    font-size: 13px;
+    color: #bdbdbd;
     margin-top: 6px;
 }
 
-.album-labels {
+.withdraw-btn {
+    width: 100%;
+    margin-top: 22px;
+    padding: 15px;
+    border: none;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+
+
+
+/* ===============================
+   SUMMARY CARDS
+================================ */
+.reward-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0 18px;
+}
+
+.reward-summary-card {
+    background: #1f1f1f;
+    border-radius: 16px;
+    padding: 14px 10px;
+    min-height: 95px;
     display: flex;
-    margin-bottom: 3px;
-}
-
-.album-top {
-    font-size: 10px;
-    border-radius: 6px;
-    font-weight: 200;
-    color: #fff;
-    opacity: 0.9;
-}
-
-.album-title {
-    margin: 0;
-    font-size: 19px;
-    font-weight: 800;
-}
-
-.album-bottom-row {
-    display: flex;
-    align-items: flex-end;
+    flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 3px;
 }
 
-.album-img {
-    width: 110px;
-    height: 110px;
-    border-radius: 3px;
-    object-fit: cover;
+.summary-label {
+    font-size: 12px;
+    color: #aaaaaa;
 }
 
-.album-tag {
-    line-height: 0.9;
+.reward-summary-card strong {
+    font-size: 20px;
+    line-height: 1.1;
+}
+
+.reward-summary-card small {
     font-size: 11px;
-    font-weight: 200;
-    background: #353535;
-    color: #ffffff;
-    padding: 6px 10px;
-    border-radius: 18px;
+    color: #8f8f8f;
+}
+
+
+
+
+
+/* ===============================
+   DATE + INNER CONTENT
+================================ */
+.balance-date-row {
+    padding: 24px 18px 0;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .balance-inner {
-    padding: 20px;
-    padding-bottom: 48px;
-    color: #fff;
+    padding: 16px 18px 40px;
 }
 
 .balance-inner > * {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: transform 320ms ease, opacity 320ms ease;
-}
-
-.balance-overlay.open .balance-inner > * {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+    transition: none;
 }
 
-.balance-inner > *:nth-child(1) { transition-delay: 0ms; }
-.balance-inner > *:nth-child(2) { transition-delay: 60ms; }
-.balance-inner > *:nth-child(3) { transition-delay: 120ms; }
-.balance-inner > *:nth-child(4) { transition-delay: 180ms; }
-.balance-inner > *:nth-child(5) { transition-delay: 240ms; }
-.balance-inner > *:nth-child(6) { transition-delay: 300ms; }
-.balance-inner > *:nth-child(7) { transition-delay: 360ms; }
-.balance-inner > *:nth-child(8) { transition-delay: 420ms; }
 
+
+
+
+/* ===============================
+   RANGE PILLS
+================================ */
 .balance-range {
     position: relative;
     display: flex;
-    justify-content: space-between;
-    background: #222;
-    border-radius: 24px;
-    height: 36px;
-    margin-bottom: 18px;
+    background: #242424;
+    border-radius: 999px;
+    height: 42px;
+    padding: 3px;
+    margin-bottom: 22px;
 }
 
 .balance-pill {
+    flex: 1;
     border: none;
     background: transparent;
     color: #cfcfcf;
-    padding: 8px 28px;
     border-radius: 999px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
     z-index: 2;
 }
 
 .balance-pill[aria-pressed="true"] {
-    color: #000;
+    color: #000000;
 }
 
 .balance-pill-track {
     position: absolute;
+    top: 3px;
+    left: 3px;
     height: 36px;
     width: 0;
-    left: 0;
-    top: 0;
     border-radius: 999px;
-    background: #fff;
-    transform: translateX(0);
-    transition: transform .5s cubic-bezier(.2,.9,.2,1), width .5s ease;
+    background: #ffffff;
     z-index: 1;
     pointer-events: none;
+    transition: transform 0.25s ease, width 0.25s ease;
 }
 
-.balance-amount-wrap {
-    margin: 28px 0;
-    text-align: center;
+
+
+
+
+/* ===============================
+   CHART
+================================ */
+.reward-chart-header {
+    margin-bottom: 10px;
 }
 
-.balance-amount {
-    font-size: 38px;
-    font-weight: 700;
+.reward-chart-header h3 {
+    font-size: 18px;
+    margin: 0;
 }
 
-.balance-yesterday {
+.reward-chart-header p {
     font-size: 12px;
-    opacity: .7;
-    margin-top: 6px;
+    color: #9f9f9f;
+    margin-top: 4px;
 }
 
 .balance-chart-container {
-    width: 100% !important;
-    margin: 0 auto;
-    border-radius: 14px;
+    width: 100%;
+    background: #181818;
+    border-radius: 18px;
+    padding: 10px;
+    overflow: hidden;
 }
 
 canvas#balanceChart {
@@ -514,27 +562,25 @@ canvas#balanceChart {
     display: block;
 }
 
-.balance-date-row {
-    display: flex;
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 30px;
-    padding: 0 20px;
-}
 
+
+
+
+/* ===============================
+   STATS
+================================ */
 .balance-columns {
-    display: flex;
-    margin-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 18px;
+    background: #1f1f1f;
+    border-radius: 18px;
+    overflow: hidden;
 }
 
 .balance-col {
-    flex: 1;
-    padding: 12px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    border-right: 1px solid rgba(255,255,255,0.1);
+    padding: 14px 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .balance-col:last-child {
@@ -542,35 +588,156 @@ canvas#balanceChart {
 }
 
 .col-label {
-    font-size: 13px;
-    opacity: .75;
+    font-size: 11px;
+    color: #aaaaaa;
+    line-height: 1.3;
 }
 
 .col-value {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 6px;
 }
 
-.balance-note {
+
+
+
+
+/* ===============================
+   LEVEL CARD
+================================ */
+.reward-level-card {
+    margin-top: 18px;
+    padding: 16px;
+    background: #1f1f1f;
+    border-radius: 18px;
+}
+
+.reward-level-top,
+.reward-level-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reward-level-top span,
+.reward-level-bottom {
+    font-size: 12px;
+    color: #aaaaaa;
+}
+
+.reward-level-top strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 22px;
+}
+
+.reward-level-badge {
+    background: #ffffff;
+    color: #000000;
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.reward-level-bar {
+    height: 8px;
+    background: #3a3a3a;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 14px 0 10px;
+}
+
+.reward-level-fill {
+    height: 100%;
+    background: #3ea6ff;
+    border-radius: 999px;
+}
+
+
+
+
+
+/* ===============================
+   RECENT ACTIVITY
+================================ */
+.reward-activity {
+    margin-top: 22px;
+}
+
+.reward-activity h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.activity-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1f1f1f;
+    padding: 14px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+}
+
+.activity-item strong {
+    display: block;
     font-size: 14px;
-    opacity: .9;
-    margin-top: 12px;
+}
+
+.activity-item span {
+    display: block;
+    font-size: 12px;
+    color: #9f9f9f;
+    margin-top: 3px;
+}
+
+.activity-item b {
+    font-size: 15px;
+    color: #3ea6ff;
+}
+
+
+
+
+
+/* ===============================
+   NOTE
+================================ */
+.balance-note {
+    margin-top: 18px;
+    padding: 14px;
+    background: #181818;
+    border-radius: 16px;
+    color: #bdbdbd;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 .underline-text {
     text-decoration: underline;
 }
 
-.withdraw-btn {
-    width: 100%;
-    padding: 18px;
-    margin-bottom: 0px;
-    background: #fff;
-    color: #000;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    margin-top: 25px;
-    font-weight: 600;
-    cursor: pointer;
+
+
+
+
+/* ===============================
+   SMALL SCREENS
+================================ */
+@media (max-width: 380px) {
+    .balance-amount {
+        font-size: 38px;
+    }
+
+    .reward-summary-grid,
+    .balance-columns {
+        gap: 8px;
+    }
+
+    .reward-summary-card strong,
+    .col-value {
+        font-size: 16px;
+    }
 }

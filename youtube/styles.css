@@ -393,7 +393,7 @@ body svg {
 /* Shorts Right Actions */
 .shorts-actions {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     right: 16px;
     display: flex;
     flex-direction: column;
