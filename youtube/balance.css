@@ -255,6 +255,61 @@
     z-index: 2;
 }
 
+.balance-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: none;
+    background: #0f0f0f;
+    overflow: hidden;
+}
+
+.balance-overlay.open {
+    display: block;
+}
+
+.balance-panel {
+    width: 100%;
+    height: 100%;
+    background: #0f0f0f;
+    color: #ffffff;
+    overflow-y: auto;
+    transform: translateY(24px);
+    transition: transform 180ms ease;
+}
+
+.balance-panel {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.balance-panel::-webkit-scrollbar {
+    display: none;
+}
+
+.balance-overlay.open .balance-panel {
+    transform: translateY(0);
+}
+
+.balance-page-loader {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.balance-page-loader.hide {
+    display: none;
+}
+
+.balance-content {
+    display: none;
+}
+
+.balance-content.show {
+    display: block;
+}
+
 /* ===============================
    LOADING SPINNER
 ================================ */
@@ -338,7 +393,7 @@
 }
 
 .balance-youtube-logo {
-    height: 34px;
+    height: 38px;
     object-fit: contain;
 }
 
@@ -379,10 +434,6 @@
     color: #aaaaaa;
     margin-top: 8px;
 }
-
-
-
-
 
 /* ===============================
    WALLET CARD
@@ -465,10 +516,6 @@
     color: #8f8f8f;
 }
 
-
-
-
-
 /* ===============================
    DATE + INNER CONTENT
 ================================ */
@@ -487,10 +534,6 @@
     transform: none;
     transition: none;
 }
-
-
-
-
 
 /* ===============================
    RANGE PILLS
@@ -533,10 +576,6 @@
     pointer-events: none;
     transition: transform 0.25s ease, width 0.25s ease;
 }
-
-
-
-
 
 /* ===============================
    CHART

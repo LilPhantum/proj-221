@@ -480,6 +480,29 @@ body svg {
     height: 22px;
 }
 
+.menu-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-new-tag {
+    position: static !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px;
+    padding: 0 7px;
+    border-radius: 999px;
+    background: #ff0033;
+    color: #ffffff;
+    font-size: 10px !important;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+}
+
 .big .menu-icon {
     width: 28px;
     height: 28px;

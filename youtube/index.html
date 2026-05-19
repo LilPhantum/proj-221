@@ -348,7 +348,10 @@
 
         <div class="menu-item big" id="youtubeRewardsBtn">
             <img src="icons/Reward.svg" alt="Quality" class="menu-icon">
-            <span>YouTube Rewards</span>
+            <span class="menu-label">
+                YouTube Rewards
+                <span class="menu-new-tag">NEW</span>
+            </span>
         </div>
 
         <div class="menu-item">
@@ -554,204 +557,213 @@
     
         <div class="balance-panel" role="document">
     
-            <!-- HEADER -->
-            <div class="balance-header">
-    
-                <div class="top balance-header-top">
-                    <img src="images/rewards-logo.png" alt="YouTube Rewards Logo" class="balance-youtube-logo">
-    
-                    <button id="balanceBackBtn" class="balance-back" aria-label="Close balance overlay">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                            fill="#e3e3e3">
-                            <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
-                        </svg>
-                    </button>
-                </div>
-    
-                <div class="balance-title bottom">YouTube Rewards</div>
-    
-                <p class="balance-subtitle">
-                    Earn rewards from eligible Shorts watch activity.
-                </p>
-    
+            <div id="balancePageLoader" class="balance-page-loader">
+                <div class="spinner-circle"></div>
             </div>
     
+            <div id="balanceContent" class="balance-content">
     
+                <!-- HEADER -->
+                <div class="balance-header">
     
-            <!-- MAIN WALLET CARD -->
-            <div class="rewards-wallet-card">
+                    <div class="top balance-header-top">
+                        <img src="images/rewards-logo.png" alt="YouTube Rewards Logo" class="balance-youtube-logo">
     
-                <div class="wallet-label">Available Balance</div>
-    
-                <div id="balanceAmount" class="balance-amount">—</div>
-    
-                <div id="balanceYesterday" class="balance-yesterday">
-                    Earned yesterday: —
-                </div>
-    
-                <button class="withdraw-btn">Withdraw</button>
-    
-            </div>
-    
-    
-    
-            <!-- SMALL SUMMARY CARDS -->
-            <div class="reward-summary-grid">
-    
-                <div class="reward-summary-card">
-                    <span class="summary-label">Pending</span>
-                    <strong>$12.40</strong>
-                    <small>Under review</small>
-                </div>
-    
-                <div class="reward-summary-card">
-                    <span class="summary-label">Today</span>
-                    <strong>$3.25</strong>
-                    <small>From Shorts</small>
-                </div>
-    
-                <div class="reward-summary-card">
-                    <span class="summary-label">Streak</span>
-                    <strong>7 days</strong>
-                    <small>Keep watching</small>
-                </div>
-    
-            </div>
-    
-    
-    
-            <!-- DATE RANGE -->
-            <div class="balance-date-row" id="balanceDateRange">— — —</div>
-    
-    
-    
-            <div class="balance-inner">
-    
-                <!-- RANGE PILLS -->
-                <div class="balance-range">
-                    <div class="balance-pill-track" aria-hidden="true"></div>
-    
-                    <button class="balance-pill" data-range="30" aria-pressed="false">
-                        30 days
-                    </button>
-    
-                    <button class="balance-pill" data-range="180" aria-pressed="false">
-                        6 months
-                    </button>
-    
-                    <button class="balance-pill" data-range="lifetime" aria-pressed="false">
-                        All time
-                    </button>
-                </div>
-    
-    
-    
-                <!-- CHART TITLE -->
-                <div class="reward-chart-header">
-                    <div>
-                        <h3>Reward Activity</h3>
-                        <p>Your estimated rewards over time</p>
-                    </div>
-                </div>
-    
-    
-    
-                <!-- LINE CHART -->
-                <div id="balanceChartContainer" class="balance-chart-container">
-                    <canvas id="balanceChart" aria-label="YouTube Rewards earnings graph" role="img"></canvas>
-                </div>
-    
-    
-    
-                <!-- STATS COLUMNS -->
-                <div class="balance-columns">
-    
-                    <div class="balance-col">
-                        <div class="col-label">Total Rewards</div>
-                        <div class="col-value" id="colEstimated">—</div>
+                        <button id="balanceBackBtn" class="balance-back" aria-label="Close balance overlay">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#e3e3e3">
+                                <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+                            </svg>
+                        </button>
                     </div>
     
-                    <div class="balance-col">
-                        <div class="col-label">Shorts Watched</div>
-                        <div class="col-value" id="colQualified">—</div>
+                    <div class="balance-title bottom">YouTube Rewards</div>
+    
+                    <p class="balance-subtitle">
+                        Earn rewards from eligible Shorts watch activity.
+                    </p>
+    
+                </div>
+    
+    
+    
+                <!-- MAIN WALLET CARD -->
+                <div class="rewards-wallet-card">
+    
+                    <div class="wallet-label">Available Balance</div>
+    
+                    <div id="balanceAmount" class="balance-amount">—</div>
+    
+                    <div id="balanceYesterday" class="balance-yesterday">
+                        Earned yesterday: —
                     </div>
     
-                    <div class="balance-col">
-                        <div class="col-label">Eligibility Rate</div>
-                        <div class="col-value" id="colConversion">—</div>
+                    <button class="withdraw-btn">Withdraw</button>
+    
+                </div>
+    
+    
+    
+                <!-- SMALL SUMMARY CARDS -->
+                <div class="reward-summary-grid">
+    
+                    <div class="reward-summary-card">
+                        <span class="summary-label">Pending</span>
+                        <strong>$12.40</strong>
+                        <small>Under review</small>
+                    </div>
+    
+                    <div class="reward-summary-card">
+                        <span class="summary-label">Today</span>
+                        <strong>$3.25</strong>
+                        <small>From Shorts</small>
+                    </div>
+    
+                    <div class="reward-summary-card">
+                        <span class="summary-label">Streak</span>
+                        <strong>7 days</strong>
+                        <small>Keep watching</small>
                     </div>
     
                 </div>
     
     
     
-                <!-- LEVEL / PROGRESS CARD -->
-                <div class="reward-level-card">
+                <!-- DATE RANGE -->
+                <div class="balance-date-row" id="balanceDateRange">— — —</div>
     
-                    <div class="reward-level-top">
+    
+    
+                <div class="balance-inner">
+    
+                    <!-- RANGE PILLS -->
+                    <div class="balance-range">
+                        <div class="balance-pill-track" aria-hidden="true"></div>
+    
+                        <button class="balance-pill" data-range="30" aria-pressed="false">
+                            30 days
+                        </button>
+    
+                        <button class="balance-pill" data-range="180" aria-pressed="false">
+                            6 months
+                        </button>
+    
+                        <button class="balance-pill" data-range="lifetime" aria-pressed="false">
+                            All time
+                        </button>
+                    </div>
+    
+    
+    
+                    <!-- CHART TITLE -->
+                    <div class="reward-chart-header">
                         <div>
-                            <span>Current Level</span>
-                            <strong>Level 2</strong>
-                        </div>
-    
-                        <div class="reward-level-badge">
-                            61%
+                            <h3>Reward Activity</h3>
+                            <p>Your estimated rewards over time</p>
                         </div>
                     </div>
     
-                    <div class="reward-level-bar">
-                        <div class="reward-level-fill" style="width: 61%;"></div>
+    
+    
+                    <!-- LINE CHART -->
+                    <div id="balanceChartContainer" class="balance-chart-container">
+                        <canvas id="balanceChart" aria-label="YouTube Rewards earnings graph" role="img"></canvas>
                     </div>
     
-                    <div class="reward-level-bottom">
-                        <span>$1,260 earned</span>
-                        <span>$2,000 goal</span>
-                    </div>
-    
-                </div>
     
     
+                    <!-- STATS COLUMNS -->
+                    <div class="balance-columns">
     
-                <!-- RECENT ACTIVITY -->
-                <div class="reward-activity">
-    
-                    <h3>Recent Activity</h3>
-    
-                    <div class="activity-item">
-                        <div>
-                            <strong>Watched eligible Shorts</strong>
-                            <span>Today</span>
+                        <div class="balance-col">
+                            <div class="col-label">Total Rewards</div>
+                            <div class="col-value" id="colEstimated">—</div>
                         </div>
     
-                        <b>+$2.80</b>
-                    </div>
-    
-                    <div class="activity-item">
-                        <div>
-                            <strong>Daily watch bonus</strong>
-                            <span>Yesterday</span>
+                        <div class="balance-col">
+                            <div class="col-label">Shorts Watched</div>
+                            <div class="col-value" id="colQualified">—</div>
                         </div>
     
-                        <b>+$1.50</b>
-                    </div>
-    
-                    <div class="activity-item">
-                        <div>
-                            <strong>Shorts streak reward</strong>
-                            <span>2 days ago</span>
+                        <div class="balance-col">
+                            <div class="col-label">Eligibility Rate</div>
+                            <div class="col-value" id="colConversion">—</div>
                         </div>
     
-                        <b>+$3.25</b>
                     </div>
     
-                </div>
+    
+    
+                    <!-- LEVEL / PROGRESS CARD -->
+                    <div class="reward-level-card">
+    
+                        <div class="reward-level-top">
+                            <div>
+                                <span>Current Level</span>
+                                <strong>Level 2</strong>
+                            </div>
+    
+                            <div class="reward-level-badge">
+                                61%
+                            </div>
+                        </div>
+    
+                        <div class="reward-level-bar">
+                            <div class="reward-level-fill" style="width: 61%;"></div>
+                        </div>
+    
+                        <div class="reward-level-bottom">
+                            <span>$1,260 earned</span>
+                            <span>$2,000 goal</span>
+                        </div>
+    
+                    </div>
     
     
     
-                <!-- NOTE -->
-                <div class="balance-note" id="balanceNote">
-                    Rewards are calculated from eligible Shorts watch activity. Some rewards may remain pending while your
-                    activity is being verified.
+                    <!-- RECENT ACTIVITY -->
+                    <div class="reward-activity">
+    
+                        <h3>Recent Activity</h3>
+    
+                        <div class="activity-item">
+                            <div>
+                                <strong>Watched eligible Shorts</strong>
+                                <span>Today</span>
+                            </div>
+    
+                            <b>+$2.80</b>
+                        </div>
+    
+                        <div class="activity-item">
+                            <div>
+                                <strong>Daily watch bonus</strong>
+                                <span>Yesterday</span>
+                            </div>
+    
+                            <b>+$1.50</b>
+                        </div>
+    
+                        <div class="activity-item">
+                            <div>
+                                <strong>Shorts streak reward</strong>
+                                <span>2 days ago</span>
+                            </div>
+    
+                            <b>+$3.25</b>
+                        </div>
+    
+                    </div>
+    
+    
+    
+                    <!-- NOTE -->
+                    <div class="balance-note" id="balanceNote">
+                        Rewards are calculated from eligible Shorts watch activity. Some rewards may remain pending while
+                        your
+                        activity is being verified.
+                    </div>
+    
                 </div>
     
             </div>

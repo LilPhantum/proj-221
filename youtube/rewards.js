@@ -5,94 +5,68 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Get elements
     const rewardsMenuBtn = document.getElementById('youtubeRewardsBtn');
-    const rewardsPanel = document.getElementById('rewards-panel');
-    const rewardsBackBtn = document.getElementById('rewardsBackBtn');
-    const rewardsLoadingSpinner = document.getElementById('rewardsLoadingSpinner');
     const rewardsProgressBlock = document.getElementById('rewardsProgressBlock');
     const balanceOverlay = document.getElementById('balanceOverlay');
     const balanceBackBtn = document.getElementById('balanceBackBtn');
     const moreMenu = document.querySelector('.more-menu');
     const backdrop = document.querySelector('.backdrop');
-    const navButtons = document.querySelectorAll('.nav-btn[data-panel]');
-    const panels = document.querySelectorAll('.panel');
 
     // Debug: Check if button is found
     console.log('YouTube Rewards Button:', rewardsMenuBtn);
 
-    // Open YouTube Rewards Panel
-    function openRewardsPanel(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        console.log('Opening rewards panel...');
-        
-        // Close more menu and backdrop
-        if (moreMenu) moreMenu.classList.remove('show');
-        if (backdrop) backdrop.classList.remove('show');
-        
-        // Show loading spinner
-        if (rewardsLoadingSpinner) {
-            rewardsLoadingSpinner.classList.add('show');
-        }
-        
-        // After 2 seconds, hide spinner and show rewards panel
-        setTimeout(() => {
-            if (rewardsLoadingSpinner) {
-                rewardsLoadingSpinner.classList.remove('show');
-            }
-            
-            // Hide all panels
-            panels.forEach(panel => {
-                panel.classList.remove('active');
-            });
-            
-            // Show rewards panel
-            if (rewardsPanel) {
-                rewardsPanel.classList.add('active');
-            }
-            
-            // Deactivate all nav buttons
-            navButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-        }, 2000);
-    }
-
-    // Close Rewards Panel and go back to Home
-    function closeRewardsPanel() {
-        // Hide rewards panel
-        if (rewardsPanel) {
-            rewardsPanel.classList.remove('active');
-        }
-        
-        // Show home panel
-        const homePanel = document.getElementById('home-panel');
-        if (homePanel) {
-            homePanel.classList.add('active');
-        }
-        
-        // Activate home nav button
-        const homeNavBtn = document.querySelector('.nav-btn[data-panel="home"]');
-        if (homeNavBtn) {
-            homeNavBtn.classList.add('active');
-        }
-    }
-
     // Open Balance Overlay (Analytics)
     function openBalanceOverlay() {
+
     if (!balanceOverlay) return;
+
+    const balancePageLoader =
+        document.getElementById('balancePageLoader');
+
+    const balanceContent =
+        document.getElementById('balanceContent');
 
     balanceOverlay.style.display = 'block';
 
-    setTimeout(() => {
-        balanceOverlay.classList.add('open');
+    balanceOverlay.classList.add('open');
 
-        if (window.balanceOverlayAPI) {
-            const range = window.balanceOverlayAPI.getCurrentRange();
-            window.balanceOverlayAPI.setActivePillByRange(range);
-            window.balanceOverlayAPI.renderBalance(range);
+    // SHOW PAGE LOADER
+    if (balancePageLoader) {
+        balancePageLoader.classList.remove('hide');
+    }
+
+    // HIDE REAL CONTENT
+    if (balanceContent) {
+        balanceContent.classList.remove('show');
+    }
+
+    setTimeout(() => {
+
+        // HIDE LOADER
+        if (balancePageLoader) {
+            balancePageLoader.classList.add('hide');
         }
-    }, 40);
+
+        // SHOW CONTENT
+        if (balanceContent) {
+            balanceContent.classList.add('show');
+        }
+
+        // RENDER CHART + DATA
+        if (window.balanceOverlayAPI) {
+
+            const range =
+                window.balanceOverlayAPI.getCurrentRange();
+
+            window.balanceOverlayAPI
+                .setActivePillByRange(range);
+
+            window.balanceOverlayAPI
+                .renderBalance(range);
+
+        }
+
+    }, 1200);
+
 }
 
     // Close Balance Overlay
@@ -109,70 +83,53 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         e.stopPropagation();
 
-        // Pause all Shorts videos before opening rewards
-        const shortsVideos = document.querySelectorAll('.shorts-video');
-
-        shortsVideos.forEach(video => {
+        document.querySelectorAll('.shorts-video').forEach(video => {
             video.pause();
 
             const overlay = video
                 .closest('.shorts-video-container')
                 ?.querySelector('.play-overlay');
 
-            if (overlay) {
-                overlay.classList.add('show');
-            }
+            if (overlay) overlay.classList.add('show');
         });
 
-        if (rewardsLoadingSpinner) {
-            rewardsLoadingSpinner.classList.add('show');
-        }
-
-        setTimeout(() => {
-
-            if (rewardsLoadingSpinner) {
-                rewardsLoadingSpinner.classList.remove('show');
-            }
-
-            openBalanceOverlay();
-
-        }, 2000);
+        openBalanceOverlay();
     });
-
-    console.log('Event listener added to open Balance directly');
-} else {
-    console.error('YouTube Rewards button not found!');
 }
 
-    if (rewardsBackBtn) {
-        rewardsBackBtn.addEventListener('click', closeRewardsPanel);
-    }
+if (rewardsProgressBlock) {
+    rewardsProgressBlock.addEventListener(
+        'click',
+        openBalanceOverlay
+    );
+}
 
-    if (rewardsProgressBlock) {
-        rewardsProgressBlock.addEventListener('click', openBalanceOverlay);
-    }
+if (balanceBackBtn) {
+    balanceBackBtn.addEventListener(
+        'click',
+        closeBalanceOverlay
+    );
+}
 
-    if (balanceBackBtn) {
-        balanceBackBtn.addEventListener('click', closeBalanceOverlay);
-    }
-
-    // Close balance overlay when clicking outside
-    if (balanceOverlay) {
-        balanceOverlay.addEventListener('click', (e) => {
-            if (e.target === balanceOverlay) {
-                closeBalanceOverlay();
-            }
-        });
-    }
-
-    // Close balance overlay on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && balanceOverlay && balanceOverlay.classList.contains('open')) {
+if (balanceOverlay) {
+    balanceOverlay.addEventListener('click', (e) => {
+        if (e.target === balanceOverlay) {
             closeBalanceOverlay();
         }
     });
+}
 
-}); // End of DOMContentLoaded
+document.addEventListener('keydown', (e) => {
+    if (
+        e.key === 'Escape' &&
+        balanceOverlay &&
+        balanceOverlay.classList.contains('open')
+    ) {
+        closeBalanceOverlay();
+    }
+});
+
+});
 
 // Balance Overlay JavaScript (modified from your original)
 (function () {
