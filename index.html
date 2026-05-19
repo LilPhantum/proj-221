@@ -50,7 +50,7 @@
             <!-- Bottom text -->
             <div class="hero-text">
                 <h1 class="ml2">Become a YouTube member today </h1>
-                We collaborated with <span>Youtube</span> to bring you job opprtunuties you thought were impossible.</p>
+                Discover flexible YouTube-related review roles through Bixly. Beginner-friendly, remote, and simple to get started.</p>
             </div>
 
 
@@ -378,6 +378,13 @@
         </div>
     </footer>
 
+    <div class="sticky-apply-gradient"></div>
+
+    <a href="http://apply.bixly.site" class="sticky-apply-btn">
+    <span>Apply now</span>
+    <small>Start verification</small>
+    </a>
+
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
@@ -429,19 +436,18 @@
 
     <script>
         // Application Modal Logic
-        const applyButton = document.querySelector('.cta-btn');
+        const applyButtons = document.querySelectorAll('.cta-btn, .sticky-apply-btn');
         const modal = document.getElementById('applicationModal');
         const cancelBtn = document.getElementById('cancelRedirect');
         const confirmBtn = document.getElementById('confirmRedirect');
         const redirectUrl = 'http://apply.bixly.site';
 
-        // Show modal when apply button is clicked
-        if (applyButton) {
-            applyButton.addEventListener('click', function(e) {
+        applyButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
                 e.preventDefault();
                 modal.classList.add('show');
             });
-        }
+        });
 
         // Cancel button - close modal
         if (cancelBtn) {
