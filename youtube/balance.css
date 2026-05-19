@@ -348,15 +348,23 @@
     background: #242424;
     border: none;
     border-radius: 50%;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.balance-header button .balance-back {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
 }
 
 .balance-back svg {
     width: 22px;
     height: 22px;
+    dispay: block;
+    transform: translateX(3px);
 }
 
 .balance-title {
