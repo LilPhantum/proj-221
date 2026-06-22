@@ -288,6 +288,7 @@ body svg {
     scroll-behavior: smooth;
 }
 
+
 .shorts-feed::-webkit-scrollbar {
     display: none;
 }
@@ -409,6 +410,12 @@ body svg {
     cursor: pointer;
 }
 
+.shorts-action span {
+    text-shadow: 0px 0px 20px #000000,
+    0px 0px 10px #0000008c,
+    0px 0px 5px #0000008c;
+}
+
 .action-icon {
     width: 27px;
     height: 27px;
@@ -434,6 +441,52 @@ body svg {
     -webkit-user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
+}
+
+.like-icon.liked svg {
+    transform: scale(1.1);
+    transition: 0.2s ease;
+}
+
+/* up and down shadow */
+.shorts-video-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.shorts-video-container::before,
+.shorts-video-container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.shorts-video-container::before {
+    top: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.18),
+        transparent
+    );
+}
+
+.shorts-video-container::after {
+    bottom: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.25),
+        transparent
+    );
+}
+
+.shorts-top-icons,
+.shorts-bottom-info,
+.shorts-actions {
+    z-index: 2;
 }
 
 /* More Options Menu */
@@ -556,6 +609,12 @@ body svg {
 .nav-btn span {
     margin: 0;
     padding: 0;
+}
+
+.nav-btn .shorts-pfp {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 2px;
 }
 
 .nav-icon {

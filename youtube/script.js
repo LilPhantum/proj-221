@@ -328,7 +328,9 @@ backdrop.addEventListener('click', () => {
 const likeButtons = document.querySelectorAll('.like-icon');
 
 likeButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (e) => {
+        e.stopPropagation(); // prevent video pause/play
+
         button.classList.toggle('liked');
     });
 });
